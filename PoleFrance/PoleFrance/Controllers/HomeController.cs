@@ -8,12 +8,7 @@ namespace PoleFrance.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
-        public ActionResult Index()
-        {
-            return View();
-        }
-
+        // Route principale pour l'inscription
         public ActionResult Inscription()
         {
             return  View();
