@@ -13,5 +13,14 @@ namespace PoleFrance.Controllers
         {
             return  View();
         }
+
+
+        //Route secondaire pour la connexion
+        public ActionResult Connexion()
+        {
+            return View();
+        }
+
     }
+
 }
