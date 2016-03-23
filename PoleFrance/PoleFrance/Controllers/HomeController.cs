@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace PoleFrance.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         // Route principale pour l'inscription

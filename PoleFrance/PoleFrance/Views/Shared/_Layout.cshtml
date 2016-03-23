@@ -17,10 +17,18 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Connexion Responsable","Connexion","Gestion")</li>
+                    <li>@Html.ActionLink("Connexion Responsable","AdminHome","Gestion")</li>
                 </ul>
+@if (Request.IsAuthenticated)
+            {
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Se déconnecter", "Logout", "Authentification")</li>
+    </ul>
+}
             </div>
-        </div>
+
+          
+            </div>
     </div>
 
     <div class="container body-content">

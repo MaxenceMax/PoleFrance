@@ -6,6 +6,9 @@
     ViewBag.Title = "Connexion";
 }
 
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
 <div id="form-div">
 
@@ -17,7 +20,7 @@
         <input name="Mdp" type="password" class="validate[required,custom[email]] feedback-input" id="mdp" placeholder="Mdp" />
     </p>
 
-   
+
 
 
     <div class="submit">
@@ -25,3 +28,6 @@
         <div class="ease"></div>
     </div>
 </div>
+
+
+}

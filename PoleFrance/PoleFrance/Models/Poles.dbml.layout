@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Poles">
+  <DataContextMoniker Name="/PolesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="8ddba1d2-eb93-423f-8c3f-3ef64b8f8a24" absoluteBounds="0.75, 0.625, 2, 1.3862939453125">
+      <DataClassMoniker Name="/PolesDataContext/SuperAdmin" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0403cedd-31de-4fc7-968f-8903b35bc4c7" absoluteBounds="0.76500000000000012, 1.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
