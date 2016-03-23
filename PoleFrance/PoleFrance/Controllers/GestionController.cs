@@ -6,13 +6,12 @@ using System.Web.Mvc;
 
 namespace PoleFrance.Controllers
 {
-    public class HomeController : Controller
+    public class GestionController : Controller
     {
-        // Route principale pour l'inscription
-        public ActionResult Inscription()
+        //Route secondaire pour la connexion
+        public ActionResult Connexion()
         {
-            return  View();
+            return View();
         }
     }
-
 }
