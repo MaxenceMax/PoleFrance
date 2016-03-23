@@ -125,11 +125,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\CSS\bootstrap.css" />
     <Content Include="Content\CSS\bootstrap.min.css" />
     <Content Include="Content\CSS\flat.css" />
     <Content Include="Content\Images\dojo.jpg" />
     <Content Include="Content\CSS\Site.css" />
+    <Content Include="Content\Images\logo.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
