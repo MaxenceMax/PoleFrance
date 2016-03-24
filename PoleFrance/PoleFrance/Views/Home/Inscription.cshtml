@@ -1,4 +1,6 @@
-﻿<div class="contenu">
+﻿@model PoleFrance.Models.CandidatureViewModel
+
+<div class="contenu">
     <div class="start">
         <div class="start-total">
             <div class="start-intermediaire">
@@ -18,7 +20,11 @@
         {
             @Html.AntiForgeryToken()
             <div id="form-div">
-
+                    @Html.EditorFor(model => model.NumLicencie, new { htmlAttributes = new {@class="feedback-input",@placeholder="Numéro de licence", @id="icon-tete"}})
+                <div class="submit">
+                    <input type="submit" value="SE CONNECTER" id="button-blue" />
+                    <div class="ease"></div>
+                </div>
             </div>    
         }
     </div>
