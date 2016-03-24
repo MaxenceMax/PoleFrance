@@ -114,21 +114,18 @@ input:focus, textarea:focus {
 }
 
 #button-blue{
-	font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 	float:left;
 	width: 100%;
-	border: #fbfbfb solid 4px;
+	border: #fbfbfb solid 1px;
 	cursor:pointer;
 	background-color: #3498db;
 	color:white;
-	font-size:24px;
-	padding-top:22px;
-	padding-bottom:22px;
+	font-size:18px;
+	padding-top:12px;
+	padding-bottom:12px;
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
-  margin-top:-4px;
-  font-weight:700;
 }
 
 #button-blue:hover{
@@ -142,7 +139,7 @@ input:focus, textarea:focus {
 	
 .ease {
 	width: 0px;
-	height: 74px;
+	height: 50px;
 	background-color: #fbfbfb;
 	-webkit-transition: .3s ease;
 	-moz-transition: .3s ease;

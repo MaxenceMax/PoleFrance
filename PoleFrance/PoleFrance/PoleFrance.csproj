@@ -185,11 +185,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Models\AjoutResponsableModel.cs" />
-=======
     <Compile Include="Models\CandidatureViewModel.cs" />
->>>>>>> origin/master
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\Poles.cs">
       <DependentUpon>Poles.dbml</DependentUpon>
