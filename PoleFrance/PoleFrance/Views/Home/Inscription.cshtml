@@ -12,5 +12,14 @@
             </div>
         </div>
     </div>
-    <div class="arrow-down"></div>
+    <div class="etape1">
+        <div class="arrow-down"></div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div id="form-div">
+
+            </div>    
+        }
+    </div>
 </div>
