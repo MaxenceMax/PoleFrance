@@ -15,15 +15,15 @@
         </div>
     </div>
     <div class="etape1">
-        <div class="arrow-down"></div>
-       
-            <div id="form-div">
-                    @Html.EditorFor(model => model.NumLicencie, new { htmlAttributes = new {@class="feedback-input",@placeholder="Numéro de licence", @id="icon-tete"}})
-                <div class="submit">
-                    <input type="submit" value="SE CONNECTER" id="button-blue" />
-                    <div class="ease"></div>
-                </div>
-            </div>    
-        
+        <div class="arrow-down-white"></div>
+
+    </div>
+    <div class="arrow-down-blue"></div>
+    <div id="form-div">
+        @Html.EditorFor(model => model.NumLicencie, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Numéro de licence", @id = "icon-tete" } })
+        <div class="submit">
+            <input type="submit" value="Rechercher vos informations" id="button-blue" />
+            <div class="ease"></div>
+        </div>
     </div>
 </div>

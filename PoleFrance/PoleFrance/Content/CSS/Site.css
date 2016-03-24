@@ -31,7 +31,7 @@
 }
 
 /* arrow */
-.arrow-down {
+.arrow-down-white {
 	width: 0;
     margin: auto;
 	height: 0; 
@@ -39,9 +39,18 @@
 	border-right: 15px solid transparent;
 	border-top: 15px solid #fff;
 }
+.arrow-down-blue {
+	width: 0;
+    margin: auto;
+	height: 0; 
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
+	border-top: 15px solid #004A73;
+}
 
 /* deuxième partie page acceuil  */
 .etape1{
-    background-color: #00304D;
+    overflow: auto;
+    background-color: #004A73;
 }
     
