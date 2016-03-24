@@ -15,8 +15,8 @@
                     <img src="~/Content/Images/logo.png" alt="Fédération Française de Judo">
                 </a>
                 <div class="start-content">
-                    <h1> Inscriptions Pôles </h1>
-                    <span>Bienvenu sur la page dédiée à l'inscription aux différents Pôles France, IJ et INSEP.</span>
+                    <h1> Authentification Responsable </h1>
+                    <span>Bienvenue sur la page dédiée à la gestion des inscriptions pôles pour les responsables.</span>
                 </div>
             </div>
         </div>
@@ -34,9 +34,9 @@
            
             
                     @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Identifiant",@id="icon-tete" } })
-                  
+                 @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
 
-                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Mot de passe", @id = "icon-tete" } })
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Mot de passe", @id = "icon-password" } })
                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                 
             <div class="submit">
