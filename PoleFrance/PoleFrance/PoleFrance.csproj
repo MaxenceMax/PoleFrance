@@ -184,6 +184,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AjoutResponsableModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\Poles.cs">
       <DependentUpon>Poles.dbml</DependentUpon>
@@ -218,6 +219,7 @@
     <Content Include="Views\Gestion\AdminHome.cshtml" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Authentification\Login.cshtml" />
+    <Content Include="Views\Gestion\AjoutResponsable.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
