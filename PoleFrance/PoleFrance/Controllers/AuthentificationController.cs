@@ -5,7 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using System.Security.Claims;
-
+using System.Data.Linq;
+using PoleFrance.Models;
 
 namespace PoleFrance.Controllers
 {
@@ -53,10 +54,23 @@ namespace PoleFrance.Controllers
 
         private bool ValidateUser(string login, string password)
         {
-            // TODO : insérer ici la validation des identifiant et mot de passe de l'utilisateur...
 
-            // Pour ce tutoriel, j'utilise une validation extrêmement sécurisée...
-            return login == password;
+            PolesDataContext bd = new PolesDataContext();
+
+            bool connecte = false;
+
+            int numCount = (from i in bd.SuperAdmin
+                            where i.Login == login && i.Password == password
+                            select i).Count();
+
+            if (numCount != 0)
+            {
+                connecte = true;
+            }
+
+            return connecte;
+
+            //return login == password;
         }
 
         [HttpGet]
