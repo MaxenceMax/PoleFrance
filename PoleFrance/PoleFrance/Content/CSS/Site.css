@@ -18,6 +18,7 @@
 }
 
 .start-content{
+    color: #004A73;
     text-align: left;
     margin-top: 20px;
 }
@@ -51,6 +52,7 @@
 /* deuxième partie page acceuil  */
 .etape1{
     overflow: auto;
+    color:#fff;
     background-color: #004A73;
 }
     
