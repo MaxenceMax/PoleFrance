@@ -65,15 +65,15 @@ html{
 }
 
 /* Icons ---------------------------------- */
-#name{
-	background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+#icon-tete{
+	background-image: url("../Images/Icons/icon-tete.svg");
 	background-size: 30px 30px;
 	background-position: 11px 8px;
 	background-repeat: no-repeat;
 }
 
-#name:focus{
-	background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+#icon-tete:focus{
+	background-image: url(../Images/Icons/icon-tete.svg);
 	background-size: 30px 30px;
 	background-position: 8px 5px;
   background-position: 11px 8px;
