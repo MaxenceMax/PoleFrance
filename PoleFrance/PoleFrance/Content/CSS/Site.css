@@ -1,9 +1,13 @@
 ﻿
+.contenu
+{
+    margin-top: 50px;
+}
+
 /* Top banner after menu */
 .start{
     width: 100%;
     background-color: rgba(255, 255, 255, 1);
-    margin-top: 50px;
     overflow: auto;
     text-align:center;
 }
