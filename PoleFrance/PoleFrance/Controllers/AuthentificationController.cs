@@ -55,21 +55,30 @@ namespace PoleFrance.Controllers
         private bool ValidateUser(string login, string password)
         {
 
-            PolesDataContext bd = new PolesDataContext();
+            /* PolesDataContext bd = new PolesDataContext();
+
+             bool connecte = false;
+
+             int numCount = (from i in bd.SuperAdmin
+                             where i.Login == login && i.Password == password
+                             select i).Count();
+
+             if (numCount != 0)
+             {
+                 connecte = true;
+             }
+
+
+             return connecte; */
 
             bool connecte = false;
 
-            int numCount = (from i in bd.SuperAdmin
-                            where i.Login == login && i.Password == password
-                            select i).Count();
-
-            if (numCount != 0)
+            if (login == "test" && password == "test")
             {
                 connecte = true;
             }
 
             return connecte;
-
             //return login == password;
         }
 
