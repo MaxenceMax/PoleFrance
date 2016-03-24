@@ -13,13 +13,14 @@ namespace PoleFrance.Controllers
     {
 
         
-        //Route secondaire pour la connexion
+        //Route pour la page d'administration
         public ActionResult AdminHome()
         {
             return View();
         }
 
        
+        //Route pour ajouter un responsable
         public ActionResult AjoutResponsable()
         {
             return View();

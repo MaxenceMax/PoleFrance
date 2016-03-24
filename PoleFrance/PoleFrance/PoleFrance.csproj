@@ -212,7 +212,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Views\Gestion\Connexion.cshtml" />
     <Content Include="Models\Poles.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>Poles.designer.cs</LastGenOutput>
