@@ -156,6 +156,7 @@
     <Content Include="Content\CSS\Site.css" />
     <Content Include="Content\Images\Icons\icon-password.png" />
     <Content Include="Content\Images\Icons\icon-tete.svg" />
+    <Content Include="Content\Images\Icons\Numbers\number-1-icon.png" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

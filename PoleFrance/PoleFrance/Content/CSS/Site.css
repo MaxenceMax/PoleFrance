@@ -23,6 +23,12 @@
     margin-top: 20px;
 }
 
+.start-content-white{
+    color: #fff;
+    margin-left:15px;
+    text-align:left;
+}
+
 .start-total{
     display: inline-block;
 }
@@ -49,8 +55,25 @@
 	border-top: 15px solid #004A73;
 }
 
+/* Number div */
+
+.icon-number-1{
+	background-image: url("../Images/Icons/Numbers/number-1-icon.png");
+	background-size: 100px 100px;
+    height:100px;
+    width:100px;
+    margin-top:10px;
+    min-width:100px;
+    background-repeat: no-repeat;
+}
 /* deuxième partie page acceuil  */
 .etape1{
+    margin:auto;
+    width:90%;
+    padding-bottom:20px;
+    padding-left: 20px;
+    padding-right:20px;
+    text-align: center;
     overflow: auto;
     color:#fff;
     background-color: #004A73;
