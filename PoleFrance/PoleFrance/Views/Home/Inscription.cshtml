@@ -16,9 +16,7 @@
     </div>
     <div class="etape1">
         <div class="arrow-down"></div>
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
+       
             <div id="form-div">
                     @Html.EditorFor(model => model.NumLicencie, new { htmlAttributes = new {@class="feedback-input",@placeholder="Numéro de licence", @id="icon-tete"}})
                 <div class="submit">
@@ -26,6 +24,6 @@
                     <div class="ease"></div>
                 </div>
             </div>    
-        }
+        
     </div>
 </div>

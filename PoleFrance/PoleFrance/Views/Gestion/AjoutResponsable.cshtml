@@ -7,9 +7,6 @@
 <h2>AjoutResponsable</h2>
 
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
         <h4>AjoutResponsableModel</h4>
@@ -61,7 +58,7 @@
             </div>
         </div>
     </div>
-}
+
 
 <div>
     @Html.ActionLink("Back to List", "Index")

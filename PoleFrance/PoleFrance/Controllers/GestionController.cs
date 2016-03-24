@@ -19,7 +19,7 @@ namespace PoleFrance.Controllers
             return View();
         }
 
-        
+       
         public ActionResult AjoutResponsable()
         {
             return View();
