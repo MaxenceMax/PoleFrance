@@ -7,31 +7,41 @@
 
 
 <div class="contenu">
+
+    <div class="start">
+        <div class="start-total">
+            <div class="start-intermediaire">
+                <a href="http://www.ffjudo.com/" id="logo" title="retour Accueil">
+                    <img src="~/Content/Images/logo.png" alt="Fédération Française de Judo">
+                </a>
+                <div class="start-content">
+                    <h1> Inscriptions Pôles </h1>
+                    <span>Bienvenu sur la page dédiée à l'inscription aux différents Pôles France, IJ et INSEP.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="etape1">
+        <div class="arrow-down-white"></div>
+
+    </div>
+    <div class="arrow-down-blue"></div>
+
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        <div class="form-horizontal">
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.Login, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
-                </div>
-            </div>
+        <div id="form-div">
+           
+            
+                    @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Identifiant",@id="icon-tete" } })
+                  
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Mot de passe", @id = "icon-tete" } })
                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Se connecter" class="btn btn-default" />
-                </div>
+                
+            <div class="submit">
+                <input type="submit" value="Se connecter" id="button-blue" />
+                <div class="ease"></div>
             </div>
         </div>
 
