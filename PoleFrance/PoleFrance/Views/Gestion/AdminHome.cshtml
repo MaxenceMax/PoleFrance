@@ -25,7 +25,13 @@
     </div>
     <div class="arrow-down-blue"></div>
 
-    @Html.ActionLink("Ajout d'un responsable", "AjoutResponsable", "Gestion")
+
+    <a href='@Url.Action("AjoutResponsable", "Gestion")'>
+        <img src='@Url.Content("~/Content/Images/Admin/adduser.jpg")' />
+    </a>
+
+
+   
 
 
 

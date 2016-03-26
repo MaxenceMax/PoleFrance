@@ -11,12 +11,12 @@ namespace PoleFrance.Models
 
         [Required]
         [Display(Name = "Identifiant")]
-        public string Login { get; set; }
+        public string Pseudo { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Mot de passe")]
-        public string Password { get; set; }
+        public string Pass { get; set; }
 
         [Required]
         [Display(Name = "Nom")]
