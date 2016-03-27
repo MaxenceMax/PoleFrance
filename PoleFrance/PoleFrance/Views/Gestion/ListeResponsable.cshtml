@@ -1,0 +1,46 @@
+﻿@model PoleFrance.Models.AjoutResponsableModel
+
+@{
+    ViewBag.Title = "ListeResponsable";
+}
+
+<div class="contenu">
+
+    <div class="start">
+        <div class="start-total">
+            <div class="start-intermediaire">
+                <a href="http://www.ffjudo.com/" id="logo" title="retour Accueil">
+                    <img src="~/Content/Images/logo.png" alt="Fédération Française de Judo">
+                </a>
+                <div class="start-content">
+                    <h1>Liste des responsables </h1>
+                    <span>Vous pouvez modifier ou supprimer un responsable de Pôle.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="etape1">
+        <div class="arrow-down-white"></div>
+
+    </div>
+    <div class="arrow-down-blue"></div>
+
+
+   
+    <ul>
+        <li>@ViewData["message"]</li>
+        <li>@(((PoleFrance.Models.AjoutResponsableModel)ViewData["resp"]).Nom)</li>
+        <li>@(((PoleFrance.Models.AjoutResponsableModel)ViewData["resp"]).Prenom)</li>
+    </ul>
+
+
+
+    <a href='@Url.Action("AdminHome", "Gestion")'>
+        <img src='@Url.Content("~/Content/Images/Admin/retour.png")' />
+    </a>
+
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

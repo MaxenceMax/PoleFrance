@@ -42,7 +42,7 @@
                     @Html.EditorFor(model => model.Prenom, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Prenom", @id = "icon-tete" } })
                     @Html.ValidationMessageFor(model => model.Prenom, "", new { @class = "text-danger" })
 
-                    @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Mail", @id = "icon-mail" } })
+                    @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Mail", @id = "icon-tete" } })
                     @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
 
                     @Html.EditorFor(model => model.Pseudo, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Identifiant", @id = "icon-tete" } })
@@ -66,10 +66,11 @@
     }
 
 
-    <div>
-        @Html.ActionLink("Retour", "AdminHome", "Gestion", new { @class = "feedback-input"})
-    </div>
+   
 
+    <a href='@Url.Action("AdminHome", "Gestion")'>
+        <img src='@Url.Content("~/Content/Images/Admin/retour.png")' />
+    </a>
 
     </div>
 

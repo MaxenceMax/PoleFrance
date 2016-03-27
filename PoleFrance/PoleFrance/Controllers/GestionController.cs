@@ -21,6 +21,19 @@ namespace PoleFrance.Controllers
         }
 
 
+        //Route pour afficher les responsables
+        public ActionResult ListeResponsable()
+        {
+
+
+            ViewData["message"] = "Bonjour depuis le contrôleur";
+            ViewData["resp"] = new AjoutResponsableModel { Nom = "JPM party", Prenom = "Jean Pierre" };
+
+
+            return View();
+        }
+
+
         //Route pour ajouter un responsable
         public ActionResult AjoutResponsable()
          {

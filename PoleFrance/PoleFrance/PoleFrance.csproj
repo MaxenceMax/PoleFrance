@@ -154,6 +154,7 @@
     <Content Include="Content\CSS\flat.css" />
     <Content Include="Content\Images\Admin\adduser.jpg" />
     <Content Include="Content\Images\Admin\carre.png" />
+    <Content Include="Content\Images\Admin\retour.png" />
     <Content Include="Content\Images\dojo.jpg" />
     <Content Include="Content\CSS\Site.css" />
     <Content Include="Content\Images\Icons\icon-password.png" />
@@ -184,7 +185,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup1.cs" />
     <Compile Include="Controllers\AuthentificationController.cs" />
-    <Compile Include="Controllers\DataContractJsonSerializer.cs" />
     <Compile Include="Controllers\GestionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -226,6 +226,7 @@
     <Content Include="scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Authentification\Login.cshtml" />
     <Content Include="Views\Gestion\AjoutResponsable.cshtml" />
+    <Content Include="Views\Gestion\ListeResponsable.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
