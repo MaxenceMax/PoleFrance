@@ -183,6 +183,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup1.cs" />
     <Compile Include="Controllers\AuthentificationController.cs" />
+    <Compile Include="Controllers\DataContractJsonSerializer.cs" />
     <Compile Include="Controllers\GestionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
