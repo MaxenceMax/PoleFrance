@@ -27,7 +27,7 @@ namespace PoleFrance.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult Inscription(Models.CandidatureViewModel model)
         {
             if (!ValidateNumLicencie(model))

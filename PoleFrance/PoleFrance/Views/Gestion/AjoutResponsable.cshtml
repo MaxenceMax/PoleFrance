@@ -29,7 +29,9 @@
 
    
 
-    
+    @using (Html.BeginForm())
+    {
+     
      <div id="form-div">
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -49,14 +51,8 @@
                     @Html.EditorFor(model => model.Pass, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Mot de passe", @id = "icon-tete" } })
                     @Html.ValidationMessageFor(model => model.Pass, "", new { @class = "text-danger" })
 
-                   
-
-             
-    )
-         
-  
-
-            <div class="form-group">
+   
+                 <div class="form-group">
                 <div class="submit">
                     <input type="submit" value="Créer un responsable" id="button-blue" />
                     <div class="ease"></div>
@@ -67,7 +63,7 @@
         </div>
 
 
-  
+    }
 
 
     <div>

@@ -8,5 +8,24 @@
         <elementListCompartment Id="0403cedd-31de-4fc7-968f-8903b35bc4c7" absoluteBounds="0.76500000000000012, 1.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="b13f5420-1801-4cfa-aa26-a1e6d8c46b41" absoluteBounds="3.625, 1.375, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/PolesDataContext/Responsable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7dfe87dc-1784-4200-be4d-907d3a9d7128" absoluteBounds="3.64, 1.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9a250202-7225-4b70-9a3c-419eb5348828" absoluteBounds="0.875, 2.75, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/PolesDataContext/Pole" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c95d106f-ea77-496c-9f74-bce009b9d687" absoluteBounds="0.89000000000000012, 3.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.875 : 3.23640055338542); (3.625 : 3.23640055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PolesDataContext/Pole/Pole_Responsable" />
+      <nodes>
+        <classShapeMoniker Id="9a250202-7225-4b70-9a3c-419eb5348828" />
+        <classShapeMoniker Id="b13f5420-1801-4cfa-aa26-a1e6d8c46b41" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

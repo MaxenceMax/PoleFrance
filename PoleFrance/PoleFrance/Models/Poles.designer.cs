@@ -33,6 +33,12 @@ namespace PoleFrance.Models
     partial void InsertSuperAdmin(SuperAdmin instance);
     partial void UpdateSuperAdmin(SuperAdmin instance);
     partial void DeleteSuperAdmin(SuperAdmin instance);
+    partial void InsertResponsable(Responsable instance);
+    partial void UpdateResponsable(Responsable instance);
+    partial void DeleteResponsable(Responsable instance);
+    partial void InsertPole(Pole instance);
+    partial void UpdatePole(Pole instance);
+    partial void DeletePole(Pole instance);
     #endregion
 		
 		public PolesDataContext() : 
@@ -70,6 +76,22 @@ namespace PoleFrance.Models
 			get
 			{
 				return this.GetTable<SuperAdmin>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Responsable> Responsable
+		{
+			get
+			{
+				return this.GetTable<Responsable>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Pole> Pole
+		{
+			get
+			{
+				return this.GetTable<Pole>();
 			}
 		}
 	}
@@ -181,6 +203,391 @@ namespace PoleFrance.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Responsable")]
+	public partial class Responsable : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private decimal _id;
+		
+		private string _Nom;
+		
+		private string _Prenom;
+		
+		private string _Adresse;
+		
+		private string _AdresseEmail;
+		
+		private string _Login;
+		
+		private string _Password;
+		
+		private decimal _Poleid;
+		
+		private EntityRef<Pole> _Pole;
+		
+    #region Définitions de méthodes d'extensibilité
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(decimal value);
+    partial void OnidChanged();
+    partial void OnNomChanging(string value);
+    partial void OnNomChanged();
+    partial void OnPrenomChanging(string value);
+    partial void OnPrenomChanged();
+    partial void OnAdresseChanging(string value);
+    partial void OnAdresseChanged();
+    partial void OnAdresseEmailChanging(string value);
+    partial void OnAdresseEmailChanged();
+    partial void OnLoginChanging(string value);
+    partial void OnLoginChanged();
+    partial void OnPasswordChanging(string value);
+    partial void OnPasswordChanged();
+    partial void OnPoleidChanging(decimal value);
+    partial void OnPoleidChanged();
+    #endregion
+		
+		public Responsable()
+		{
+			this._Pole = default(EntityRef<Pole>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
+		public decimal id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nom", DbType="VarChar(50)")]
+		public string Nom
+		{
+			get
+			{
+				return this._Nom;
+			}
+			set
+			{
+				if ((this._Nom != value))
+				{
+					this.OnNomChanging(value);
+					this.SendPropertyChanging();
+					this._Nom = value;
+					this.SendPropertyChanged("Nom");
+					this.OnNomChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prenom", DbType="VarChar(50)")]
+		public string Prenom
+		{
+			get
+			{
+				return this._Prenom;
+			}
+			set
+			{
+				if ((this._Prenom != value))
+				{
+					this.OnPrenomChanging(value);
+					this.SendPropertyChanging();
+					this._Prenom = value;
+					this.SendPropertyChanged("Prenom");
+					this.OnPrenomChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Adresse", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string Adresse
+		{
+			get
+			{
+				return this._Adresse;
+			}
+			set
+			{
+				if ((this._Adresse != value))
+				{
+					this.OnAdresseChanging(value);
+					this.SendPropertyChanging();
+					this._Adresse = value;
+					this.SendPropertyChanged("Adresse");
+					this.OnAdresseChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdresseEmail", DbType="VarChar(200)")]
+		public string AdresseEmail
+		{
+			get
+			{
+				return this._AdresseEmail;
+			}
+			set
+			{
+				if ((this._AdresseEmail != value))
+				{
+					this.OnAdresseEmailChanging(value);
+					this.SendPropertyChanging();
+					this._AdresseEmail = value;
+					this.SendPropertyChanged("AdresseEmail");
+					this.OnAdresseEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Login", DbType="VarChar(60)")]
+		public string Login
+		{
+			get
+			{
+				return this._Login;
+			}
+			set
+			{
+				if ((this._Login != value))
+				{
+					this.OnLoginChanging(value);
+					this.SendPropertyChanging();
+					this._Login = value;
+					this.SendPropertyChanged("Login");
+					this.OnLoginChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(60)")]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this.OnPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Password = value;
+					this.SendPropertyChanged("Password");
+					this.OnPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Poleid", DbType="Decimal(18,0) NOT NULL")]
+		public decimal Poleid
+		{
+			get
+			{
+				return this._Poleid;
+			}
+			set
+			{
+				if ((this._Poleid != value))
+				{
+					if (this._Pole.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPoleidChanging(value);
+					this.SendPropertyChanging();
+					this._Poleid = value;
+					this.SendPropertyChanged("Poleid");
+					this.OnPoleidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pole_Responsable", Storage="_Pole", ThisKey="Poleid", OtherKey="id", IsForeignKey=true)]
+		public Pole Pole
+		{
+			get
+			{
+				return this._Pole.Entity;
+			}
+			set
+			{
+				Pole previousValue = this._Pole.Entity;
+				if (((previousValue != value) 
+							|| (this._Pole.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Pole.Entity = null;
+						previousValue.Responsable.Remove(this);
+					}
+					this._Pole.Entity = value;
+					if ((value != null))
+					{
+						value.Responsable.Add(this);
+						this._Poleid = value.id;
+					}
+					else
+					{
+						this._Poleid = default(decimal);
+					}
+					this.SendPropertyChanged("Pole");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Pole")]
+	public partial class Pole : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private decimal _id;
+		
+		private string _Nom;
+		
+		private EntitySet<Responsable> _Responsable;
+		
+    #region Définitions de méthodes d'extensibilité
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(decimal value);
+    partial void OnidChanged();
+    partial void OnNomChanging(string value);
+    partial void OnNomChanged();
+    #endregion
+		
+		public Pole()
+		{
+			this._Responsable = new EntitySet<Responsable>(new Action<Responsable>(this.attach_Responsable), new Action<Responsable>(this.detach_Responsable));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
+		public decimal id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nom", DbType="VarChar(150)")]
+		public string Nom
+		{
+			get
+			{
+				return this._Nom;
+			}
+			set
+			{
+				if ((this._Nom != value))
+				{
+					this.OnNomChanging(value);
+					this.SendPropertyChanging();
+					this._Nom = value;
+					this.SendPropertyChanged("Nom");
+					this.OnNomChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pole_Responsable", Storage="_Responsable", ThisKey="id", OtherKey="Poleid")]
+		public EntitySet<Responsable> Responsable
+		{
+			get
+			{
+				return this._Responsable;
+			}
+			set
+			{
+				this._Responsable.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Responsable(Responsable entity)
+		{
+			this.SendPropertyChanging();
+			entity.Pole = this;
+		}
+		
+		private void detach_Responsable(Responsable entity)
+		{
+			this.SendPropertyChanging();
+			entity.Pole = null;
 		}
 	}
 }

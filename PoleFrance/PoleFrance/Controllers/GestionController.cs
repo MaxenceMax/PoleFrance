@@ -29,15 +29,26 @@ namespace PoleFrance.Controllers
 
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult AjoutResponsable(Models.AjoutResponsableModel model)
         {
 
-            //PolesDataContext bd = new PolesDataContext();
+            PolesDataContext bd = new PolesDataContext();
+            Responsable resp = new Responsable();
 
+            resp.Nom = model.Nom;
+            resp.Prenom = model.Prenom;
+            resp.Login = model.Pseudo;
+            resp.Password = model.Pass;
+            resp.AdresseEmail = model.Mail;
+            resp.Adresse = "test adresse";
+            resp.Poleid = 0;
 
+            bd.Responsable.InsertOnSubmit(resp);
+            bd.SubmitChanges();
 
-
-            return Redirect("http://fr.openclassrooms.com/");
+            
+            return RedirectToAction("AdminHome", "Gestion");
 
 
 
