@@ -31,5 +31,8 @@ namespace PoleFrance.Models
         public string Mail { get; set; }
 
 
+      
+
+
     }
 }

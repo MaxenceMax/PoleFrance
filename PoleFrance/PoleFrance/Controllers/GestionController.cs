@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PoleFrance.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,13 +20,42 @@ namespace PoleFrance.Controllers
             return View();
         }
 
-       
+
         //Route pour ajouter un responsable
         public ActionResult AjoutResponsable()
+         {
+             return View();
+         } 
+
+
+        [HttpPost]
+        public ActionResult AjoutResponsable(Models.AjoutResponsableModel model)
         {
-            return View();
+
+            //PolesDataContext bd = new PolesDataContext();
+
+
+
+
+            return Redirect("http://fr.openclassrooms.com/");
+
+
+
         }
 
-    }
 
+        private bool InfosVide(string pseudo, string mail)
+        {
+            bool connecte = false;
+
+            if (pseudo == "" && mail == "")
+            {
+                connecte = true;
+            }
+
+            return connecte;
+          
+        }
 }
+}
+
