@@ -139,6 +139,29 @@ input:focus, textarea:focus {
 	transition: all 0.3s;
 }
 
+
+#button-red:hover
+{
+    text-decoration:none;
+    background-color: rgba(0,0,0,0);
+	color: #004A73;
+}
+#button-red{
+    text-align:center;
+	float:left;
+	width: 100%;
+	border: #fbfbfb solid 1px;
+	cursor:pointer;
+	background-color: #c71424;
+	color:white;
+	font-size:18px; 
+	padding-top:12px;
+	padding-bottom:12px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
 #button-blue:hover{
 	background-color: rgba(0,0,0,0);
 	color: #004A73;
@@ -147,6 +170,8 @@ input:focus, textarea:focus {
 .submit:hover {
 	color: #3498db;
 }
+
+
 	
 .ease {
 	width: 0px;
@@ -162,6 +187,17 @@ input:focus, textarea:focus {
 .submit:hover .ease{
   width:100%;
   background-color:white;
+}
+
+.form-group-align
+{
+    width:100%;
+    display:flex;
+}
+
+#form-moitie
+{
+    width:100%;
 }
 
 @media only screen and (max-width: 580px) {

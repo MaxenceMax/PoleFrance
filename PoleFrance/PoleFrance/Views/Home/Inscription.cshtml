@@ -30,7 +30,6 @@
     <div id="form-div">
     @using (Html.BeginForm("Inscription", "Home"))
     {
-       // @Html.AntiForgeryToken()
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.EditorFor(model => model.NumLicencie, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Numéro de licence", @id = "icon-tete" } })
         <div class="submit">

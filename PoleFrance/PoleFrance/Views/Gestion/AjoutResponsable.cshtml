@@ -52,26 +52,22 @@
                     @Html.ValidationMessageFor(model => model.Pass, "", new { @class = "text-danger" })
 
    
-                 <div class="form-group">
-                <div class="submit">
-                    <input type="submit" value="Créer un responsable" id="button-blue" />
-                    <div class="ease"></div>
-                </div>
-            </div>
+         <div class="form-group-align">
+             <div class="submit" id="form-moitie" style="margin-right:2.5px">
+                 <input type="submit" value="Créer un responsable" id="button-blue" />
+                 <div class="ease"></div>
+             </div>
+             <div class="submit" id="form-moitie" style="margin-left:2.5px">
+                 <a href='@Url.Action("AdminHome", "Gestion")' id="button-red">Retour</a>
+                 <div class="ease"></div>
+             </div>
+         </div>   
 
 
         </div>
 
 
     }
-
-
-   
-
-    <a href='@Url.Action("AdminHome", "Gestion")'>
-        <img src='@Url.Content("~/Content/Images/Admin/retour.png")' />
-    </a>
-
     </div>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
