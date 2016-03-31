@@ -227,6 +227,7 @@
     <Content Include="Views\Authentification\Login.cshtml" />
     <Content Include="Views\Gestion\AjoutResponsable.cshtml" />
     <Content Include="Views\Gestion\ListeResponsable.cshtml" />
+    <Content Include="Views\Home\Inscription2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

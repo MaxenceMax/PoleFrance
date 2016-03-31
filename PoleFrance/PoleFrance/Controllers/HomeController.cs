@@ -34,6 +34,14 @@ namespace PoleFrance.Controllers
                 ModelState.AddModelError(string.Empty, "Le numéro de licence est incorrect.");
                 return View(model);
             }
+            TempData["model"] = model;
+            return RedirectToAction("Inscription2");
+        }
+
+        [AllowAnonymous]
+        public ActionResult Inscription2()
+        {
+            CandidatureViewModel candidature = TempData["model"] as CandidatureViewModel;
             return View();
         }
 
@@ -44,8 +52,9 @@ namespace PoleFrance.Controllers
                 if (model.NumLicencie.Length != 16)
                     return false;
                 else if (!IsExistInWebService(model))
-                    return true;
-
+                {
+                    return false;
+                }
                 return true;
             }
             return false;
@@ -85,7 +94,21 @@ namespace PoleFrance.Controllers
                     // Et je traite ceux que je veux
                     object item;
                     items.TryGetValue("adresse", out item);
-
+                    model.Ville = (String)item;
+                    items.TryGetValue("codeP", out item);
+                    model.CodePostal = (String)item;
+                    items.TryGetValue("rue", out item);
+                    model.Rue = (String)item;
+                    items.TryGetValue("mail", out item);
+                    model.Email = (String)item;
+                    items.TryGetValue("prenom", out item);
+                    model.Prenom = (String)item;
+                    items.TryGetValue("nom", out item);
+                    model.Nom = (String)item;
+                    items.TryGetValue("sexe", out item);
+                    model.Sexe = (String)item;
+                    items.TryGetValue("tel", out item);
+                    model.Telephone = (String)item;
                     return true;
                   }
             }
