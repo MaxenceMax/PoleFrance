@@ -91,14 +91,14 @@ html{
   background-position: 11px 8px;
 	background-repeat: no-repeat;
 }
-#email{
+#icon-email{
 	background-image: url(../Images/Icons/icon-email.svg);
 	background-size: 30px 30px;
 	background-position: 11px 8px;
 	background-repeat: no-repeat;
 }
 
-#email:focus{
+#icon-email:focus{
 	background-image:  url(../Images/Icons/icon-email.svg);
 	background-size: 30px 30px;
     background-position: 11px 8px;
