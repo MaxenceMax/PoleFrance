@@ -154,6 +154,7 @@
     <Content Include="Content\CSS\flat.css" />
     <Content Include="Content\Images\Admin\adduser.jpg" />
     <Content Include="Content\Images\Admin\carre.png" />
+    <Content Include="Content\Images\Admin\redcross.png" />
     <Content Include="Content\Images\Admin\retour.png" />
     <Content Include="Content\Images\dojo.jpg" />
     <Content Include="Content\CSS\Site.css" />

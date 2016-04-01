@@ -39,26 +39,27 @@ namespace PoleFrance.Controllers
                 v.Prenom = j.Prenom;
                 v.Pseudo = j.Login;
                 v.Mail = j.AdresseEmail;
+                
                 temp.Add(v);
             }
+
 
 
             ResponsableViewModel vm = new ResponsableViewModel
             {
 
-                ListeDesResponsables = new List<AjoutResponsableModel>
-                {
-                    new AjoutResponsableModel { Nom = "JPM party", Prenom = "Jean Pierre", Pseudo = "P1", Mail = "test@test.fr" },
-                    new AjoutResponsableModel { Nom = "Hello", Prenom = "Don", Pseudo = "P2", Mail = "test@test2.fr" },
-                    
-
-                }
+                ListeDesResponsables = temp.ToList(),
 
             };
 
-    
+
+
+
             return View(vm);
         }
+
+
+      
 
 
         //Route pour ajouter un responsable
@@ -89,12 +90,21 @@ namespace PoleFrance.Controllers
             bd.SubmitChanges();
             
 
-            return RedirectToAction("AdminHome", "Gestion");
-
-
+            return RedirectToAction("ListeResponsable", "Gestion");
 
         }
 
+
+        [AllowAnonymous]
+        public void SuppressionResponsable(int id)
+        {
+
+        
+
+        }
+
+
+        
 
         private bool InfosVide(string pseudo, string mail)
         {

@@ -33,6 +33,8 @@ namespace PoleFrance.Models
         [Display(Name = "Mail")]
         public string Mail { get; set; }
 
+        public int id { get; set; }
+
 
       
 

@@ -32,6 +32,7 @@
             <th>Prenom</th>
             <th>Pseudo</th>
             <th>Mail</th>
+            <th>Supprimer</th>
            
         </tr>
         @{
@@ -42,19 +43,29 @@
                     <td>@resp.Prenom</td>
                     <td>@resp.Pseudo</td>
                     <td>@resp.Mail</td>
+                    <td>
+                    <a href='@Url.Action("SuppressionResponsable", "Gestion",  new {id=2})'>
+                        <img src='@Url.Content("~/Content/Images/Admin/redcross.png")' />
+                    </a>
+                    </td>
                 </tr>
             }
         }
     </table>
 
 
-
-
-
-
-    <a href='@Url.Action("AdminHome", "Gestion")'>
-        <img src='@Url.Content("~/Content/Images/Admin/retour.png")' />
+    <a href='@Url.Action("AjoutResponsable", "Gestion")'>
+        <img src='@Url.Content("~/Content/Images/Admin/carre.png")' />
     </a>
+
+
+    <div class="submit" >
+        <a href='@Url.Action("AdminHome", "Gestion")' id="button-red">Retour</a>
+        <div class="ease"></div>
+    </div>
+
+
+    
 
 </div>
 
