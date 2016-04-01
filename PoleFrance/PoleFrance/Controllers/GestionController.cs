@@ -45,11 +45,13 @@ namespace PoleFrance.Controllers
 
             ResponsableViewModel vm = new ResponsableViewModel
             {
-                
+
                 ListeDesResponsables = new List<AjoutResponsableModel>
                 {
                     new AjoutResponsableModel { Nom = "JPM party", Prenom = "Jean Pierre", Pseudo = "P1", Mail = "test@test.fr" },
                     new AjoutResponsableModel { Nom = "Hello", Prenom = "Don", Pseudo = "P2", Mail = "test@test2.fr" },
+                    
+
                 }
 
             };
@@ -82,10 +84,11 @@ namespace PoleFrance.Controllers
             resp.Adresse = "test adresse";
             resp.Poleid = 0;
 
+           
             bd.Responsable.InsertOnSubmit(resp);
             bd.SubmitChanges();
-
             
+
             return RedirectToAction("AdminHome", "Gestion");
 
 

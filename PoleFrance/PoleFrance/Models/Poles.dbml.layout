@@ -2,29 +2,120 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Poles">
   <DataContextMoniker Name="/PolesDataContext" />
   <nestedChildShapes>
-    <classShape Id="8ddba1d2-eb93-423f-8c3f-3ef64b8f8a24" absoluteBounds="0.75, 0.625, 2, 1.3862939453125">
+    <classShape Id="8ddba1d2-eb93-423f-8c3f-3ef64b8f8a24" absoluteBounds="0.5, 0.5, 2, 1.3862939453125">
       <DataClassMoniker Name="/PolesDataContext/SuperAdmin" />
       <nestedChildShapes>
-        <elementListCompartment Id="0403cedd-31de-4fc7-968f-8903b35bc4c7" absoluteBounds="0.76500000000000012, 1.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="0403cedd-31de-4fc7-968f-8903b35bc4c7" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="b13f5420-1801-4cfa-aa26-a1e6d8c46b41" absoluteBounds="3.625, 1.375, 2, 2.3478011067708335">
+    <classShape Id="c50df159-40cd-44dd-a7a3-2e3e6a673962" absoluteBounds="0.5, 2.25, 2, 2.3478011067708335">
       <DataClassMoniker Name="/PolesDataContext/Responsable" />
       <nestedChildShapes>
-        <elementListCompartment Id="7dfe87dc-1784-4200-be4d-907d3a9d7128" absoluteBounds="3.64, 1.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="65f61985-f5d7-47bd-9d7e-f11c74714629" absoluteBounds="0.51499999999999968, 2.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="9a250202-7225-4b70-9a3c-419eb5348828" absoluteBounds="0.875, 2.75, 2, 1.1939925130208333">
+    <classShape Id="d3a1a261-cfc5-449d-b611-ba0f61bbe000" absoluteBounds="3.125, 0.5, 2, 1.1939925130208333">
       <DataClassMoniker Name="/PolesDataContext/Pole" />
       <nestedChildShapes>
-        <elementListCompartment Id="c95d106f-ea77-496c-9f74-bce009b9d687" absoluteBounds="0.89000000000000012, 3.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="6ce5d2bf-0e11-48b3-b172-5b0bcdd2c6f5" absoluteBounds="3.1400000000000006, 0.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.875 : 3.23640055338542); (3.625 : 3.23640055338542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(3.125 : 1.69399251302083); (2.5 : 2.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PolesDataContext/Pole/Pole_Responsable" />
       <nodes>
-        <classShapeMoniker Id="9a250202-7225-4b70-9a3c-419eb5348828" />
-        <classShapeMoniker Id="b13f5420-1801-4cfa-aa26-a1e6d8c46b41" />
+        <classShapeMoniker Id="d3a1a261-cfc5-449d-b611-ba0f61bbe000" />
+        <classShapeMoniker Id="c50df159-40cd-44dd-a7a3-2e3e6a673962" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="15e09529-364b-4580-a13a-01969591505c" absoluteBounds="5.5, 0.5, 2, 4.4631168619791666">
+      <DataClassMoniker Name="/PolesDataContext/Candidature" />
+      <nestedChildShapes>
+        <elementListCompartment Id="845ac10b-618a-4d6a-b547-8a7eaf4ac2b5" absoluteBounds="5.5150000000000006, 0.96, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b914e303-2b06-4baa-b483-396d371a7a31" absoluteBounds="8.125, 2.875, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/PolesDataContext/InformationScolaire" />
+      <nestedChildShapes>
+        <elementListCompartment Id="98a0f3ec-a588-4939-bad3-383013905379" absoluteBounds="8.14, 3.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.125 : 3.76044840494792); (7.5 : 3.76044840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PolesDataContext/InformationScolaire/InformationScolaire_Candidature" />
+      <nodes>
+        <classShapeMoniker Id="b914e303-2b06-4baa-b483-396d371a7a31" />
+        <classShapeMoniker Id="15e09529-364b-4580-a13a-01969591505c" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="ad181ad4-af83-4a13-af98-167f6f0a2391" absoluteBounds="8.125, 0.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/PolesDataContext/InformationSportive" />
+      <nestedChildShapes>
+        <elementListCompartment Id="af8a1aac-07ea-4ea1-bc28-7c0c4da81bbc" absoluteBounds="8.14, 0.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.5 : 1.48159912109375); (8.125 : 1.48159912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PolesDataContext/Candidature/Candidature_InformationSportive" />
+      <nodes>
+        <classShapeMoniker Id="15e09529-364b-4580-a13a-01969591505c" />
+        <classShapeMoniker Id="ad181ad4-af83-4a13-af98-167f6f0a2391" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="34323100-5667-4a97-ae14-3559993a8b97" absoluteBounds="2.875, 5.25, 2, 1.3862939453125">
+      <DataClassMoniker Name="/PolesDataContext/Langue" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9c7bf70d-1431-4b2c-9933-9eab8c4ff13c" absoluteBounds="2.8900000000000006, 5.7100000000000009, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0096474a-5d18-4592-9062-05ba3a6f9971" absoluteBounds="0.5, 5.25, 2, 1.3862939453125">
+      <DataClassMoniker Name="/PolesDataContext/Options" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f2168139-d608-4017-944d-4d3d49db227d" absoluteBounds="0.51500000000000057, 5.7100000000000009, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="62482c2f-8d44-4976-abb1-96615e780d46" absoluteBounds="3.125, 2.75, 2, 1.3862939453125">
+      <DataClassMoniker Name="/PolesDataContext/PoleCandidature" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e49bb689-e566-437e-9fb8-f81c9bb5e194" absoluteBounds="3.1399999999999997, 3.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 3.44314697265625); (5.125 : 3.44314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PolesDataContext/Candidature/Candidature_PoleCandidature" />
+      <nodes>
+        <classShapeMoniker Id="15e09529-364b-4580-a13a-01969591505c" />
+        <classShapeMoniker Id="62482c2f-8d44-4976-abb1-96615e780d46" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.1562525 : 1.69399251302083); (4.1562525 : 2.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PolesDataContext/Pole/Pole_PoleCandidature" />
+      <nodes>
+        <classShapeMoniker Id="d3a1a261-cfc5-449d-b611-ba0f61bbe000" />
+        <classShapeMoniker Id="62482c2f-8d44-4976-abb1-96615e780d46" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="0c668227-22c1-4323-ae8b-c35fa55857e3" absoluteBounds="8.125, 5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/PolesDataContext/SouhaitScolaire" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0ae7ba4d-1a68-45cc-a656-c3a0359cd4d1" absoluteBounds="8.14, 5.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.125 : 5.91429768880208); (4.875 : 5.91429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PolesDataContext/SouhaitScolaire/SouhaitScolaire_Langue" />
+      <nodes>
+        <classShapeMoniker Id="0c668227-22c1-4323-ae8b-c35fa55857e3" />
+        <classShapeMoniker Id="34323100-5667-4a97-ae14-3559993a8b97" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.125 : 6.57859537760417); (7.75 : 6.95359537760417); (2.875 : 6.95359537760417); (2.875 : 7.0112939453125); (2.5 : 6.6362939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/PolesDataContext/SouhaitScolaire/SouhaitScolaire_Options" />
+      <nodes>
+        <classShapeMoniker Id="0c668227-22c1-4323-ae8b-c35fa55857e3" />
+        <classShapeMoniker Id="0096474a-5d18-4592-9062-05ba3a6f9971" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.125 : 4.64589680989583); (9.125 : 5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PolesDataContext/InformationScolaire/InformationScolaire_SouhaitScolaire" />
+      <nodes>
+        <classShapeMoniker Id="b914e303-2b06-4baa-b483-396d371a7a31" />
+        <classShapeMoniker Id="0c668227-22c1-4323-ae8b-c35fa55857e3" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>
