@@ -93,6 +93,11 @@ namespace PoleFrance.Controllers
                     Dictionary<String, Object> items = (Dictionary<String, Object>)list[0];
                     // Et je traite ceux que je veux
                     object item;
+                    items.TryGetValue("numLicence", out item);
+                    model.NumLicencie = (String)item;
+                    // Si le num licence est vide alors la licence n'existe pas
+                    if (model.NumLicencie == null || model.NumLicencie.Length == 0)
+                        return false;
                     items.TryGetValue("adresse", out item);
                     model.Ville = (String)item;
                     items.TryGetValue("codeP", out item);

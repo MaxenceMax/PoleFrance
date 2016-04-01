@@ -70,6 +70,17 @@
     min-width:100px;
     background-repeat: no-repeat;
 }
+
+.icon-number-2{
+	background-image: url("../Images/Icons/Numbers/number-2-icon.png");
+	background-size: 100px 100px;
+    height:100px;
+    width:100px;
+    margin-top:10px;
+    min-width:100px;
+    background-repeat: no-repeat;
+}
+
 /* deuxième partie page acceuil  */
 .etape1{
     margin:auto;
