@@ -55,7 +55,7 @@ namespace PoleFrance.Controllers
         private bool ValidateUser(string login, string password)
         {
 
-            /* PolesDataContext bd = new PolesDataContext();
+             PolesDataContext bd = new PolesDataContext();
 
              bool connecte = false;
 
@@ -69,15 +69,15 @@ namespace PoleFrance.Controllers
              }
 
 
-             return connecte; */
+             return connecte; 
 
-            bool connecte = false;
+          /*  bool connecte = false;
 
             if (login == "test" && password == "test")
             {
                 connecte = true;
             }
-
+            */
             return connecte;
             //return login == password;
         }

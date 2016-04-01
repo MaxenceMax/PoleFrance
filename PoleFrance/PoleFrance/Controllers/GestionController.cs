@@ -1,4 +1,5 @@
 ﻿using PoleFrance.Models;
+using PoleFrance.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,12 +26,36 @@ namespace PoleFrance.Controllers
         public ActionResult ListeResponsable()
         {
 
+            PolesDataContext bd = new PolesDataContext();
+            List<AjoutResponsableModel> temp = new List<AjoutResponsableModel>();
 
-            ViewData["message"] = "Bonjour depuis le contrôleur";
-            ViewData["resp"] = new AjoutResponsableModel { Nom = "JPM party", Prenom = "Jean Pierre" };
+            var req = from i in bd.Responsable
+                      select new { i.Nom, i.Prenom, i.Login, i.AdresseEmail };
+
+            foreach (var j in req)
+            {
+                AjoutResponsableModel v = new AjoutResponsableModel();
+                v.Nom = j.Nom;
+                v.Prenom = j.Prenom;
+                v.Pseudo = j.Login;
+                v.Mail = j.AdresseEmail;
+                temp.Add(v);
+            }
 
 
-            return View();
+            ResponsableViewModel vm = new ResponsableViewModel
+            {
+                
+                ListeDesResponsables = new List<AjoutResponsableModel>
+                {
+                    new AjoutResponsableModel { Nom = "JPM party", Prenom = "Jean Pierre", Pseudo = "P1", Mail = "test@test.fr" },
+                    new AjoutResponsableModel { Nom = "Hello", Prenom = "Don", Pseudo = "P2", Mail = "test@test2.fr" },
+                }
+
+            };
+
+    
+            return View(vm);
         }
 
 
@@ -47,8 +72,8 @@ namespace PoleFrance.Controllers
         {
 
             PolesDataContext bd = new PolesDataContext();
-            Responsable resp = new Responsable();
 
+            Responsable resp = new Responsable();
             resp.Nom = model.Nom;
             resp.Prenom = model.Prenom;
             resp.Login = model.Pseudo;

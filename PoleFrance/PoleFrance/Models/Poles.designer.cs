@@ -42,7 +42,7 @@ namespace PoleFrance.Models
     #endregion
 		
 		public PolesDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["PolesConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["PolesConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

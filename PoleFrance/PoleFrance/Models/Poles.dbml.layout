@@ -20,7 +20,7 @@
         <elementListCompartment Id="c95d106f-ea77-496c-9f74-bce009b9d687" absoluteBounds="0.89000000000000012, 3.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.875 : 3.23640055338542); (3.625 : 3.23640055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.875 : 3.23640055338542); (3.625 : 3.23640055338542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PolesDataContext/Pole/Pole_Responsable" />
       <nodes>
         <classShapeMoniker Id="9a250202-7225-4b70-9a3c-419eb5348828" />

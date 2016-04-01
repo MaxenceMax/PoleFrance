@@ -1,4 +1,4 @@
-﻿@model PoleFrance.Models.AjoutResponsableModel
+﻿@model PoleFrance.ViewModels.ResponsableViewModel
 
 @{
     ViewBag.Title = "ListeResponsable";
@@ -25,13 +25,30 @@
     </div>
     <div class="arrow-down-blue"></div>
 
+    
+    <table>
+        <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Pseudo</th>
+            <th>Mail</th>
+           
+        </tr>
+        @{
+            foreach (var resp in Model.ListeDesResponsables)
+            {
+                <tr>
+                    <td>@resp.Nom</td>
+                    <td>@resp.Prenom</td>
+                    <td>@resp.Pseudo</td>
+                    <td>@resp.Mail</td>
+                </tr>
+            }
+        }
+    </table>
 
-   
-    <ul>
-        <li>@ViewData["message"]</li>
-        <li>@(((PoleFrance.Models.AjoutResponsableModel)ViewData["resp"]).Nom)</li>
-        <li>@(((PoleFrance.Models.AjoutResponsableModel)ViewData["resp"]).Prenom)</li>
-    </ul>
+
+
 
 
 
