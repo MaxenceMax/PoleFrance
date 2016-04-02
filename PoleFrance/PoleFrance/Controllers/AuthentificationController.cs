@@ -69,16 +69,17 @@ namespace PoleFrance.Controllers
              }
 
 
-             return connecte; 
+             return connecte;  
 
-          /*  bool connecte = false;
+            /*
+           bool connecte = false; 
 
             if (login == "test" && password == "test")
             {
                 connecte = true;
-            }
-            */
-            return connecte;
+            } 
+           
+            return connecte; */
             //return login == password;
         }
 

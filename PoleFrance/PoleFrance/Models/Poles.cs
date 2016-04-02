@@ -6,10 +6,21 @@ namespace PoleFrance.Models
     partial class Candidature
     {
     }
+
+    [MetadataType(typeof(PoleFrance.Models.AjoutResponsableModel))]
+    partial class Responsable
+    {
+    }
 }
 
 namespace PoleFrance
 {
+
+    [MetadataType(typeof(PoleFrance.Models.AjoutResponsableModel))]
+    partial class Responsable
+    {
+    }
+
     [MetadataType(typeof(PoleFrance.Models.CandidatureViewModel))]
     partial class Candidature
     {

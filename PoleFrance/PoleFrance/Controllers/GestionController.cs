@@ -27,20 +27,15 @@ namespace PoleFrance.Controllers
         {
 
             PolesDataContext bd = new PolesDataContext();
-            List<AjoutResponsableModel> temp = new List<AjoutResponsableModel>();
+            List<Models.Responsable> temp = new List<Models.Responsable>();
 
             var req = from i in bd.Responsable
-                      select new { i.Nom, i.Prenom, i.Login, i.AdresseEmail };
+                      select i;
 
             foreach (var j in req)
             {
-                AjoutResponsableModel v = new AjoutResponsableModel();
-                v.Nom = j.Nom;
-                v.Prenom = j.Prenom;
-                v.Pseudo = j.Login;
-                v.Mail = j.AdresseEmail;
                 
-                temp.Add(v);
+                temp.Add(j);
             }
 
 
@@ -54,13 +49,11 @@ namespace PoleFrance.Controllers
 
 
 
-
             return View(vm);
         }
 
 
-      
-
+     
 
         //Route pour ajouter un responsable
         public ActionResult AjoutResponsable()
@@ -76,14 +69,13 @@ namespace PoleFrance.Controllers
 
             PolesDataContext bd = new PolesDataContext();
 
-            Responsable resp = new Responsable();
+            Models.Responsable resp = new Models.Responsable();
             resp.Nom = model.Nom;
             resp.Prenom = model.Prenom;
-            resp.Login = model.Pseudo;
-            resp.Password = model.Pass;
-            resp.AdresseEmail = model.Mail;
-            resp.Adresse = "test adresse";
-            resp.Poleid = 0;
+            resp.Login = model.Login;
+            resp.Password = model.Password;
+            resp.AdresseEmail = model.AdresseEmail;
+            resp.Poleid = model.Poleid;
 
            
             bd.Responsable.InsertOnSubmit(resp);
@@ -96,28 +88,37 @@ namespace PoleFrance.Controllers
 
 
         [AllowAnonymous]
-        public void SuppressionResponsable(int id)
+        public ActionResult SuppressionResponsable(decimal id)
         {
 
-        
 
-        }
+            PolesDataContext bd = new PolesDataContext();
+
+            var req = from i in bd.Responsable
+                      where i.id == id
+                      select i;
 
 
-        
-
-        private bool InfosVide(string pseudo, string mail)
-        {
-            bool connecte = false;
-
-            if (pseudo == "" && mail == "")
+            foreach (var detail in req)
             {
-                connecte = true;
+                bd.Responsable.DeleteOnSubmit(detail);
             }
 
-            return connecte;
-          
+            try
+            {
+                bd.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                // Provide for exceptions.
+            }
+
+            return RedirectToAction("ListeResponsable", "Gestion");
+
         }
+
+
 }
 }
 

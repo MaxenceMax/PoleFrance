@@ -42,14 +42,19 @@
                     @Html.EditorFor(model => model.Prenom, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Prenom", @id = "icon-tete" } })
                     @Html.ValidationMessageFor(model => model.Prenom, "", new { @class = "text-danger" })
 
-                    @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Mail", @id = "icon-email" } })
-                    @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.AdresseEmail, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Mail", @id = "icon-email" } })
+                    @Html.ValidationMessageFor(model => model.AdresseEmail, "", new { @class = "text-danger" })
 
-                    @Html.EditorFor(model => model.Pseudo, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Identifiant", @id = "icon-tete" } })
-                    @Html.ValidationMessageFor(model => model.Pseudo, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Poleid, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Pole", @id = "icon-tete" } })
+                    @Html.ValidationMessageFor(model => model.Poleid, "", new { @class = "text-danger" })
 
-                    @Html.EditorFor(model => model.Pass, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Mot de passe", @id = "icon-tete" } })
-                    @Html.ValidationMessageFor(model => model.Pass, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Identifiant", @id = "icon-tete" } })
+                    @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
+
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Mot de passe", @id = "icon-tete" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+                    
 
    
          <div class="form-group-align">

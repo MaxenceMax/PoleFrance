@@ -14,12 +14,12 @@ namespace PoleFrance.Models
 
         [Required]
         [Display(Name = "Identifiant")]
-        public string Pseudo { get; set; }
+        public string Login { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Mot de passe")]
-        public string Pass { get; set; }
+        public string Password { get; set; }
 
         [Required]
         [Display(Name = "Nom")]
@@ -31,12 +31,16 @@ namespace PoleFrance.Models
 
         [Required]
         [Display(Name = "Mail")]
-        public string Mail { get; set; }
+        public string AdresseEmail { get; set; }
 
-        public int id { get; set; }
+        public decimal id { get; set; }
 
+        [Required]
+        [Display(Name = "Pole")]
+        public decimal Poleid { get; set; }
 
-      
+   
+
 
 
     }

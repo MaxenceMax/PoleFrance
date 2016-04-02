@@ -8,7 +8,7 @@ namespace PoleFrance.ViewModels
     public class ResponsableViewModel
     {
 
-            public List<Models.AjoutResponsableModel> ListeDesResponsables { get; set; }
+            public List<Models.Responsable> ListeDesResponsables { get; set; }
         
     }
 }

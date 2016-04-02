@@ -30,8 +30,10 @@
         <tr>
             <th>Nom</th>
             <th>Prenom</th>
-            <th>Pseudo</th>
+            <th>Pole</th>
             <th>Mail</th>
+            <th>Identifiant</th>
+            <th>Mot de Passe</th>
             <th>Supprimer</th>
            
         </tr>
@@ -41,10 +43,14 @@
                 <tr>
                     <td>@resp.Nom</td>
                     <td>@resp.Prenom</td>
-                    <td>@resp.Pseudo</td>
-                    <td>@resp.Mail</td>
+                    <td>@resp.Pole.Nom</td>
+                    <td>@resp.AdresseEmail</td>
+                    <td>@resp.Login</td>
+                    <td>@resp.Password</td>
+                    
+                    
                     <td>
-                    <a href='@Url.Action("SuppressionResponsable", "Gestion",  new {id=2})'>
+                    <a href='@Url.Action("SuppressionResponsable", "Gestion",  new {id=@resp.id})'>
                         <img src='@Url.Content("~/Content/Images/Admin/redcross.png")' />
                     </a>
                     </td>
