@@ -199,7 +199,7 @@
     <Compile Include="Models\CandidatureViewModel.cs" />
     <Compile Include="Models\InformationSportiveModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
-    <Compile Include="Models\MainModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Models\Poles.cs">
       <DependentUpon>Poles.dbml</DependentUpon>
     </Compile>
