@@ -1,9 +1,5 @@
-﻿
-@{
-    ViewBag.Title = "Inscription2";
-}
+﻿@model PoleFrance.Models.MainModel
 
-@model PoleFrance.Models.Candidature
 <div class="contenu">
     <div class="start">
         <div class="start-total">
@@ -32,10 +28,26 @@
         </div>
     </div>
     <div class="arrow-down-blue"></div>
-    <div id="form-div-big">
-    </div>
-    <div id="form-div-big">
-    </div>
-    <div id="form-div-big">
-    </div>
+    @using (Html.BeginForm("Inscription2", "Home"))
+    {
+        <div id="form-div-big">
+            <div class="titre-form-blanc">
+                Informations générales :
+                <div class="white-separator"/>
+                <input type="date" name="bday">
+            </div>
+            <div class="form-content">
+                <div class="form-content-mid"></div>
+                <div class="form-content-mid"></div>
+            </div>
+        </div>
+        <div id="form-div-big">
+        </div>
+        <div id="form-div-big">
+        </div>
+        <div class="submit">
+            <input type="submit" value="Rechercher vos informations" id="button-blue" />
+            <div class="ease"></div>
+        </div>
+    }
 </div>

@@ -54,7 +54,12 @@
                     @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Mot de passe", @id = "icon-tete" } })
                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
 
-                    
+         <select class="select-custom" id="select-blue">
+             <option selected="selected">What a beauty day</option>
+             <option>I love Steve Jobs</option>
+             <option>PHP is awesome</option>
+             <option>I'm a Developer</option>
+         </select>
 
    
          <div class="form-group-align">

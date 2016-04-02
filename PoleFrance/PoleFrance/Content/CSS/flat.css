@@ -35,12 +35,8 @@ html{
 
 #form-div-big {
 	background-color:rgba(72,72,72,0.4);
-	padding-left:35px;
-	padding-right:35px;
-	padding-top:35px;
-	padding-bottom:50px;
 	width: 90%;
-	left: 50%;
+    padding:10px;
   margin-top:30px;
   margin-left:auto;
   margin-right:auto;

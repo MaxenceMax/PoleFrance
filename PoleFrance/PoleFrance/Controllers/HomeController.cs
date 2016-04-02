@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using System.Security.Claims;
-using System.Data.Linq;
 using PoleFrance.Models;
 using System.Net;
 using System.IO;
@@ -41,7 +36,17 @@ namespace PoleFrance.Controllers
         [AllowAnonymous]
         public ActionResult Inscription2()
         {
-            CandidatureViewModel candidature = TempData["model"] as CandidatureViewModel;
+            Models.Candidature candidature = TempData["model"] as Models.Candidature;
+            MainModel mainModel = new MainModel();
+            mainModel.Candidature = candidature;
+
+            return View(mainModel);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Inscription2(MainModel model)
+        {
             return View();
         }
 
