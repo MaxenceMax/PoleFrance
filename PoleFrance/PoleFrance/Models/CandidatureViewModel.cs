@@ -9,8 +9,8 @@ namespace PoleFrance.Models
     public class CandidatureViewModel
     {
         [Required]
-        [Display(Name="Numéro de licence")]
-        public string NumLicencie { get; set;}
+        [Display(Name = "Numéro de licence")]
+        public string NumLicencie { get; set; }
 
         [Display(Name ="Redirection")]
         public Boolean Redirection { get; set; }
@@ -40,7 +40,7 @@ namespace PoleFrance.Models
         public String Prenom { get; set;}
 
         [Display (Name ="Email")]
-        public String Email { get; set; }
+        public String AdresseEmail { get; set; }
 
         [Display (Name ="Date de naissance")]
         public String DateNaissance { get; set; }
@@ -51,5 +51,22 @@ namespace PoleFrance.Models
         [Display (Name ="Téléphone")]
         public String Telephone { get; set; }
 
+        [Display (Name ="Poids")]
+        public String Poids { get; set; }
+
+        [Display (Name ="Taille")]
+        public String Taille { get; set; }
+
+        [Display (Name ="Pôle actuel")]
+        public String PoleActuel { get; set; }
+
+        [Display (Name ="Catégorie d'age actuelle")]
+        public String CategorieAgeActuelle { get; set; }
+
+        [Display (Name ="Date démarche")]
+        public String DateDemarche { get; set; }
+
+
+        
     }
 }

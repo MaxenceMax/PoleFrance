@@ -4,6 +4,7 @@ html{
   background: url("../Images/dojo.jpg") no-repeat;
   background-size: cover;
   background-attachment:fixed;
+  min-width:360px;
   height:100%;
 }
 
@@ -24,6 +25,21 @@ html{
 	padding-top:35px;
 	padding-bottom:50px;
 	width: 450px;
+	left: 50%;
+  margin-top:30px;
+  margin-left:auto;
+  margin-right:auto;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+}
+
+#form-div-big {
+	background-color:rgba(72,72,72,0.4);
+	padding-left:35px;
+	padding-right:35px;
+	padding-top:35px;
+	padding-bottom:50px;
+	width: 90%;
 	left: 50%;
   margin-top:30px;
   margin-left:auto;
@@ -203,9 +219,14 @@ input:focus, textarea:focus {
 @media only screen and (max-width: 580px) {
 	#form-div{
 		left: 3%;
-		margin-right: 3%;
 		width: 88%;
-		margin-left: 0;
+		padding-left: 3%;
+		padding-right: 3%;
+	}
+
+    #form-div-big{
+		left: 3%;
+		width: 88%;
 		padding-left: 3%;
 		padding-right: 3%;
 	}

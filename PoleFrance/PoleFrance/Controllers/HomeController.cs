@@ -27,7 +27,7 @@ namespace PoleFrance.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Inscription(Models.CandidatureViewModel model)
+        public ActionResult Inscription(Models.Candidature model)
         {
             if (!ValidateNumLicencie(model))
             {
@@ -45,7 +45,7 @@ namespace PoleFrance.Controllers
             return View();
         }
 
-        private Boolean ValidateNumLicencie(CandidatureViewModel model)
+        private Boolean ValidateNumLicencie(Models.Candidature model)
         {
             if (model.NumLicencie!= null)
             {
@@ -61,7 +61,7 @@ namespace PoleFrance.Controllers
         }
 
         /** call web service url and check the licence number*/
-        private Boolean IsExistInWebService(CandidatureViewModel model)
+        private Boolean IsExistInWebService(Models.Candidature model)
         {
             /**
             Create url from licencie
@@ -105,7 +105,7 @@ namespace PoleFrance.Controllers
                     items.TryGetValue("rue", out item);
                     model.Rue = (String)item;
                     items.TryGetValue("mail", out item);
-                    model.Email = (String)item;
+                    model.AdresseEmail = (String)item;
                     items.TryGetValue("prenom", out item);
                     model.Prenom = (String)item;
                     items.TryGetValue("nom", out item);

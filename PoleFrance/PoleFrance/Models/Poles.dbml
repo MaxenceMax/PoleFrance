@@ -28,32 +28,6 @@
       <Association Name="Pole_PoleCandidature" Member="PoleCandidature" ThisKey="id" OtherKey="Poleid" Type="PoleCandidature" />
     </Type>
   </Table>
-  <Table Name="dbo.Candidature" Member="Candidature">
-    <Type Name="Candidature">
-      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="NumLicencie" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="Redirection" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Internat" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="AutorisationParent" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="AdresseEmail" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="InformationScolaireid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Column Name="Poids" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="Taille" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="PoleActuel" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Sexe" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="Ligue" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="CategorieAgeActuelle" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="DateDemarche" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="Nom" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Prenom" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Ville" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="CodePostal" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="Rue" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
-      <Association Name="Candidature_InformationSportive" Member="InformationSportive" ThisKey="id" OtherKey="Candidatureid" Type="InformationSportive" />
-      <Association Name="Candidature_PoleCandidature" Member="PoleCandidature" ThisKey="id" OtherKey="Candidatureid" Type="PoleCandidature" />
-      <Association Name="InformationScolaire_Candidature" Member="InformationScolaire" ThisKey="InformationScolaireid" OtherKey="id" Type="InformationScolaire" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.InformationScolaire" Member="InformationScolaire">
     <Type Name="InformationScolaire">
       <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -61,8 +35,8 @@
       <Column Name="Adresse" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="Telephone" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="Classe" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Association Name="InformationScolaire_Candidature" Member="Candidature" ThisKey="id" OtherKey="InformationScolaireid" Type="Candidature" />
       <Association Name="InformationScolaire_SouhaitScolaire" Member="SouhaitScolaire" ThisKey="id" OtherKey="InformationScolaireid" Type="SouhaitScolaire" />
+      <Association Name="InformationScolaire_Candidature" Member="Candidature" ThisKey="id" OtherKey="InformationScolaireid" Type="Candidature" />
     </Type>
   </Table>
   <Table Name="dbo.InformationSportive" Member="InformationSportive">
@@ -97,8 +71,8 @@
       <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Poleid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
       <Column Name="Candidatureid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Association Name="Candidature_PoleCandidature" Member="Candidature" ThisKey="Candidatureid" OtherKey="id" Type="Candidature" IsForeignKey="true" />
       <Association Name="Pole_PoleCandidature" Member="Pole" ThisKey="Poleid" OtherKey="id" Type="Pole" IsForeignKey="true" />
+      <Association Name="Candidature_PoleCandidature" Member="Candidature" ThisKey="Candidatureid" OtherKey="id" Type="Candidature" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.SouhaitScolaire" Member="SouhaitScolaire">
@@ -110,6 +84,33 @@
       <Association Name="SouhaitScolaire_Langue" Member="Langue" ThisKey="id" OtherKey="SouhaitScolaireid" Type="Langue" />
       <Association Name="SouhaitScolaire_Options" Member="Options" ThisKey="id" OtherKey="SouhaitScolaireid" Type="Options" />
       <Association Name="InformationScolaire_SouhaitScolaire" Member="InformationScolaire" ThisKey="InformationScolaireid" OtherKey="id" Type="InformationScolaire" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Candidature" Member="Candidature">
+    <Type Name="Candidature">
+      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NumLicencie" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Redirection" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Internat" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AutorisationParent" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AdresseEmail" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="InformationScolaireid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Poids" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Taille" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="PoleActuel" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Sexe" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Ligue" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="CategorieAgeActuelle" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DateDemarche" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Nom" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Prenom" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Ville" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CodePostal" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Rue" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Telephone" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="Candidature_InformationSportive" Member="InformationSportive" ThisKey="id" OtherKey="Candidatureid" Type="InformationSportive" />
+      <Association Name="Candidature_PoleCandidature" Member="PoleCandidature" ThisKey="id" OtherKey="Candidatureid" Type="PoleCandidature" />
+      <Association Name="InformationScolaire_Candidature" Member="InformationScolaire" ThisKey="InformationScolaireid" OtherKey="id" Type="InformationScolaire" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

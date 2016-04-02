@@ -195,13 +195,9 @@
     </Compile>
     <Compile Include="Models\AjoutResponsableModel.cs" />
     <Compile Include="Models\CandidatureViewModel.cs" />
+    <Compile Include="Models\InformationSportiveModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\Poles.cs">
-      <DependentUpon>Poles.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Poles.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>Poles.dbml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -223,8 +219,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Models\Poles.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>Poles.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Poles1.designer.cs</LastGenOutput>
     </Content>
     <Content Include="Views\Gestion\AdminHome.cshtml" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
