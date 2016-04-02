@@ -15,6 +15,7 @@
                 <div class="start-content">
                     <h1> Gestion Administrateur </h1>
                     <span>Bienvenue sur la page dédiée à la gestion de l'administrateur.</span>
+                    <span>@ViewBag.texte</span>
                 </div>
             </div>
         </div>
@@ -29,7 +30,7 @@
 
 
     <a href='@Url.Action("ListeResponsable", "Gestion")'>
-        <img src='@Url.Content("~/Content/Images/Admin/carre.png")' />
+        <img src='@Url.Content("~/Content/Images/Admin/resp.png")' />
     </a>
 
     <a href='@Url.Action("OuvertureInscription", "Gestion")'>
