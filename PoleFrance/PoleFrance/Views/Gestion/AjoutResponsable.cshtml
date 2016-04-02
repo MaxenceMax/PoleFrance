@@ -45,8 +45,8 @@
                     @Html.EditorFor(model => model.AdresseEmail, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Mail", @id = "icon-email" } })
                     @Html.ValidationMessageFor(model => model.AdresseEmail, "", new { @class = "text-danger" })
 
-                    @Html.EditorFor(model => model.Poleid, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Pole", @id = "icon-tete" } })
-                    @Html.ValidationMessageFor(model => model.Poleid, "", new { @class = "text-danger" })
+                    @Html.DropDownListFor(model => model.Poleid, new SelectList(ViewBag.listePole,"id","Nom"), new { @class="select-custom", @id="select-blue"})
+                    
 
                     @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Identifiant", @id = "icon-tete" } })
                     @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
@@ -54,12 +54,7 @@
                     @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Mot de passe", @id = "icon-tete" } })
                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
 
-         <select class="select-custom" id="select-blue">
-             <option selected="selected">What a beauty day</option>
-             <option>I love Steve Jobs</option>
-             <option>PHP is awesome</option>
-             <option>I'm a Developer</option>
-         </select>
+       
 
    
          <div class="form-group-align">

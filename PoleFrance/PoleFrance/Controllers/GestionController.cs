@@ -18,6 +18,17 @@ namespace PoleFrance.Controllers
         //Route pour la page d'administration
         public ActionResult AdminHome()
         {
+
+            PolesDataContext bd = new PolesDataContext();
+
+            var admin = bd.SuperAdmin.First();
+
+            ViewBag.image = "~/Content/Images/Admin/adduser.jpg";
+            if (admin.Open == true)
+               ViewBag.image = "~/Content/Images/Admin/carre.png";
+          
+
+
             return View();
         }
 
@@ -27,24 +38,14 @@ namespace PoleFrance.Controllers
         {
 
             PolesDataContext bd = new PolesDataContext();
-            List<Models.Responsable> temp = new List<Models.Responsable>();
-
-            var req = from i in bd.Responsable
-                      select i;
-
-            foreach (var j in req)
-            {
-                
-                temp.Add(j);
-            }
-
+        
+            var all = bd.Responsable;
 
 
             ResponsableViewModel vm = new ResponsableViewModel
             {
-
-                ListeDesResponsables = temp.ToList(),
-
+                ListeDesResponsables = all.ToList(),
+              
             };
 
 
@@ -53,11 +54,44 @@ namespace PoleFrance.Controllers
         }
 
 
+        //Fonction pour ouvrir les inscriptions
+        public ActionResult OuvertureInscription()
+        {
+
+            PolesDataContext bd = new PolesDataContext();
+
+            var admin = bd.SuperAdmin.First();
+
+            if(admin.Open == true){
+                admin.Open = false;}
+            else{
+                admin.Open = true;}
+
+            try
+            {
+                bd.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                // Provide for exceptions.
+            }
+
+            return RedirectToAction("AdminHome", "Gestion");
+
+        }
      
 
         //Route pour ajouter un responsable
         public ActionResult AjoutResponsable()
          {
+
+            PolesDataContext bd = new PolesDataContext();
+
+            var all = bd.Pole;
+
+            ViewBag.listePole = all;
+
              return View();
          } 
 

@@ -1,31 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Poles" Class="PolesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=dev2.ffjudo.local\mssql12;Initial Catalog=Poles;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PolesConnectionString1" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.SuperAdmin" Member="SuperAdmin">
-    <Type Name="SuperAdmin">
-      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Login" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="Password" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Responsable" Member="Responsable">
-    <Type Name="Responsable">
-      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Nom" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Prenom" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Adresse" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="AdresseEmail" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Login" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
-      <Column Name="Password" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
-      <Column Name="Poleid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Association Name="Pole_Responsable" Member="Pole" ThisKey="Poleid" OtherKey="id" Type="Pole" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Pole" Member="Pole">
     <Type Name="Pole">
       <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Nom" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
-      <Association Name="Pole_Responsable" Member="Responsable" ThisKey="id" OtherKey="Poleid" Type="Responsable" />
       <Association Name="Pole_PoleCandidature" Member="PoleCandidature" ThisKey="id" OtherKey="Poleid" Type="PoleCandidature" />
+      <Association Name="Pole_Responsable" Member="Responsable" ThisKey="id" OtherKey="Poleid" Type="Responsable" />
     </Type>
   </Table>
   <Table Name="dbo.InformationScolaire" Member="InformationScolaire">
@@ -112,6 +92,26 @@
       <Association Name="Candidature_InformationSportive" Member="InformationSportive" ThisKey="id" OtherKey="Candidatureid" Type="InformationSportive" />
       <Association Name="Candidature_PoleCandidature" Member="PoleCandidature" ThisKey="id" OtherKey="Candidatureid" Type="PoleCandidature" />
       <Association Name="InformationScolaire_Candidature" Member="InformationScolaire" ThisKey="InformationScolaireid" OtherKey="id" Type="InformationScolaire" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SuperAdmin" Member="SuperAdmin">
+    <Type Name="SuperAdmin">
+      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Login" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="[Open]" Member="Open" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Responsable" Member="Responsable">
+    <Type Name="Responsable">
+      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nom" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Prenom" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AdresseEmail" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Login" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="Poleid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Association Name="Pole_Responsable" Member="Pole" ThisKey="Poleid" OtherKey="id" Type="Pole" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
