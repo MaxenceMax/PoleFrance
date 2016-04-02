@@ -154,7 +154,6 @@
     <Content Include="Content\CSS\flat.css" />
     <Content Include="Content\Images\Admin\adduser.jpg" />
     <Content Include="Content\Images\Admin\carre.png" />
-    <Content Include="Content\Images\Admin\redcross.png" />
     <Content Include="Content\Images\Admin\retour.png" />
     <Content Include="Content\Images\dojo.jpg" />
     <Content Include="Content\CSS\Site.css" />
@@ -198,6 +197,11 @@
     <Compile Include="Models\InformationSportiveModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\Poles.cs">
+      <DependentUpon>Poles.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Poles1.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
       <DependentUpon>Poles.dbml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
