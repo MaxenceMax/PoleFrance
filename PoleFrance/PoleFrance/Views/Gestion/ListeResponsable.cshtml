@@ -14,7 +14,7 @@
                 </a>
                 <div class="start-content">
                     <h1>Liste des responsables </h1>
-                    <span>Vous pouvez modifier ou supprimer un responsable de Pôle.</span>
+                    <span>Vous pouvez créer ou supprimer un responsable de Pôle.</span>
                 </div>
             </div>
         </div>
@@ -25,55 +25,60 @@
     </div>
     <div class="arrow-down-blue"></div>
 
-    
-    <table>
-        <tr>
-            <th>Nom</th>
-            <th>Prenom</th>
-            <th>Pole</th>
-            <th>Mail</th>
-            <th>Identifiant</th>
-            <th>Mot de Passe</th>
-            <th>Supprimer</th>
-           
-        </tr>
-        @{
-            foreach (var resp in Model.ListeDesResponsables)
-            {
-                <tr>
-                    <td>@resp.Nom</td>
-                    <td>@resp.Prenom</td>
-                    <td>@resp.Pole.Nom</td>
-                    <td>@resp.AdresseEmail</td>
-                    <td>@resp.Login</td>
-                    <td>@resp.Password</td>
-                    
-                    
-                    <td>
-                    <a href='@Url.Action("SuppressionResponsable", "Gestion",  new {id=@resp.id})'>
-                        <img src='@Url.Content("~/Content/Images/Admin/redcross.png")' />
-                    </a>
-                    </td>
-                </tr>
+    <div class="tableau" style="overflow-x:auto;">
+
+        <table>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Pole</th>
+                <th>Mail</th>
+                <th>Identifiant</th>
+                <th>Mot de Passe</th>
+                <th>Supprimer</th>
+
+            </tr>
+            @{
+                foreach (var resp in Model.ListeDesResponsables)
+                {
+                    <tr>
+                        <td>@resp.Nom</td>
+                        <td>@resp.Prenom</td>
+                        <td>@resp.Pole.Nom</td>
+                        <td>@resp.AdresseEmail</td>
+                        <td>@resp.Login</td>
+                        <td>@resp.Password</td>
+
+
+                        <td>
+                            <a href='@Url.Action("SuppressionResponsable", "Gestion",  new {id=@resp.id})'>
+                                <img src='@Url.Content("~/Content/Images/Admin/redcross.png")' />
+                            </a>
+                        </td>
+                    </tr>
+                }
             }
-        }
-    </table>
+        </table>
+        </div>
+
+       
 
 
-    <a href='@Url.Action("AjoutResponsable", "Gestion")'>
-        <img src='@Url.Content("~/Content/Images/Admin/carre.png")' />
-    </a>
+    <div id="form-div">
+
+        <a href='@Url.Action("AjoutResponsable", "Gestion")'>
+            <img src='@Url.Content("~/Content/Images/Admin/resp.png")' class="taille-bouton-add" />
+        </a>
+
+        <div class="submit">
+            <a href='@Url.Action("AdminHome", "Gestion")' id="button-red">Retour</a>
+            <div class="ease"></div>
+        </div>
+        </div>
 
 
-    <div class="submit" >
-        <a href='@Url.Action("AdminHome", "Gestion")' id="button-red">Retour</a>
-        <div class="ease"></div>
+
     </div>
-
-
-    
-
-</div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>

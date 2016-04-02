@@ -13,11 +13,55 @@
 }
 
 
-/*Taille bouton page admin*/
 
+/*Mon tableau de responsable*/
+
+table, th, td {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+}
+th {
+    text-align: center;
+    background-color: #004A73;
+    color: white;
+}
+
+tr {
+     background-color:white;
+
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+
+
+
+
+.tableau{
+
+    margin-top: 20px;
+    margin-left:130px;
+}
+
+
+/*Taille bouton page admin*/
 .taille-bouton{
     height: 150px;
     width: 150px;
+}
+
+.taille-bouton-add{
+     height: 150px;
+    width: 150px;
+    margin-left:120px;
+    margin-bottom:20px;
+
 }
 
 #logo
@@ -110,14 +154,16 @@
   color:#fff;
   text-align:center;
   text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);
+  margin-bottom:15px;
+  margin-left:15px;
 }
 
 #select-blue {
-  background-color:#3498DB;
+  background-color:#984B4B;
 }
 
 #select-blue {
-  background-color:#2980B9;
+  background-color:#984B4B;
 }
 
 select-custom:focus, select:active {

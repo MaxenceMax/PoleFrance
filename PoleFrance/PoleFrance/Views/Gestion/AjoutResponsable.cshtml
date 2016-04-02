@@ -36,6 +36,9 @@
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+
+         @Html.DropDownListFor(model => model.Poleid, new SelectList(ViewBag.listePole, "id", "Nom"), new { @class = "select-custom", @id = "select-blue" })
+
                     @Html.EditorFor(model => model.Nom, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Nom", @id = "icon-tete" } })
                     @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger" })
                 
@@ -45,7 +48,7 @@
                     @Html.EditorFor(model => model.AdresseEmail, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Mail", @id = "icon-email" } })
                     @Html.ValidationMessageFor(model => model.AdresseEmail, "", new { @class = "text-danger" })
 
-                    @Html.DropDownListFor(model => model.Poleid, new SelectList(ViewBag.listePole,"id","Nom"), new { @class="select-custom", @id="select-blue"})
+                 
                     
 
                     @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Identifiant", @id = "icon-tete" } })
