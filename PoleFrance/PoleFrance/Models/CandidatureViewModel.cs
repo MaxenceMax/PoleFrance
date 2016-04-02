@@ -13,13 +13,13 @@ namespace PoleFrance.Models
         public string NumLicencie { get; set; }
 
         [Display(Name ="Redirection")]
-        public Boolean Redirection { get; set; }
+        public bool Redirection { get; set; }
 
         [Display(Name ="Demande d'internat")]
-        public Boolean Internat { get; set; }
+        public bool Internat { get; set; }
 
         [Display(Name ="Autorisation parental")]
-        public Boolean AutorisationParental { get; set; }
+        public bool AutorisationParent { get; set; }
 
         [Display(Name ="Ville")]
         public String Ville { get; set; }

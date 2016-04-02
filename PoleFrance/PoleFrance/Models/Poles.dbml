@@ -108,6 +108,7 @@
       <Column Name="CodePostal" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="Rue" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="Telephone" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="DateNaissance" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Association Name="Candidature_InformationSportive" Member="InformationSportive" ThisKey="id" OtherKey="Candidatureid" Type="InformationSportive" />
       <Association Name="Candidature_PoleCandidature" Member="PoleCandidature" ThisKey="id" OtherKey="Candidatureid" Type="PoleCandidature" />
       <Association Name="InformationScolaire_Candidature" Member="InformationScolaire" ThisKey="InformationScolaireid" OtherKey="id" Type="InformationScolaire" IsForeignKey="true" />

@@ -1904,6 +1904,8 @@ namespace PoleFrance.Models
 		
 		private string _Telephone;
 		
+		private string _DateNaissance;
+		
 		private EntitySet<InformationSportive> _InformationSportive;
 		
 		private EntitySet<PoleCandidature> _PoleCandidature;
@@ -1954,6 +1956,8 @@ namespace PoleFrance.Models
     partial void OnRueChanged();
     partial void OnTelephoneChanging(string value);
     partial void OnTelephoneChanged();
+    partial void OnDateNaissanceChanging(string value);
+    partial void OnDateNaissanceChanged();
     #endregion
 		
 		public Candidature()
@@ -2364,6 +2368,26 @@ namespace PoleFrance.Models
 					this._Telephone = value;
 					this.SendPropertyChanged("Telephone");
 					this.OnTelephoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateNaissance", DbType="VarChar(10)")]
+		public string DateNaissance
+		{
+			get
+			{
+				return this._DateNaissance;
+			}
+			set
+			{
+				if ((this._DateNaissance != value))
+				{
+					this.OnDateNaissanceChanging(value);
+					this.SendPropertyChanging();
+					this._DateNaissance = value;
+					this.SendPropertyChanged("DateNaissance");
+					this.OnDateNaissanceChanged();
 				}
 			}
 		}
