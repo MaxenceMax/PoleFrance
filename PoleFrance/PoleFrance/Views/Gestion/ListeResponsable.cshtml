@@ -27,58 +27,62 @@
 
     <div id="form-div-big">
 
-        <div class ="retour-liste" >
-            <div class="submit">
-                <a href='@Url.Action("AdminHome", "Gestion")' id="button-red">Retour</a>
-                <div class="ease"></div>
-            </div>
-        </div>
-            <table class="tableau">
-                <tr>
-                    <th>Nom</th>
-                    <th>Prenom</th>
-                    <th>Pole</th>
-                    <th>Mail</th>
-                    <th>Identifiant</th>
-                    <th>Supprimer</th>
 
-                </tr>
-                @{
-                    foreach (var resp in Model.ListeDesResponsables)
-                    {
-                        <tr>
-                            <td>@resp.Nom</td>
-                            <td>@resp.Prenom</td>
-                            <td>@resp.Pole.Nom</td>
-                            <td>@resp.AdresseEmail</td>
-                            <td>@resp.Login</td>
+        <table class="tableau">
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Pole</th>
+                <th>Mail</th>
+                <th>Identifiant</th>
+                <th style="text-align:center;">Supprimer</th>
+
+            </tr>
+            @{
+                foreach (var resp in Model.ListeDesResponsables)
+                {
+                    <tr>
+                        <td>@resp.Nom</td>
+                        <td>@resp.Prenom</td>
+                        <td>@resp.Pole.Nom</td>
+                        <td>@resp.AdresseEmail</td>
+                        <td>@resp.Login</td>
 
 
 
-                            <td>
-                                <a href='@Url.Action("SuppressionResponsable", "Gestion",  new {id=@resp.id})'>
-                                    <img src='@Url.Content("~/Content/Images/Admin/redcross.png")' />
-                                </a>
-                            </td>
-                        </tr>
-                    }
+                        <td style="text-align:center;">
+                            <a href='@Url.Action("SuppressionResponsable", "Gestion",  new {id=@resp.id})'>
+                                <img style="width:20px; height=20px; " src='@Url.Content("~/Content/Images/Admin/suppression.png")' />
+                            </a>
+                        </td>
+                    </tr>
                 }
-            </table>
+            }
+        </table>
 
-        <a href='@Url.Action("AjoutResponsable", "Gestion")'>
-            <img src='@Url.Content("~/Content/Images/Admin/resp.png")' class="taille-bouton-add" />
-        </a>
+        <div style="width:450px; margin-top:20px; margin-left:25px;">
 
-      
-
+            <div class="form-group-align">
+                <div class="submit" id="form-moitie" style="margin-right:2.5px; text-align:center;">
+                    <a href='@Url.Action("AjoutResponsable", "Gestion")' id="button-blue">Ajouter un responsable</a>
+                    <div class="ease"></div>
+                </div>
+                <div class="submit" id="form-moitie" style="margin-left:2.5px">
+                    <a href='@Url.Action("AdminHome", "Gestion")' id="button-red">Retour</a>
+                    <div class="ease"></div>
+                </div>
+            </div>
 
         </div>
-
-
-
 
 
     </div>
+
+
+        </div>
+
+
+   
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>

@@ -155,9 +155,11 @@
     <Content Include="Content\Images\Admin\adduser.jpg" />
     <Content Include="Content\Images\Admin\carre.png" />
     <Content Include="Content\Images\Admin\close.png" />
+    <Content Include="Content\Images\Admin\cross.png" />
     <Content Include="Content\Images\Admin\open.png" />
     <Content Include="Content\Images\Admin\resp.png" />
     <Content Include="Content\Images\Admin\retour.png" />
+    <Content Include="Content\Images\Admin\suppression.png" />
     <Content Include="Content\Images\dojo.jpg" />
     <Content Include="Content\CSS\Site.css" />
     <Content Include="Content\Images\Icons\icon-email.svg" />
