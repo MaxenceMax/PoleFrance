@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity;
 using System.Security.Claims;
 using System.Data.Linq;
 using PoleFrance.Models;
+using System.Text;
+using System.Security.Cryptography;
 
 namespace PoleFrance.Controllers
 {
@@ -60,7 +62,7 @@ namespace PoleFrance.Controllers
              bool connecte = false;
 
              int numCount = (from i in bd.SuperAdmin
-                             where i.Login == login && i.Password == password
+                             where i.Login == login && i.Password == encrypt(password)
                              select i).Count();
 
              if (numCount != 0)
@@ -94,7 +96,14 @@ namespace PoleFrance.Controllers
             return RedirectToAction("Inscription", "Home");
         }
 
+        public String encrypt(string mdp)
+        {
+            Byte[] clearBytes = new UnicodeEncoding().GetBytes(mdp);
+            Byte[] hashedBytes = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(clearBytes);
+            string hashedText = BitConverter.ToString(hashedBytes);
+            return hashedText;
 
+        }
 
     }
 }

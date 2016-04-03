@@ -26,16 +26,16 @@
     </div>
     <div class="arrow-down-blue"></div>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm(new { @autocomplete = "off" }))
     {
         @Html.AntiForgeryToken()
         <div id="form-div">
            
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Identifiant",@id="icon-tete" } })
+                    @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @autocomplete = "off", @class = "feedback-input", @placeholder = "Identifiant",@id="icon-tete" } })
                     @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
 
-                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "feedback-input", @placeholder = "Mot de passe", @id = "icon-password" } })
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @autocomplete = "off", @class = "feedback-input", @placeholder = "Mot de passe", @id = "icon-password" } })
                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                 
             <div class="submit">

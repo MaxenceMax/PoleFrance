@@ -3,6 +3,8 @@ using PoleFrance.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -30,8 +32,8 @@ namespace PoleFrance.Controllers
                 ViewBag.image = "~/Content/Images/Admin/close.png";
                 ViewBag.texte = "Les inscriptions sont actuellement ouvertes.";
             }
-              
-          
+
+
 
 
             return View();
@@ -112,7 +114,7 @@ namespace PoleFrance.Controllers
             resp.Nom = model.Nom;
             resp.Prenom = model.Prenom;
             resp.Login = model.Login;
-            resp.Password = model.Password;
+            resp.Password = encrypt(model.Password);
             resp.AdresseEmail = model.AdresseEmail;
             resp.Poleid = model.Poleid;
 
@@ -122,6 +124,15 @@ namespace PoleFrance.Controllers
             
 
             return RedirectToAction("ListeResponsable", "Gestion");
+
+        }
+
+        public String encrypt(string mdp)
+        {
+            Byte[] clearBytes = new UnicodeEncoding().GetBytes(mdp);
+            Byte[] hashedBytes = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(clearBytes);
+            string hashedText = BitConverter.ToString(hashedBytes);
+            return hashedText;
 
         }
 

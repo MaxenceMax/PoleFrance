@@ -19,15 +19,32 @@
                 @Html.ActionLink("Inscription aux Poles", "Inscription", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Connexion Responsable","AdminHome","Gestion")</li>
-                </ul>
-@if (Request.IsAuthenticated)
-            {
-    <ul class="nav navbar-nav">
-        <li>@Html.ActionLink("Se déconnecter", "Logout", "Authentification")</li>
-    </ul>
-}
+
+                @if (Request.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Gestion", "AdminHome", "Gestion")</li>
+                    </ul>
+
+                }
+                else
+                {
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Authentification", "AdminHome", "Gestion")</li>
+                    </ul>
+                }
+
+
+
+               
+
+            @if (Request.IsAuthenticated)
+             {
+                 <ul class="nav navbar-nav">
+                  <li>@Html.ActionLink("Se déconnecter", "Logout", "Authentification")</li>
+             </ul>
+            }
+
             </div>
 
           

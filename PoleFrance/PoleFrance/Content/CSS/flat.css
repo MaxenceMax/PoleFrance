@@ -80,6 +80,7 @@ html{
 	background-size: 30px 30px;
 	background-position: 11px 8px;
 	background-repeat: no-repeat;
+    margin-bottom: 14px;
 }
 
 #icon-tete:focus{
@@ -94,6 +95,7 @@ html{
 	background-size: 30px 30px;
 	background-position: 11px 8px;
 	background-repeat: no-repeat;
+    margin-bottom: 14px;
 }
 
 #icon-password:focus{
@@ -108,6 +110,7 @@ html{
 	background-size: 30px 30px;
 	background-position: 11px 8px;
 	background-repeat: no-repeat;
+    margin-bottom: 14px;
 }
 
 #icon-email:focus{
