@@ -39,7 +39,8 @@ namespace PoleFrance.Controllers
             Models.Candidature candidature = TempData["model"] as Models.Candidature;
             MainModel mainModel = new MainModel();
             mainModel.Candidature = candidature;
-
+           // if (mainModel.Candidature == null)
+             //   return RedirectToAction("Inscription");
             return View(mainModel);
         }
 

@@ -36,11 +36,64 @@
                 <div class="white-separator"></div>
             </div>
             <div class="form-content">
-                <div class="form-content-mid"></div>
-                <div class="form-content-mid"></div>
+                <div class="form-content-mid">
+                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                    @Html.EditorFor(model => model.Candidature.Nom, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Nom" } })
+                    @Html.EditorFor(model => model.Candidature.Prenom, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Prénom" } })
+                    @Html.EditorFor(model => model.Candidature.Rue, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Adresse" } })
+                    <div class="form-side-by-side">
+                        @Html.EditorFor(model => model.Candidature.Ville, new { htmlAttributes = new { @class = "feedback-input-little-3quart", @placeholder = "Ville" } })
+                        @Html.EditorFor(model => model.Candidature.CodePostal, new { htmlAttributes = new { @class = "feedback-input-little-1quart", @placeholder = "Code postal", style = "margin-left:4px;" } })
+                    </div>
+                </div>
+                <div class="form-content-mid">
+                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence"} })
+                </div>
             </div>
         </div>
-
+        <div id="form-div-big">
+            <div class="titre-form-blanc">
+                Informations générales :
+                <div class="white-separator"></div>
+            </div>
+            <div class="form-content">
+                <div class="form-content-mid">
+                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                </div>
+                <div class="form-content-mid">
+                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                </div>
+            </div>
+        </div>
+        <div id="form-div-big">
+            <div class="titre-form-blanc">
+                Informations générales :
+                <div class="white-separator"></div>
+            </div>
+            <div class="form-content">
+                <div class="form-content-mid">
+                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                </div>
+                <div class="form-content-mid">
+                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                </div>
+            </div>
+        </div>
         <div class="submit">
             <input type="submit" value="Rechercher vos informations" id="button-blue" />
             <div class="ease"></div>

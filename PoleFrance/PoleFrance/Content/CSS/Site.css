@@ -180,6 +180,8 @@ select-custom:focus, select:active {
 .titre-form-blanc
 {
     color: #fff;
+    font-size:25px;
+    font-weight:bold;
     text-align:left;
 }
 
@@ -188,8 +190,15 @@ select-custom:focus, select:active {
     width:100%;
 }
 
-.form-content{
+.form-content-mid{
     width: 50%;
     padding:10px;
 }
+
+.form-side-by-side{
+    display:flex;
+    width:100%
+}
+
+
     

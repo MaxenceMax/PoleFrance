@@ -66,7 +66,13 @@ namespace PoleFrance.Models
         [Display (Name ="Date démarche")]
         public String DateDemarche { get; set; }
 
+        [Required]
+        [Display(Name = "Téléphone des parents")]
+        public String TelephoneParents { get; set; }
 
+        [Required]
+        [Display(Name ="Adresse email des parents")]
+        public String AdresseEmailParent { get; set; }
         
     }
 }
