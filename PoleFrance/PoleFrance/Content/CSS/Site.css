@@ -59,9 +59,9 @@
 .taille-bouton-add{
      height: 150px;
     width: 150px;
-    margin-left:120px;
-    margin-bottom:20px;
-
+    margin-left:430px;
+    margin-top:20px;
+    margin-bottom:15px;
 }
 
 #logo
@@ -88,6 +88,16 @@
 .start-intermediaire{
     display:flex;
     padding-bottom:15px;
+}
+
+
+.retour-liste{
+
+    width:16%;
+    margin-left:25px;
+    margin-top:5px;
+    margin-bottom:15px;
+
 }
 
 /* arrow */

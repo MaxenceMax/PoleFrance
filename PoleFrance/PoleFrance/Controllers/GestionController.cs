@@ -16,9 +16,9 @@ namespace PoleFrance.Controllers
     public class GestionController : Controller
     {
 
-        
+
         //Route pour la page d'administration
-        [Authorize (Roles="admin")]
+        
         public ActionResult AdminHome()
         {
            
@@ -88,9 +88,10 @@ namespace PoleFrance.Controllers
             return RedirectToAction("AdminHome", "Gestion");
 
         }
-     
+
 
         //Route pour ajouter un responsable
+        [Authorize(Roles = "Admin")]
         public ActionResult AjoutResponsable()
          {
 

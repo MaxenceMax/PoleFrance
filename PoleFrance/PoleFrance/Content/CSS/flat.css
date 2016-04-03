@@ -177,6 +177,23 @@ input:focus, textarea:focus {
 	transition: all 0.3s;
 }
 
+#button-red-liste{
+    text-align:center;
+	float:left;
+	width: 16%;
+	border: #fbfbfb solid 1px;
+	cursor:pointer;
+	background-color: #c71424;
+	color:white;
+	font-size:18px; 
+	padding-top:12px;
+	padding-bottom:12px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+
 #button-blue:hover{
 	background-color: rgba(0,0,0,0);
 	color: #004A73;

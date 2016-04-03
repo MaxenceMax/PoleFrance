@@ -192,6 +192,7 @@
     <Compile Include="Controllers\AuthentificationController.cs" />
     <Compile Include="Controllers\GestionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ResponsableController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -231,6 +232,7 @@
     <Content Include="Views\Gestion\AjoutResponsable.cshtml" />
     <Content Include="Views\Home\Inscription2.cshtml" />
     <Content Include="Views\Gestion\ListeResponsable.cshtml" />
+    <Content Include="Views\Responsable\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -240,6 +242,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

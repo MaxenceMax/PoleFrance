@@ -7,6 +7,7 @@ using System.Security.Claims;
 using PoleFrance.Models;
 using System.Text;
 using System.Security.Cryptography;
+using System.Collections.Generic;
 
 namespace PoleFrance.Controllers
 {
@@ -39,20 +40,60 @@ namespace PoleFrance.Controllers
 
             // L'authentification est réussie, 
             // injecter l'identifiant utilisateur dans le cookie d'authentification :
-            var loginClaim = new Claim(ClaimTypes.NameIdentifier, model.Login);
+          /*  var loginClaim = new Claim(ClaimTypes.NameIdentifier, model.Login);
             var claimsIdentity = new ClaimsIdentity(new[] { loginClaim }, DefaultAuthenticationTypes.ApplicationCookie);
+            var ctx = Request.GetOwinContext();
+            var authenticationManager = ctx.Authentication;
+            authenticationManager.SignIn(claimsIdentity); */
+
+            
+
+            // L'authentification est réussie, 
+            // injecter les informations utilisateur dans le cookie d'authentification :
+            var userClaims = new List<Claim>();
+            // Identifiant utilisateur :
+            userClaims.Add(new Claim(ClaimTypes.NameIdentifier, model.Login));
+            // Rôles utilisateur :
+            if(model.Login == "admin")
+            {
+                userClaims.AddRange(LoadRolesAdmin(model.Login));
+            }
+            else {
+                userClaims.AddRange(LoadRolesResponsable(model.Login));
+            }
+            var claimsIdentity = new ClaimsIdentity(userClaims, DefaultAuthenticationTypes.ApplicationCookie);
             var ctx = Request.GetOwinContext();
             var authenticationManager = ctx.Authentication;
             authenticationManager.SignIn(claimsIdentity);
 
-            
 
+            if (model.Login == "admin")
+            {
+                return RedirectToAction("AdminHome", "Gestion");
+            }
+            else {
+                return RedirectToAction("Index", "Responsable");
+            }
 
+            /*
             // Rediriger vers l'URL d'origine :
             if (Url.IsLocalUrl(ViewBag.ReturnUrl))
                 return Redirect(ViewBag.ReturnUrl);
             // Par défaut, rediriger vers la page d'accueil :
-            return RedirectToAction("Inscription", "Home");
+            return RedirectToAction("Inscription", "Home"); */
+        }
+
+        private IEnumerable<Claim> LoadRolesAdmin(string login)
+        {
+           
+            yield return new Claim(ClaimTypes.Role, "Admin");
+           
+        }
+
+        private IEnumerable<Claim> LoadRolesResponsable(string login)
+        {
+           
+            yield return new Claim(ClaimTypes.Role, "Responsable");
         }
 
         private bool ValidateUser(string login, string password)
@@ -62,14 +103,34 @@ namespace PoleFrance.Controllers
 
              bool connecte = false;
 
-             int numCount = (from i in bd.SuperAdmin
-                             where i.Login == login && i.Password == encrypt(password)
-                             select i).Count();
+             if(login == "admin")
+            {
+                int numCount = (from i in bd.SuperAdmin
+                                where i.Login == login && i.Password == encrypt(password)
+                                select i).Count();
 
-             if (numCount != 0)
-             {
-                 connecte = true;
-             }
+                if (numCount != 0)
+                {
+                    connecte = true;
+                }
+
+            }
+
+             else
+            {
+
+                int numCount = (from i in bd.Responsable
+                                where i.Login == login && i.Password == encrypt(password)
+                                select i).Count();
+
+                if (numCount != 0)
+                {
+                    connecte = true;
+                }
+
+            }
+
+            
 
 
              return connecte;  

@@ -1,6 +1,25 @@
-﻿@{ 
+﻿@using System.Security.Claims
+@{ 
     ViewBag.Title = "FFJDA - Poles";
 }
+
+
+@{
+  
+    var userRoles = new List<Claim>();
+    if (Request.IsAuthenticated)
+    {
+        var claimIdentity = User.Identity as ClaimsIdentity;
+        if (claimIdentity != null)
+        {
+            userRoles = claimIdentity.FindAll(ClaimTypes.Role).ToList();
+        }
+    }
+
+    
+    
+}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,9 +41,23 @@
 
                 @if (Request.IsAuthenticated)
                 {
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Gestion", "AdminHome", "Gestion")</li>
-                    </ul>
+
+                    var role = userRoles.First();
+                    if (role.Value == "Admin")
+                    {
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Gestion", "AdminHome", "Gestion")</li>
+                        </ul>
+
+                    }
+                    else
+                    {
+
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Gestion", "Index", "Responsable")</li>
+                        </ul>
+                    }
+
 
                 }
                 else
