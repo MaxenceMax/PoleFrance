@@ -18,9 +18,10 @@ namespace PoleFrance.Controllers
 
         
         //Route pour la page d'administration
+        [Authorize (Roles="admin")]
         public ActionResult AdminHome()
         {
-
+           
             PolesDataContext bd = new PolesDataContext();
 
             var admin = bd.SuperAdmin.First();
@@ -40,7 +41,7 @@ namespace PoleFrance.Controllers
         }
 
 
-        //Route pour afficher les responsables
+       //Route pour afficher les responsables
         public ActionResult ListeResponsable()
         {
 

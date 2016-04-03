@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using System.Security.Claims;
-using System.Data.Linq;
 using PoleFrance.Models;
 using System.Text;
 using System.Security.Cryptography;
@@ -46,6 +44,9 @@ namespace PoleFrance.Controllers
             var ctx = Request.GetOwinContext();
             var authenticationManager = ctx.Authentication;
             authenticationManager.SignIn(claimsIdentity);
+
+            
+
 
             // Rediriger vers l'URL d'origine :
             if (Url.IsLocalUrl(ViewBag.ReturnUrl))
