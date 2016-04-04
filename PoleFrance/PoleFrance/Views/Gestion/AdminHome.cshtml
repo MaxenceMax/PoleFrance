@@ -34,7 +34,7 @@
                     <div class="admin-block-image"><img src="@Url.Content("~/Content/Images/Admin/resp.png")" /></div>
                     <div class="admin-block-desc">Dans cette section vous pouvez ajouter, modifier et supprimer des responsables</div>
                 </div>
-                <div class="admin-block" onclick="location.href=@Url.Action("OuvertureInscription", "Gestion")">
+                <div class="admin-block" onclick="location.href='@Url.Action("OuvertureInscription", "Gestion")'">
                     <div class="admin-block-titre">Etat des inscriptions</div>
                     <div class="admin-block-image"><img src="@Url.Content(ViewBag.image)" /></div>
                     <div class="admin-block-desc">@ViewBag.texte</div>
