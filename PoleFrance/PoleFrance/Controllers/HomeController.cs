@@ -39,8 +39,18 @@ namespace PoleFrance.Controllers
             Models.Candidature candidature = TempData["model"] as Models.Candidature;
             MainModel mainModel = new MainModel();
             mainModel.Candidature = candidature;
-           // if (mainModel.Candidature == null)
-             //   return RedirectToAction("Inscription");
+
+            // Recherche la listes pôles disponible
+            Pole tmp = new Pole();
+            tmp.Nom = "caca";
+            tmp.id = 2;
+            var all = new[] {tmp};
+
+            //PolesDataContext bd = new PolesDataContext();
+            //var all = bd.Pole;
+            ViewBag.listePole = all;
+            // if (mainModel.Candidature == null)
+            //   return RedirectToAction("Inscription");
             return View(mainModel);
         }
 
@@ -104,6 +114,8 @@ namespace PoleFrance.Controllers
                     // Si le num licence est vide alors la licence n'existe pas
                     if (model.NumLicencie == null || model.NumLicencie.Length == 0)
                         return false;
+                    items.TryGetValue("naissance", out item);
+                    model.DateNaissance = (String)item;
                     items.TryGetValue("adresse", out item);
                     model.Ville = (String)item;
                     items.TryGetValue("codeP", out item);

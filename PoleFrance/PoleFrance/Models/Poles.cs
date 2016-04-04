@@ -15,6 +15,9 @@ namespace PoleFrance.Models
 
 namespace PoleFrance
 {
+    partial class InformationSportive
+    {
+    }
 
     [MetadataType(typeof(PoleFrance.Models.AjoutResponsableModel))]
     partial class Responsable

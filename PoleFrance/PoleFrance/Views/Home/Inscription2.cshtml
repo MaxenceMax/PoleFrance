@@ -21,8 +21,10 @@
                 <div class="icon-number-2"></div>
                 <div class="start-content-white">
                     <h2> Deuxième étape : </h2>
-                    <span> - Les différentes informations qui ont pu être retrouvées sont préalablement remplies, 
-                    il vous reste vos informations scolaires et sportives à mentionner.</span>
+                    <div> - Les différentes informations qui ont pu être retrouvées sont préalablement remplies, 
+                    il vous reste vos informations scolaires et sportives à mentionner.</div>
+                    <div>- Attention, veuillez être le précis possible, comme pour vos
+                     catégories de poids veuillez préciser quelle année, par exemple pour Junior précisez Junior 1.</div>
                 </div>
             </div>
         </div>
@@ -47,56 +49,143 @@
                     </div>
                 </div>
                 <div class="form-content-mid">
-                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
-                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
-                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
-                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence"} })
+                    @Html.EditorFor(model => model.Candidature.DateNaissance, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Date de naissance" } })
+                    @Html.EditorFor(model => model.Candidature.AdresseEmail, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Adresse email" } })
+                    @Html.EditorFor(model => model.Candidature.Telephone, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Téléphone" } })
+                    @Html.EditorFor(model => model.Candidature.AdresseEmailParent, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Adresse email des parents" } })
+                    @Html.EditorFor(model => model.Candidature.TelephoneParents, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Téléphone des parents"} })
+                </div>
+            </div>
+            <div class="sous-titre-form-blanc">
+                Informations complémentaires :
+            </div>
+            <div class="white-separator-little"></div>
+            <div class="form-content">
+                <div class="form-content-mid">
+                    <div class="form-side-by-side">
+                        @Html.EditorFor(model => model.Candidature.Sexe, new { htmlAttributes = new { @class = "feedback-input-little-mid", @placeholder = "Sexe" }})
+                        @Html.EditorFor(model => model.Candidature.Poids, new { htmlAttributes = new { @class = "feedback-input-little-mid", @placeholder = "Poids" ,@style = "margin-left:4px;" } })
+                    </div>
+                    <div class="form-side-by-side">
+                        @Html.EditorFor(model => model.Candidature.Taille, new { htmlAttributes = new { @class = "feedback-input-little-mid", @placeholder = "Taille" } })
+                        @Html.EditorFor(model => model.Candidature.CategoriePoidsActuelle, new { htmlAttributes = new { @class = "feedback-input-little-mid", @placeholder = "Catégorie de poids", @style = "margin-left:4px;" } })
+                    </div>
+                </div>
+                <div class="form-content-mid">
+                    @Html.EditorFor(model => model.Candidature.CategorieAgeActuelle, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Catégorie d'âge" } })
+                    @Html.EditorFor(model => model.Candidature.PoleActuel, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Pôle actuel" } })
                 </div>
             </div>
         </div>
         <div id="form-div-big">
             <div class="titre-form-blanc">
-                Informations générales :
+                Informations sportives :
                 <div class="white-separator"></div>
             </div>
             <div class="form-content">
                 <div class="form-content-mid">
-                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
-                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
-                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
-                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                    <div class="form-desc">
+                        <div style="margin-bottom:20px;">Choissisez la structure pour laquelle vous voulez postuler :</div>
+                            @Html.DropDownListFor(model => model.Pole.id, new SelectList(ViewBag.listePole, "id", "Nom"), new { @class = "select-custom", @id = "select-blue" })
+                        
+                    </div>
                 </div>
                 <div class="form-content-mid">
-                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
-                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
-                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
-                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                    <div class="form-desc">
+                        <div>Si la structure de votre choix n'est pas acceptée, autorisez-vous les responsables à vous orienter sur une structure différente ?</div>
+                        <div style="display:flex;margin-top:10px;">
+                            <span style="margin-right:10px;">Accepter</span>
+                            @Html.CheckBoxFor(model => model.Redirection)
+                        </div>
+                    </div>
+                </div>               
+            </div>
+            <div class="sous-titre-form-blanc">Résultats compétitions :</div>
+            <div class="white-separator-little"></div>
+            <div class="form-desc" style="margin:10px;">Veuillez renseigner vos trois meilleures performances (la catégorie d'age correspond à la votre durant cette compétition, par exemple championnat de france Sénior quand vous étiez junior 2):</div>
+            <div class="form-compétition">
+                <div class="form-desc" style="margin-top:3px;margin-bottom:10px;margin-left:10px;">Première compétition :</div>
+                <div class="form-content">
+                    <div style="width:70%">
+                        @Html.EditorFor(model => model.Information1.Competition,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Compétition" } })
+                    </div>
+                    <div style="width:30%;margin-left:3px;">
+                        @Html.EditorFor(model => model.Information1.CategorieAge,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Catégorie d'age" } })
+                    </div>
+                </div>
+
+                <div class="form-content">
+                    <div style="width:50%;">
+                        @Html.EditorFor(model => model.Information1.CategoriePoids,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Catégorie de poids" } })
+                    </div>
+                    <div style="width:50%;margin-left:3px;">
+                        @Html.EditorFor(model => model.Information1.Resultat,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Résultat" } })
+                    </div>
+                </div>
+            </div>
+            <div class="form-compétition">
+                <div class="form-desc" style="margin-top:3px;margin-bottom:10px;margin-left:10px;">Deuxième compétition :</div>
+                <div class="form-content">
+                    <div style="width:70%">
+                        @Html.EditorFor(model => model.Information2.Competition,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Compétition" } })
+                    </div>
+                    <div style="width:30%;margin-left:3px;">
+                        @Html.EditorFor(model => model.Information2.CategorieAge,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Catégorie d'age" } })
+                    </div>
+                </div>
+
+                <div class="form-content">
+                    <div style="width:50%;">
+                        @Html.EditorFor(model => model.Information2.CategoriePoids,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Catégorie de poids" } })
+                    </div>
+                    <div style="width:50%;margin-left:3px;">
+                        @Html.EditorFor(model => model.Information2.Resultat,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Résultat" } })
+                    </div>
+                </div>
+            </div>
+            <div class="form-compétition">
+                <div class="form-desc" style="margin-top:3px;margin-bottom:10px;margin-left:10px;">Troisième compétition :</div>
+                <div class="form-content">
+                    <div style="width:70%">
+                        @Html.EditorFor(model => model.Information3.Competition,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Compétition" } })
+                    </div>
+                    <div style="width:30%;margin-left:3px;">
+                        @Html.EditorFor(model => model.Information3.CategorieAge,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Catégorie d'age" } })
+                    </div>
+                </div>
+
+                <div class="form-content">
+                    <div style="width:50%;">
+                        @Html.EditorFor(model => model.Information3.CategoriePoids,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Catégorie de poids" } })
+                    </div>
+                    <div style="width:50%;margin-left:3px;">
+                        @Html.EditorFor(model => model.Information3.Resultat,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Résultat" } })
+                    </div>
                 </div>
             </div>
         </div>
         <div id="form-div-big">
             <div class="titre-form-blanc">
-                Informations générales :
+                Informations sportives :
                 <div class="white-separator"></div>
             </div>
-            <div class="form-content">
-                <div class="form-content-mid">
-                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
-                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
-                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
-                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
-                </div>
-                <div class="form-content-mid">
-                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
-                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
-                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
-                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
-                </div>
+        </div>
+
+            <div class="submit">
+                <input type="submit" value="Rechercher vos informations" id="button-blue" />
+                <div class="ease"></div>
             </div>
+            }
         </div>
-        <div class="submit">
-            <input type="submit" value="Rechercher vos informations" id="button-blue" />
-            <div class="ease"></div>
-        </div>
-    }
-</div>
