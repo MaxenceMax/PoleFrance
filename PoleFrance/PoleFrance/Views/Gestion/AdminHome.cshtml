@@ -15,8 +15,6 @@
                 <div class="start-content">
                     <h1> Gestion Administrateur </h1>
                     <span>Bienvenue sur la page dédiée à la gestion de l'administrateur.</span>
-                    <hr>
-                    <span>@ViewBag.texte</span>
                 </div>
             </div>
         </div>
@@ -29,14 +27,22 @@
 
     
     <div id="form-div-big">
-
-        <a href='@Url.Action("ListeResponsable", "Gestion")'>
-            <img src='@Url.Content("~/Content/Images/Admin/resp.png")' class="taille-bouton" />
-        </a>
-
-        <a href='@Url.Action("OuvertureInscription", "Gestion")'>
-            <img src='@Url.Content(ViewBag.image)' class="taille-bouton" />
-        </a>
+        <div style="width:100%;display:flex">
+            <div id="form-div-big">
+                <div class="admin-block" onclick="location.href='@Url.Action("ListeResponsable", "Gestion")'">
+                    <div class="admin-block-titre">Gestion Responsable</div>
+                    <div class="admin-block-image"></div>
+                    <div class="admin-block-desc">Dans cette section vous pouvez ajouter, modifier et supprimer des responsables</div>
+                </div>
+            </div>
+            <div id="form-div-big">
+                <div class="admin-block" onclick="location.href=@Url.Action("OuvertureInscription", "Gestion")">
+                    <div class="admin-block-titre">Etat des inscriptions</div>
+                    <div class="admin-block-image" style="background:url(@Url.Content(ViewBag.image))"></div>
+                    <div class="admin-block-desc">@ViewBag.texte</div>
+                </div>
+            </div>
+        </div>
 
         
 

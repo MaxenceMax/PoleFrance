@@ -21,10 +21,14 @@
                 <div class="icon-number-2"></div>
                 <div class="start-content-white">
                     <h2> Deuxième étape : </h2>
-                    <div> - Les différentes informations qui ont pu être retrouvées sont préalablement remplies, 
-                    il vous reste vos informations scolaires et sportives à mentionner.</div>
-                    <div>- Attention, veuillez être le précis possible, comme pour vos
-                     catégories de poids veuillez préciser quelle année, par exemple pour Junior précisez Junior 1.</div>
+                    <div>
+                        - Les différentes informations qui ont pu être retrouvées sont préalablement remplies,
+                        il vous reste vos informations scolaires et sportives à mentionner.
+                    </div>
+                    <div>
+                        - Attention, veuillez être le précis possible, comme pour vos
+                        catégories de poids veuillez préciser quelle année, par exemple pour Junior précisez Junior 1.
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,7 +57,7 @@
                     @Html.EditorFor(model => model.Candidature.AdresseEmail, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Adresse email" } })
                     @Html.EditorFor(model => model.Candidature.Telephone, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Téléphone" } })
                     @Html.EditorFor(model => model.Candidature.AdresseEmailParent, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Adresse email des parents" } })
-                    @Html.EditorFor(model => model.Candidature.TelephoneParents, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Téléphone des parents"} })
+                    @Html.EditorFor(model => model.Candidature.TelephoneParents, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Téléphone des parents" } })
                 </div>
             </div>
             <div class="sous-titre-form-blanc">
@@ -63,8 +67,8 @@
             <div class="form-content">
                 <div class="form-content-mid">
                     <div class="form-side-by-side">
-                        @Html.EditorFor(model => model.Candidature.Sexe, new { htmlAttributes = new { @class = "feedback-input-little-mid", @placeholder = "Sexe" }})
-                        @Html.EditorFor(model => model.Candidature.Poids, new { htmlAttributes = new { @class = "feedback-input-little-mid", @placeholder = "Poids" ,@style = "margin-left:4px;" } })
+                        @Html.EditorFor(model => model.Candidature.Sexe, new { htmlAttributes = new { @class = "feedback-input-little-mid", @placeholder = "Sexe" } })
+                        @Html.EditorFor(model => model.Candidature.Poids, new { htmlAttributes = new { @class = "feedback-input-little-mid", @placeholder = "Poids", @style = "margin-left:4px;" } })
                     </div>
                     <div class="form-side-by-side">
                         @Html.EditorFor(model => model.Candidature.Taille, new { htmlAttributes = new { @class = "feedback-input-little-mid", @placeholder = "Taille" } })
@@ -86,8 +90,8 @@
                 <div class="form-content-mid">
                     <div class="form-desc">
                         <div style="margin-bottom:20px;">Choissisez la structure pour laquelle vous voulez postuler :</div>
-                            @Html.DropDownListFor(model => model.Pole.id, new SelectList(ViewBag.listePole, "id", "Nom"), new { @class = "select-custom", @id = "select-blue" })
-                        
+                        @Html.DropDownListFor(model => model.Pole.id, new SelectList(ViewBag.listePole, "id", "Nom"), new { @class = "select-custom", @id = "select-blue" })
+
                     </div>
                 </div>
                 <div class="form-content-mid">
@@ -98,7 +102,7 @@
                             @Html.CheckBoxFor(model => model.Redirection)
                         </div>
                     </div>
-                </div>               
+                </div>
             </div>
             <div class="sous-titre-form-blanc">Résultats compétitions :</div>
             <div class="white-separator-little"></div>
@@ -178,14 +182,70 @@
         </div>
         <div id="form-div-big">
             <div class="titre-form-blanc">
-                Informations sportives :
+                Informations scolaires :
                 <div class="white-separator"></div>
             </div>
-        </div>
-
-            <div class="submit">
-                <input type="submit" value="Rechercher vos informations" id="button-blue" />
-                <div class="ease"></div>
+            <div class="sous-titre-form-blanc">
+                Etablissement et formation actuel :
             </div>
-            }
+            <div class="form-content">
+                <div class="form-content-mid" style="padding-bottom:0px;">
+                    @Html.EditorFor(model => model.InformationScolaire.Etablissement,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Etablissement" } })
+                </div>
+                <div class="form-content-mid" style="padding-bottom:0px;">
+                    @Html.EditorFor(model => model.InformationScolaire.Telephone,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Téléphone" } })
+                </div>
+            </div>
+            <div style="padding-right:10px;padding-left:10px;">
+                @Html.EditorFor(model => model.InformationScolaire.Adresse,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Adresse établissement" } })
+                @Html.EditorFor(model => model.InformationScolaire.Classe,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Classe / Formation" } })
+            </div>
+            <div class="sous-titre-form-blanc"> Souhait scolaire pour l'année de votre rentrée en structure :</div>
+            <div class="white-separator-little"></div>
+            <div style="padding-right:10px;padding-left:10px;padding-top:10px;">
+                @Html.EditorFor(model => model.SouhaitScolaire.Etablissement,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Adresse établissement" } })
+                @Html.EditorFor(model => model.SouhaitScolaire.Classe,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Classe / Formation" } })
+            </div>
+            <div class="form-content">
+                <div class="form-content-mid">
+                    @Html.EditorFor(model => model.LV1.Langue1,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Langue vivante 1" } })
+                    @Html.EditorFor(model => model.LV2.Langue1,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Langue vivante 2" } })
+                </div>
+                <div class="form-content-mid" style="padding-bottom:0px;">
+                    @Html.EditorFor(model => model.option.NomOption,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Options" } })
+                    <div style="display:flex;margin-top:10px;">
+                        <div class="form-desc" style="width:auto;margin-right:10px;">Demande internat :</div>
+                        @Html.CheckBoxFor(model => model.Internat)
+                    </div>
+                </div>
+            </div>
         </div>
+        <div id="form-div-big">
+            <div class="titre-form-blanc">
+                Autorisation :
+                <div class="white-separator"></div>
+            </div>
+            <div class="form-content" style="display:inline">
+                <div class="form-desc" style="margin-top:10px;">
+                    Pour les mineurs, veuillez cocher cette case si vous avez l'autorisation de vos parents pour cette candidature :
+                    <div style="width:100%;">
+                        <div class="autorisation-parentale">
+                            Autorisation parentale
+                            @Html.CheckBoxFor(model => model.Internat, new { @style = "margin-left:10px" })
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
