@@ -42,6 +42,7 @@ html{
   margin-right:auto;
   -moz-border-radius: 7px;
   -webkit-border-radius: 7px;
+  text-align:center;
 }
 
 .feedback-input {
@@ -240,6 +241,12 @@ input:focus, textarea:focus {
 		padding-left: 3%;
 		padding-right: 3%;
 	}
+
+    .admin-block-conteneur
+    {
+        width:100%;
+        display:block;
+    }
 
     #form-div-big{
 		left: 3%;

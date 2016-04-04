@@ -234,6 +234,7 @@ select-custom:focus, select:active {
     text-align:left;
 }
 
+
 .form-compétition
 {
     width: 100%;
@@ -273,7 +274,7 @@ select-custom:focus, select:active {
 {
     background-color:white;
     padding:20px;
-    margin:20px;
+    margin:10px;
     width:300px;
     -moz-border-radius: 1px;
     -webkit-border-radius: 3px;
@@ -282,6 +283,17 @@ select-custom:focus, select:active {
     -o-box-shadow: 0px 3px 2px 3px #00304d;
     box-shadow:  0px 3px 2px 3px #00304d;
     filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, Strength=5);
+}
+
+.admin-block-conteneur-alignement
+{
+    display:inline-block;
+}
+
+.admin-block-conteneur
+{
+    width:100%;
+    display:flex;
 }
 
 .admin-block:hover
@@ -316,16 +328,18 @@ select-custom:focus, select:active {
 }
 
 .admin-block-image{
-    background: url(../Images/Admin/resp.png);
-    background-size: 100px 100px;
-	background-position: 0px 0px;
-	background-repeat: no-repeat;
     margin:20px;
     width:100px;
     height:100px;
     height:100px;
     margin-left:auto;
     margin-right:auto;
+}
+
+.admin-block-image img
+{
+    height:100px;
+    width:100px;
 }
 
 

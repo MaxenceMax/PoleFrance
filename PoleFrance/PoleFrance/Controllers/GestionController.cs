@@ -26,12 +26,12 @@ namespace PoleFrance.Controllers
 
             var admin = bd.SuperAdmin.First();
 
-            ViewBag.texte = "Les inscriptions sont actuellement fermées.";
-            ViewBag.image = "~/Content/Images/Admin/open.png";
+            ViewBag.texte = "Les inscriptions sont actuellement fermées. Cliquez ici pour les ouvrir.";
+            ViewBag.image = "~/Content/Images/Admin/close.png";
             if (admin.Open == true)
             {
-                ViewBag.image = "~/Content/Images/Admin/close.png";
-                ViewBag.texte = "Les inscriptions sont actuellement ouvertes.";
+                ViewBag.image = "~/Content/Images/Admin/open.png";
+                ViewBag.texte = "Les inscriptions sont actuellement ouvertes. Cliquez ici pour les fermer.";
             }
 
 
