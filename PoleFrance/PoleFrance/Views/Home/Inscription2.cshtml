@@ -43,20 +43,36 @@
             </div>
             <div class="form-content">
                 <div class="form-content-mid">
-                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                    @Html.ValidationMessageFor(model => model.Candidature.NumLicencie, "", new { @class = "text-danger-form" })
+                    @Html.EditorFor(model => model.Candidature.NumLicencie, new { htmlAttributes = new {@disabled="true", @class = "feedback-input-little", @placeholder = "Numéro de licence" } })
+                    @Html.ValidationMessageFor(model => model.Candidature.Nom, "", new { @class = "text-danger-form" })
                     @Html.EditorFor(model => model.Candidature.Nom, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Nom" } })
+                    @Html.ValidationMessageFor(model => model.Candidature.Prenom, "", new { @class = "text-danger-form" })
                     @Html.EditorFor(model => model.Candidature.Prenom, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Prénom" } })
+                    @Html.ValidationMessageFor(model => model.Candidature.Rue, "", new { @class = "text-danger-form" })
                     @Html.EditorFor(model => model.Candidature.Rue, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Adresse" } })
+
                     <div class="form-side-by-side">
+                        @Html.ValidationMessageFor(model => model.Candidature.Ville, "", new { @class = "text-danger-form" })
+                        @Html.ValidationMessageFor(model => model.Candidature.CodePostal, "", new { @class = "text-danger-form" })
+                    </div>
+                    <div class="form-side-by-side">
+                     
                         @Html.EditorFor(model => model.Candidature.Ville, new { htmlAttributes = new { @class = "feedback-input-little-3quart", @placeholder = "Ville" } })
+                        
                         @Html.EditorFor(model => model.Candidature.CodePostal, new { htmlAttributes = new { @class = "feedback-input-little-1quart", @placeholder = "Code postal", style = "margin-left:4px;" } })
                     </div>
                 </div>
                 <div class="form-content-mid">
+                    @Html.ValidationMessageFor(model => model.Candidature.DateNaissance, "", new { @class = "text-danger-form" })
                     @Html.EditorFor(model => model.Candidature.DateNaissance, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Date de naissance" } })
+                    @Html.ValidationMessageFor(model => model.Candidature.AdresseEmail, "", new { @class = "text-danger-form" })
                     @Html.EditorFor(model => model.Candidature.AdresseEmail, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Adresse email" } })
+                    @Html.ValidationMessageFor(model => model.Candidature.Telephone, "", new { @class = "text-danger-form" })
                     @Html.EditorFor(model => model.Candidature.Telephone, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Téléphone" } })
+                    @Html.ValidationMessageFor(model => model.Candidature.AdresseEmailParent, "", new { @class = "text-danger-form" })
                     @Html.EditorFor(model => model.Candidature.AdresseEmailParent, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Adresse email des parents" } })
+                    @Html.ValidationMessageFor(model => model.Candidature.TelephoneParents, "", new { @class = "text-danger-form" })
                     @Html.EditorFor(model => model.Candidature.TelephoneParents, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Téléphone des parents" } })
                 </div>
             </div>
@@ -67,8 +83,16 @@
             <div class="form-content">
                 <div class="form-content-mid">
                     <div class="form-side-by-side">
-                        @Html.EditorFor(model => model.Candidature.Sexe, new { htmlAttributes = new { @class = "feedback-input-little-mid", @placeholder = "Sexe" } })
+                        @Html.ValidationMessageFor(model => model.Candidature.Sexe, "", new { @class = "text-danger-form" })
+                        @Html.ValidationMessageFor(model => model.Candidature.Poids, "", new { @class = "text-danger-form" })
+                    </div>
+                    <div class="form-side-by-side">                        
+                        @Html.EditorFor(model => model.Candidature.Sexe, new { htmlAttributes = new { @class = "feedback-input-little-mid", @placeholder = "Sexe" } })                        
                         @Html.EditorFor(model => model.Candidature.Poids, new { htmlAttributes = new { @class = "feedback-input-little-mid", @placeholder = "Poids", @style = "margin-left:4px;" } })
+                    </div>
+                    <div class="form-side-by-side">
+                        @Html.ValidationMessageFor(model => model.Candidature.Taille, "", new { @class = "text-danger-form" })
+                        @Html.ValidationMessageFor(model => model.Candidature.CategoriePoidsActuelle, "", new { @class = "text-danger-form" })
                     </div>
                     <div class="form-side-by-side">
                         @Html.EditorFor(model => model.Candidature.Taille, new { htmlAttributes = new { @class = "feedback-input-little-mid", @placeholder = "Taille" } })
@@ -76,7 +100,9 @@
                     </div>
                 </div>
                 <div class="form-content-mid">
+                    @Html.ValidationMessageFor(model => model.Candidature.CategorieAgeActuelle, "", new { @class = "text-danger-form" })
                     @Html.EditorFor(model => model.Candidature.CategorieAgeActuelle, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Catégorie d'âge" } })
+                    @Html.ValidationMessageFor(model => model.Candidature.PoleActuel, "", new { @class = "text-danger-form" })
                     @Html.EditorFor(model => model.Candidature.PoleActuel, new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Pôle actuel" } })
                 </div>
             </div>
@@ -91,7 +117,6 @@
                     <div class="form-desc">
                         <div style="margin-bottom:20px;">Choissisez la structure pour laquelle vous voulez postuler :</div>
                         @Html.DropDownListFor(model => model.Pole.id, new SelectList(ViewBag.listePole, "id", "Nom"), new { @class = "select-custom", @id = "select-blue" })
-
                     </div>
                 </div>
                 <div class="form-content-mid">

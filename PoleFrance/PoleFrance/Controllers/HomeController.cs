@@ -36,29 +36,33 @@ namespace PoleFrance.Controllers
         [AllowAnonymous]
         public ActionResult Inscription2()
         {
+            // Get candidature from previous controller
             Models.Candidature candidature = TempData["model"] as Models.Candidature;
             MainModel mainModel = new MainModel();
             mainModel.Candidature = candidature;
 
-            // Recherche la listes pôles disponible
-            Pole tmp = new Pole();
-            tmp.Nom = "caca";
-            tmp.id = 2;
-            var all = new[] {tmp};
-
-            //PolesDataContext bd = new PolesDataContext();
-            //var all = bd.Pole;
-            ViewBag.listePole = all;
-            // if (mainModel.Candidature == null)
-            //   return RedirectToAction("Inscription");
+            
+            ViewBag.listePole = GetAllPole();
+            // check if we come from inscription 1
+            if (mainModel.Candidature == null)
+                return RedirectToAction("Inscription");
             return View(mainModel);
+        }
+
+        private IEnumerable GetAllPole()
+        {
+            // get all pôle from database
+            PolesDataContext bd = new PolesDataContext();
+            var all = bd.Pole;
+            return all;
         }
 
         [HttpPost]
         [AllowAnonymous]
         public ActionResult Inscription2(MainModel model)
         {
-            return View();
+            ViewBag.listePole = GetAllPole();
+            return View(model);
         }
 
         private Boolean ValidateNumLicencie(Models.Candidature model)
