@@ -240,6 +240,7 @@
     <Content Include="Views\Home\Inscription2.cshtml" />
     <Content Include="Views\Gestion\ListeResponsable.cshtml" />
     <Content Include="Views\Responsable\Index.cshtml" />
+    <Content Include="Views\Home\Inscription3.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

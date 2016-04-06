@@ -7,6 +7,8 @@ using System.IO;
 using System.Text;
 using System.Web.Script.Serialization;
 using System.Collections;
+using System.Net.Mail;
+using System.Linq;
 
 namespace PoleFrance.Controllers
 {
@@ -57,12 +59,126 @@ namespace PoleFrance.Controllers
             return all;
         }
 
+        // test si je n'ai pas déjà une personne inscrite pour l'année en cours
+        private bool TestInscription(Models.Candidature candidature)
+        {
+            PolesDataContext bd = new PolesDataContext();
+            int numCount = (from i in bd.Candidature
+                            where i.NumLicencie == candidature.NumLicencie && i.Annee == candidature.Annee
+                            select i).Count();
+            return numCount == 0;
+        }
+
         [HttpPost]
         [AllowAnonymous]
         public ActionResult Inscription2(MainModel model)
         {
             ViewBag.listePole = GetAllPole();
-            return View(model);
+
+            // About general infos
+            DateTime today = DateTime.Today;
+            model.Candidature.DateDemarche = today.ToString("dd/MM/yyyy");
+            model.Candidature.Annee = Int32.Parse(DateTime.Now.Year.ToString());
+            if (!TestInscription(model.Candidature))
+            {
+                ModelState.AddModelError(string.Empty, "Vous avez déjà une inscription enregistrée dans notre système pour l'année en cours.");
+                return View(model);
+            }
+            // Enregistrement de toutes les informations concernant la canditure. 
+            model.Candidature.Internat = model.Internat;
+            model.Candidature.AutorisationParent = model.AutorisationParent;
+            model.Candidature.Redirection = model.Redirection;
+
+            // ABout scolaire infos
+            model.Candidature.InformationScolaire = model.InformationScolaire;
+            model.SouhaitScolaire.InformationScolaire = model.InformationScolaire;
+            model.LV1.SouhaitScolaire = model.SouhaitScolaire;
+            model.LV2.SouhaitScolaire = model.SouhaitScolaire;
+            model.option.SouhaitScolaire = model.SouhaitScolaire;
+
+            // About sportive infos
+            model.Information1.Candidature = model.Candidature;
+            model.Information2.Candidature = model.Candidature;
+            model.Information3.Candidature = model.Candidature;
+
+            //Pole/candidature requirement
+            PoleCandidature PC = new PoleCandidature();
+            PC.Candidature = model.Candidature;
+            PC.Poleid = model.Pole.id;
+
+            PolesDataContext bd = new PolesDataContext();
+            // Insertions in data base
+            bd.Candidature.InsertOnSubmit(model.Candidature);
+            bd.SouhaitScolaire.InsertOnSubmit(model.SouhaitScolaire);
+            bd.InformationSportive.InsertOnSubmit(model.Information1);
+            bd.InformationSportive.InsertOnSubmit(model.Information1);
+            bd.InformationSportive.InsertOnSubmit(model.Information1);
+            bd.SubmitChanges();
+
+            // Envoyer un mail
+            String tmp = envoyer(model);
+            return RedirectToAction("Inscription3");
+        }
+
+        private String envoyer(MainModel model)
+        {
+            String retour = "";
+            String signature = "<br><br>Fédération Française de Judo, Jujitsu, Kendo et Disciplines Associées<br>";
+            signature = signature + "Association Loi 1901<br>";
+            signature = signature + "21-25, avenue de la Porte de Châtillon - 75014 Paris<br>";
+            signature = signature + "Tél : 01 40 52 16 16<br>";
+            String message = "";
+
+
+            MailMessage email = new MailMessage();
+            email.From = new MailAddress("informations@licences-ffjudo.com");
+
+            // Enregistrement des destinataires
+            email.To.Add(new MailAddress(model.Candidature.AdresseEmail));
+            email.To.Add(new MailAddress(model.Candidature.AdresseEmailParent));
+
+            PolesDataContext bd = new PolesDataContext();
+            Pole p = (from i in bd.Pole
+                            where i.id == model.Pole.id select i).First();
+
+            // structure du message
+            String _message = "<div style=' font-family: Calibri;'>Bonjour "+model.Candidature.Prenom+" "+model.Candidature.Nom+
+                ",<br><br>"+
+                "Votre inscription à la structure suivante: <br>"+
+                "<b style = 'font-size:19' >"+ p.Nom +"</b ><br>"+
+                "à bien été enregistrée à la date du <b style = 'font-size:19'>"+ model.Candidature.DateDemarche +
+                "</b>. Veuillez conservez cet email comme preuve de votre inscriptions."+
+                " Vous serez contacté par mail, ou par voie postale aprés la délibération du jury.<br>"+
+                "<br><br>Cordialement</div>";
+            email.Subject = "Confirmation inscription à la structure :"+p.Nom;
+            message = "<div style=' font-family: Calibri;'>" + _message + signature + "</div>";
+            email.Body = message;
+            email.IsBodyHtml = true;
+            //email.Priority = MailPriority.High;
+            //SmtpClient client = new SmtpClient("195.154.95.219", 587);
+            // Command line argument must the the SMTP host.
+            SmtpClient client = new SmtpClient();
+            //client.Port = 587;
+            client.Host = "mail.sevenstorm.com";
+            //client.EnableSsl = true;
+            client.Timeout = 10000;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = false;
+            client.Credentials = new System.Net.NetworkCredential("informations@licences-ffjudo.com", "nBD)dB3");
+            try
+            {
+                client.Send(email);
+            }
+            catch (Exception ex)
+            {
+                retour = ex.Message;
+            }
+            return retour;
+        }
+
+        public ActionResult Inscription3()
+        {
+            return View();
         }
 
         private Boolean ValidateNumLicencie(Models.Candidature model)

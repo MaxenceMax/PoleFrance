@@ -1878,7 +1878,7 @@ namespace PoleFrance.Models
 		
 		private string _AdresseEmail;
 		
-		private decimal _InformationScolaireid;
+		private System.Nullable<decimal> _InformationScolaireid;
 		
 		private string _Poids;
 		
@@ -1938,7 +1938,7 @@ namespace PoleFrance.Models
     partial void OnAutorisationParentChanged();
     partial void OnAdresseEmailChanging(string value);
     partial void OnAdresseEmailChanged();
-    partial void OnInformationScolaireidChanging(decimal value);
+    partial void OnInformationScolaireidChanging(System.Nullable<decimal> value);
     partial void OnInformationScolaireidChanged();
     partial void OnPoidsChanging(string value);
     partial void OnPoidsChanged();
@@ -2124,8 +2124,8 @@ namespace PoleFrance.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InformationScolaireid", DbType="Decimal(18,0) NOT NULL")]
-		public decimal InformationScolaireid
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InformationScolaireid", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> InformationScolaireid
 		{
 			get
 			{
@@ -2541,7 +2541,7 @@ namespace PoleFrance.Models
 					}
 					else
 					{
-						this._InformationScolaireid = default(decimal);
+						this._InformationScolaireid = default(Nullable<decimal>);
 					}
 					this.SendPropertyChanged("InformationScolaire");
 				}

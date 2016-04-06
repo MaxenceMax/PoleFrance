@@ -1,0 +1,41 @@
+﻿@model PoleFrance.Models.Candidature
+<div class="contenu">
+    <div class="start">
+        <div class="start-total">
+            <div class="start-intermediaire">
+                <a href="http://www.ffjudo.com/" id="logo" title="retour Accueil">
+                    <img src="~/Content/Images/logo.png" alt="Fédération Française de Judo">
+                </a>
+                <div class="start-content">
+                    <h1> Inscriptions Pôles </h1>
+                    <span>Bienvenue sur la page dédiée à l'inscription aux différents Pôles France, IJ et INSEP.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="etape1">
+        <div class="start-total">
+            <div class="arrow-down-white"></div>
+            <div class="start-intermediaire">
+                <div class="icon-number-3"></div>
+                <div class="start-content-white">
+                    <h2> Inscription terminée et envoyée.</h2>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="arrow-down-blue"></div>
+    <div id="form-div">
+        <div class="form-submit-title">Validation</div>
+        <div class="form-desc" style="text-align:center;margin-bottom:10px;">
+            Votre inscription est maintenant terminé, vous allez recevoir
+             un mail de confirmation avec un bref récapitulatif. Veuillez conserver celui-ci comme preuve de votre inscription.
+        </div>
+        <div class="submit" style="text-align:center;">
+            @Html.ActionLink("Retour à l'accueil", "Inscription", "Home", new { @id = "button-blue" })
+            <div class="ease"></div>
+        </div>
+    </div>
+</div>
+
