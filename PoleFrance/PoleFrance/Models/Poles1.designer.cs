@@ -54,12 +54,12 @@ namespace PoleFrance.Models
     partial void InsertResponsable(Responsable instance);
     partial void UpdateResponsable(Responsable instance);
     partial void DeleteResponsable(Responsable instance);
-    partial void InsertCandidature(Candidature instance);
-    partial void UpdateCandidature(Candidature instance);
-    partial void DeleteCandidature(Candidature instance);
     partial void InsertInformationSportive(InformationSportive instance);
     partial void UpdateInformationSportive(InformationSportive instance);
     partial void DeleteInformationSportive(InformationSportive instance);
+    partial void InsertCandidature(Candidature instance);
+    partial void UpdateCandidature(Candidature instance);
+    partial void DeleteCandidature(Candidature instance);
     #endregion
 		
 		public PolesDataContext() : 
@@ -156,19 +156,19 @@ namespace PoleFrance.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<Candidature> Candidature
-		{
-			get
-			{
-				return this.GetTable<Candidature>();
-			}
-		}
-		
 		public System.Data.Linq.Table<InformationSportive> InformationSportive
 		{
 			get
 			{
 				return this.GetTable<InformationSportive>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Candidature> Candidature
+		{
+			get
+			{
+				return this.GetTable<Candidature>();
 			}
 		}
 	}
@@ -1635,6 +1635,253 @@ namespace PoleFrance.Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InformationSportive")]
+	public partial class InformationSportive : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private decimal _id;
+		
+		private string _Competition;
+		
+		private string _CategorieAge;
+		
+		private string _CategoriePoids;
+		
+		private string _Resultat;
+		
+		private decimal _Candidatureid;
+		
+		private string _Annee;
+		
+		private EntityRef<Candidature> _Candidature;
+		
+    #region Définitions de méthodes d'extensibilité
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(decimal value);
+    partial void OnidChanged();
+    partial void OnCompetitionChanging(string value);
+    partial void OnCompetitionChanged();
+    partial void OnCategorieAgeChanging(string value);
+    partial void OnCategorieAgeChanged();
+    partial void OnCategoriePoidsChanging(string value);
+    partial void OnCategoriePoidsChanged();
+    partial void OnResultatChanging(string value);
+    partial void OnResultatChanged();
+    partial void OnCandidatureidChanging(decimal value);
+    partial void OnCandidatureidChanged();
+    partial void OnAnneeChanging(string value);
+    partial void OnAnneeChanged();
+    #endregion
+		
+		public InformationSportive()
+		{
+			this._Candidature = default(EntityRef<Candidature>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public decimal id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Competition", DbType="VarChar(150)")]
+		public string Competition
+		{
+			get
+			{
+				return this._Competition;
+			}
+			set
+			{
+				if ((this._Competition != value))
+				{
+					this.OnCompetitionChanging(value);
+					this.SendPropertyChanging();
+					this._Competition = value;
+					this.SendPropertyChanged("Competition");
+					this.OnCompetitionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategorieAge", DbType="VarChar(100)")]
+		public string CategorieAge
+		{
+			get
+			{
+				return this._CategorieAge;
+			}
+			set
+			{
+				if ((this._CategorieAge != value))
+				{
+					this.OnCategorieAgeChanging(value);
+					this.SendPropertyChanging();
+					this._CategorieAge = value;
+					this.SendPropertyChanged("CategorieAge");
+					this.OnCategorieAgeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoriePoids", DbType="VarChar(30)")]
+		public string CategoriePoids
+		{
+			get
+			{
+				return this._CategoriePoids;
+			}
+			set
+			{
+				if ((this._CategoriePoids != value))
+				{
+					this.OnCategoriePoidsChanging(value);
+					this.SendPropertyChanging();
+					this._CategoriePoids = value;
+					this.SendPropertyChanged("CategoriePoids");
+					this.OnCategoriePoidsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Resultat", DbType="VarChar(100)")]
+		public string Resultat
+		{
+			get
+			{
+				return this._Resultat;
+			}
+			set
+			{
+				if ((this._Resultat != value))
+				{
+					this.OnResultatChanging(value);
+					this.SendPropertyChanging();
+					this._Resultat = value;
+					this.SendPropertyChanged("Resultat");
+					this.OnResultatChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Candidatureid", DbType="Decimal(18,0) NOT NULL")]
+		public decimal Candidatureid
+		{
+			get
+			{
+				return this._Candidatureid;
+			}
+			set
+			{
+				if ((this._Candidatureid != value))
+				{
+					if (this._Candidature.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCandidatureidChanging(value);
+					this.SendPropertyChanging();
+					this._Candidatureid = value;
+					this.SendPropertyChanged("Candidatureid");
+					this.OnCandidatureidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Annee", DbType="VarChar(50)")]
+		public string Annee
+		{
+			get
+			{
+				return this._Annee;
+			}
+			set
+			{
+				if ((this._Annee != value))
+				{
+					this.OnAnneeChanging(value);
+					this.SendPropertyChanging();
+					this._Annee = value;
+					this.SendPropertyChanged("Annee");
+					this.OnAnneeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Candidature_InformationSportive", Storage="_Candidature", ThisKey="Candidatureid", OtherKey="id", IsForeignKey=true)]
+		public Candidature Candidature
+		{
+			get
+			{
+				return this._Candidature.Entity;
+			}
+			set
+			{
+				Candidature previousValue = this._Candidature.Entity;
+				if (((previousValue != value) 
+							|| (this._Candidature.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Candidature.Entity = null;
+						previousValue.InformationSportive.Remove(this);
+					}
+					this._Candidature.Entity = value;
+					if ((value != null))
+					{
+						value.InformationSportive.Add(this);
+						this._Candidatureid = value.id;
+					}
+					else
+					{
+						this._Candidatureid = default(decimal);
+					}
+					this.SendPropertyChanged("Candidature");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Candidature")]
 	public partial class Candidature : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1690,6 +1937,8 @@ namespace PoleFrance.Models
 		private string _TelephoneParents;
 		
 		private string _AdresseEmailParent;
+		
+		private string _Traitement;
 		
 		private EntitySet<PoleCandidature> _PoleCandidature;
 		
@@ -1751,6 +2000,8 @@ namespace PoleFrance.Models
     partial void OnTelephoneParentsChanged();
     partial void OnAdresseEmailParentChanging(string value);
     partial void OnAdresseEmailParentChanged();
+    partial void OnTraitementChanging(string value);
+    partial void OnTraitementChanged();
     #endregion
 		
 		public Candidature()
@@ -2265,6 +2516,26 @@ namespace PoleFrance.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Traitement", DbType="NChar(10)")]
+		public string Traitement
+		{
+			get
+			{
+				return this._Traitement;
+			}
+			set
+			{
+				if ((this._Traitement != value))
+				{
+					this.OnTraitementChanging(value);
+					this.SendPropertyChanging();
+					this._Traitement = value;
+					this.SendPropertyChanged("Traitement");
+					this.OnTraitementChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Candidature_PoleCandidature", Storage="_PoleCandidature", ThisKey="id", OtherKey="Candidatureid")]
 		public EntitySet<PoleCandidature> PoleCandidature
 		{
@@ -2367,253 +2638,6 @@ namespace PoleFrance.Models
 		{
 			this.SendPropertyChanging();
 			entity.Candidature = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InformationSportive")]
-	public partial class InformationSportive : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private decimal _id;
-		
-		private string _Competition;
-		
-		private string _CategorieAge;
-		
-		private string _CategoriePoids;
-		
-		private string _Resultat;
-		
-		private decimal _Candidatureid;
-		
-		private string _Annee;
-		
-		private EntityRef<Candidature> _Candidature;
-		
-    #region Définitions de méthodes d'extensibilité
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(decimal value);
-    partial void OnidChanged();
-    partial void OnCompetitionChanging(string value);
-    partial void OnCompetitionChanged();
-    partial void OnCategorieAgeChanging(string value);
-    partial void OnCategorieAgeChanged();
-    partial void OnCategoriePoidsChanging(string value);
-    partial void OnCategoriePoidsChanged();
-    partial void OnResultatChanging(string value);
-    partial void OnResultatChanged();
-    partial void OnCandidatureidChanging(decimal value);
-    partial void OnCandidatureidChanged();
-    partial void OnAnneeChanging(string value);
-    partial void OnAnneeChanged();
-    #endregion
-		
-		public InformationSportive()
-		{
-			this._Candidature = default(EntityRef<Candidature>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public decimal id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Competition", DbType="VarChar(150)")]
-		public string Competition
-		{
-			get
-			{
-				return this._Competition;
-			}
-			set
-			{
-				if ((this._Competition != value))
-				{
-					this.OnCompetitionChanging(value);
-					this.SendPropertyChanging();
-					this._Competition = value;
-					this.SendPropertyChanged("Competition");
-					this.OnCompetitionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategorieAge", DbType="VarChar(100)")]
-		public string CategorieAge
-		{
-			get
-			{
-				return this._CategorieAge;
-			}
-			set
-			{
-				if ((this._CategorieAge != value))
-				{
-					this.OnCategorieAgeChanging(value);
-					this.SendPropertyChanging();
-					this._CategorieAge = value;
-					this.SendPropertyChanged("CategorieAge");
-					this.OnCategorieAgeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoriePoids", DbType="VarChar(30)")]
-		public string CategoriePoids
-		{
-			get
-			{
-				return this._CategoriePoids;
-			}
-			set
-			{
-				if ((this._CategoriePoids != value))
-				{
-					this.OnCategoriePoidsChanging(value);
-					this.SendPropertyChanging();
-					this._CategoriePoids = value;
-					this.SendPropertyChanged("CategoriePoids");
-					this.OnCategoriePoidsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Resultat", DbType="VarChar(100)")]
-		public string Resultat
-		{
-			get
-			{
-				return this._Resultat;
-			}
-			set
-			{
-				if ((this._Resultat != value))
-				{
-					this.OnResultatChanging(value);
-					this.SendPropertyChanging();
-					this._Resultat = value;
-					this.SendPropertyChanged("Resultat");
-					this.OnResultatChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Candidatureid", DbType="Decimal(18,0) NOT NULL")]
-		public decimal Candidatureid
-		{
-			get
-			{
-				return this._Candidatureid;
-			}
-			set
-			{
-				if ((this._Candidatureid != value))
-				{
-					if (this._Candidature.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCandidatureidChanging(value);
-					this.SendPropertyChanging();
-					this._Candidatureid = value;
-					this.SendPropertyChanged("Candidatureid");
-					this.OnCandidatureidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Annee", DbType="VarChar(50)")]
-		public string Annee
-		{
-			get
-			{
-				return this._Annee;
-			}
-			set
-			{
-				if ((this._Annee != value))
-				{
-					this.OnAnneeChanging(value);
-					this.SendPropertyChanging();
-					this._Annee = value;
-					this.SendPropertyChanged("Annee");
-					this.OnAnneeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Candidature_InformationSportive", Storage="_Candidature", ThisKey="Candidatureid", OtherKey="id", IsForeignKey=true)]
-		public Candidature Candidature
-		{
-			get
-			{
-				return this._Candidature.Entity;
-			}
-			set
-			{
-				Candidature previousValue = this._Candidature.Entity;
-				if (((previousValue != value) 
-							|| (this._Candidature.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Candidature.Entity = null;
-						previousValue.InformationSportive.Remove(this);
-					}
-					this._Candidature.Entity = value;
-					if ((value != null))
-					{
-						value.InformationSportive.Add(this);
-						this._Candidatureid = value.id;
-					}
-					else
-					{
-						this._Candidatureid = default(decimal);
-					}
-					this.SendPropertyChanged("Candidature");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 }

@@ -75,6 +75,18 @@
       <Association Name="Pole_Responsable" Member="Pole" ThisKey="Poleid" OtherKey="id" Type="Pole" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.InformationSportive" Member="InformationSportive">
+    <Type Name="InformationSportive">
+      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Competition" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="CategorieAge" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CategoriePoids" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Resultat" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Candidatureid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Annee" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Candidature_InformationSportive" Member="Candidature" ThisKey="Candidatureid" OtherKey="id" Type="Candidature" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Candidature" Member="Candidature">
     <Type Name="Candidature">
       <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -102,21 +114,10 @@
       <Column Name="CategoriePoidsActuelle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="TelephoneParents" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="AdresseEmailParent" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Traitement" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Association Name="Candidature_PoleCandidature" Member="PoleCandidature" ThisKey="id" OtherKey="Candidatureid" Type="PoleCandidature" />
       <Association Name="Candidature_InformationSportive" Member="InformationSportive" ThisKey="id" OtherKey="Candidatureid" Type="InformationSportive" />
       <Association Name="InformationScolaire_Candidature" Member="InformationScolaire" ThisKey="InformationScolaireid" OtherKey="id" Type="InformationScolaire" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.InformationSportive" Member="InformationSportive">
-    <Type Name="InformationSportive">
-      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Competition" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
-      <Column Name="CategorieAge" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="CategoriePoids" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="Resultat" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="Candidatureid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Column Name="Annee" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Association Name="Candidature_InformationSportive" Member="Candidature" ThisKey="Candidatureid" OtherKey="id" Type="Candidature" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
