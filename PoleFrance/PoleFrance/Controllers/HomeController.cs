@@ -19,13 +19,26 @@ namespace PoleFrance.Controllers
         [AllowAnonymous]
         public ActionResult Inscription()
         {
+            ViewBag.FormVisibility = CheckInscription();
+
             return View();
+        }
+
+        private String CheckInscription()
+        {
+            PolesDataContext pdc = new PolesDataContext();
+            SuperAdmin sa = pdc.SuperAdmin.First();
+            String returnString = "";
+            if ((bool)sa.Open)
+                returnString = "visible";
+            return returnString;
         }
 
         [HttpPost]
         [AllowAnonymous]
         public ActionResult Inscription(Models.Candidature model)
         {
+            ViewBag.FormVisibility = CheckInscription();
             if (!ValidateNumLicencie(model))
             {
                 ModelState.AddModelError(string.Empty, "Le numéro de licence est incorrect.");
