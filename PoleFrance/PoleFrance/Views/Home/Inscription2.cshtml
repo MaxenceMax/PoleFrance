@@ -122,17 +122,18 @@
                 </div>
                 <div class="form-content-mid">
                     <div class="form-desc">
-                        <div>Si la structure de votre choix n'est pas acceptée, autorisez-vous les responsables à vous orienter sur une structure différente ?</div>
+                        @Html.ValidationMessageFor(model => model.Redirection, "", new { @class = "text-danger-form" })
+                        <div>Si vous n'êtes pas accepté dans la structure de votre choix, autorisez-vous les responsables à vous orienter vers une structure différente ?</div>
                         <div style="display:flex;margin-top:10px;">
-                            <span style="margin-right:10px;">Accepter</span>
-                            @Html.CheckBoxFor(model => model.Redirection)
+                            <span style="margin-right:10px;">Accepter</span>@Html.RadioButtonFor(model => model.Redirection, true)
+                            <span style="margin-right:10px;margin-left:10px;">Refuser</span>@Html.RadioButtonFor(model => model.Redirection, false)
                         </div>
                     </div>
                 </div>
             </div>
             <div class="sous-titre-form-blanc">Résultats compétitions :</div>
             <div class="white-separator-little"></div>
-            <div class="form-desc" style="margin:10px;">Veuillez renseigner vos trois meilleures performances (la catégorie d'age correspond à la votre durant cette compétition, par exemple championnat de france Sénior quand vous étiez junior 2):</div>
+            <div class="form-desc" style="margin:10px;">Veuillez renseigner vos trois meilleures performances :</div>
             <div class="form-compétition">
                 <div class="form-desc" style="margin-top:3px;margin-bottom:10px;margin-left:10px;">Première compétition :</div>
                 <div class="form-content">
@@ -147,13 +148,17 @@
                 </div>
 
                 <div class="form-content">
-                    <div style="width:50%;">
+                    <div style="width:33%;">
                         @Html.EditorFor(model => model.Information1.CategoriePoids,
                             new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Catégorie de poids" } })
                     </div>
-                    <div style="width:50%;margin-left:3px;">
+                    <div style="width:33%;margin-left:3px;">
                         @Html.EditorFor(model => model.Information1.Resultat,
                             new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Résultat" } })
+                    </div>
+                    <div style="width:33%;margin-left:3px;">
+                        @Html.EditorFor(model => model.Information1.Annee,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Année" } })
                     </div>
                 </div>
             </div>
@@ -171,13 +176,17 @@
                 </div>
 
                 <div class="form-content">
-                    <div style="width:50%;">
+                    <div style="width:33%;">
                         @Html.EditorFor(model => model.Information2.CategoriePoids,
                             new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Catégorie de poids" } })
                     </div>
-                    <div style="width:50%;margin-left:3px;">
+                    <div style="width:33%;margin-left:3px;">
                         @Html.EditorFor(model => model.Information2.Resultat,
                             new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Résultat" } })
+                    </div>
+                    <div style="width:33%;margin-left:3px;">
+                        @Html.EditorFor(model => model.Information1.Annee,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Année" } })
                     </div>
                 </div>
             </div>
@@ -195,13 +204,17 @@
                 </div>
 
                 <div class="form-content">
-                    <div style="width:50%;">
+                    <div style="width:33%;">
                         @Html.EditorFor(model => model.Information3.CategoriePoids,
                             new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Catégorie de poids" } })
                     </div>
-                    <div style="width:50%;margin-left:3px;">
+                    <div style="width:33%;margin-left:3px;">
                         @Html.EditorFor(model => model.Information3.Resultat,
                             new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Résultat" } })
+                    </div>
+                    <div style="width:33%;margin-left:3px;">
+                        @Html.EditorFor(model => model.Information1.Annee,
+                            new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Année" } })
                     </div>
                 </div>
             </div>

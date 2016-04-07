@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -9,7 +10,10 @@ namespace PoleFrance.Models
     {
         public Candidature Candidature { get; set; }
         public Pole Pole { get; set; }
-        public bool Redirection { get; set; }
+
+        [Required]
+        [Display (Name ="Redirection")]
+        public bool? Redirection { get; set; } = null;
         public bool Internat { get; set; }
         public bool AutorisationParent { get; set; }
 

@@ -87,6 +87,10 @@ namespace PoleFrance.Controllers
         public ActionResult Inscription2(MainModel model)
         {
             ViewBag.listePole = GetAllPole();
+            if(!ModelState.IsValid)
+            {
+                return View(model); 
+            }
 
             // About general infos
             DateTime today = DateTime.Today;
@@ -160,7 +164,7 @@ namespace PoleFrance.Controllers
                 "Votre inscription à la structure suivante: <br>"+
                 "<b style = 'font-size:19' >"+ p.Nom +"</b ><br>"+
                 "à bien été enregistrée à la date du <b style = 'font-size:19'>"+ model.Candidature.DateDemarche +
-                "</b>. Veuillez conservez cet email comme preuve de votre inscriptions."+
+                "</b>. Veuillez conservez cet email comme preuve de votre inscription."+
                 " Vous serez contacté par mail, ou par voie postale aprés la délibération du jury.<br>"+
                 "<br><br>Cordialement</div>";
             email.Subject = "Confirmation inscription à la structure :"+p.Nom;
@@ -189,6 +193,7 @@ namespace PoleFrance.Controllers
             return retour;
         }
 
+        [AllowAnonymous] 
         public ActionResult Inscription3()
         {
             return View();
