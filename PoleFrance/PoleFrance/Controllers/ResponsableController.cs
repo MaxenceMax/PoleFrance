@@ -10,8 +10,10 @@ namespace PoleFrance.Controllers
 {
     public class ResponsableController : Controller
     {
+
+
         // GET: Responsable
-        public ActionResult Index()
+        public ActionResult ResponsableHome()
         {
 
             PolesDataContext bd = new PolesDataContext();
@@ -34,5 +36,21 @@ namespace PoleFrance.Controllers
 
             return View();
         }
+
+
+        [AllowAnonymous]
+        public ActionResult ListeMesInscriptions(decimal id)
+        {
+
+
+            PolesDataContext bd = new PolesDataContext();
+
+
+            return View();
+
+        }
+
+
+
     }
 }

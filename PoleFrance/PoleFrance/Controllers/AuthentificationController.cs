@@ -72,7 +72,7 @@ namespace PoleFrance.Controllers
                 return RedirectToAction("AdminHome", "Gestion");
             }
             else {
-                return RedirectToAction("Index", "Responsable");
+                return RedirectToAction("ResponsableHome", "Responsable");
             }
 
             /*
