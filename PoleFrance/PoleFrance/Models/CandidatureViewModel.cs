@@ -96,6 +96,6 @@ namespace PoleFrance.Models
         [DataType(DataType.EmailAddress)]
         [Display(Name ="Adresse email des parents")]
         public String AdresseEmailParent { get; set; }
-        
+     
     }
 }

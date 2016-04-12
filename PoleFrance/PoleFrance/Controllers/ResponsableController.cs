@@ -1,10 +1,15 @@
 ﻿using PoleFrance.Models;
+using PoleFrance.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+
 
 namespace PoleFrance.Controllers
 {
@@ -38,12 +43,44 @@ namespace PoleFrance.Controllers
         }
 
 
-        [AllowAnonymous]
-        public ActionResult ListeMesInscriptions(decimal id)
+        public ActionResult ListeMesInscriptions()
         {
 
 
             PolesDataContext bd = new PolesDataContext();
+
+            var all = bd.Responsable;
+
+            var req = bd.Pole;
+
+            var test = from i in bd.Candidature
+                       where i.id < 40
+                       select i;
+
+
+
+              ListeCandidatureViewModel lc = new ListeCandidatureViewModel
+              {
+                  ListeDesCandidatures = test.ToList(),
+              }; 
+
+            ResponsableViewModel vm = new ResponsableViewModel
+            {
+                ListeDesResponsables = all.ToList(),
+
+            };
+
+
+
+            return View(lc);
+
+        }
+
+
+        public ActionResult ListeToutesInscriptions()
+        {
+
+
 
 
             return View();
@@ -51,6 +88,7 @@ namespace PoleFrance.Controllers
         }
 
 
-
     }
+    
+
 }

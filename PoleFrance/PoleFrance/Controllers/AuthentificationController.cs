@@ -94,6 +94,7 @@ namespace PoleFrance.Controllers
         {
            
             yield return new Claim(ClaimTypes.Role, "Responsable");
+            
         }
 
         private bool ValidateUser(string login, string password)

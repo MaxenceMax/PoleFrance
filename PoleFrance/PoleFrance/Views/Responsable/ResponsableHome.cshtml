@@ -29,11 +29,11 @@
     </div>
     <div class="arrow-down-blue"></div>
 
-    <!--
+    
     <div id="form-div-big">
         <div class="admin-block-conteneur-alignement">
             <div class="admin-block-conteneur">
-                <div class="admin-block" onclick="location.href='@Url.Action("ListeMesInscriptions", "Responsable",  new {id=1})'">
+                <div class="admin-block" onclick="location.href='@Url.Action("ListeMesInscriptions", "Responsable")'">
                     <div class="admin-block-titre">Mes inscriptions</div>
                     <div class="admin-block-image"><img src="@Url.Content("~/Content/Images/Admin/resp.png")" /></div>
                     <div class="admin-block-desc">Dans cette section vous pouvez voir la liste de vos inscriptions pour @ViewBag.texte</div>
@@ -41,6 +41,16 @@
             </div>
         </div>
 
+
+        <div class="admin-block-conteneur-alignement">
+            <div class="admin-block-conteneur">
+                <div class="admin-block" onclick="location.href='@Url.Action("ListeToutesInscriptions", "Responsable")'">
+                    <div class="admin-block-titre">Toutes les inscriptions</div>
+                    <div class="admin-block-image"><img src="@Url.Content("~/Content/Images/Admin/resp.png")" /></div>
+                    <div class="admin-block-desc">Dans cette section vous pouvez voir la liste de toutes les inscriptions pour les différents Pôles</div>
+                </div>
+            </div>
+        </div>
 
 
     </div>
