@@ -46,28 +46,48 @@ namespace PoleFrance.Controllers
         public ActionResult ListeMesInscriptions()
         {
 
+            PolesDataContext bd = new PolesDataContext();
+
+                var claimIdentity = User.Identity as ClaimsIdentity;
+               
+                    var nomResponsable = claimIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+                    var candidature = from i in bd.PoleCandidature
+                               join p in bd.Pole on i.Poleid equals p.id
+                               join q in bd.Responsable on i.Poleid equals q.Poleid
+                               where q.Login == nomResponsable
+                               orderby i.Candidature.Nom ascending
+                               select i;
+
+
+
+                ListeCandidatureViewModel lc = new ListeCandidatureViewModel
+                {
+                    ListeDesPoles = candidature.ToList(),
+                };
+
+
+            return View(lc);
+
+        }
+
+
+
+        public ActionResult ListeToutesInscriptions()
+        {
 
             PolesDataContext bd = new PolesDataContext();
 
-            var all = bd.Responsable;
 
-            var req = bd.Pole;
-
-            var test = from i in bd.Candidature
-                       where i.id < 40
-                       select i;
+            var candidature = from i in bd.PoleCandidature
+                              orderby i.Pole.Nom ascending, i.Candidature.Nom
+                              select i;
 
 
-
-              ListeCandidatureViewModel lc = new ListeCandidatureViewModel
-              {
-                  ListeDesCandidatures = test.ToList(),
-              }; 
-
-            ResponsableViewModel vm = new ResponsableViewModel
+            ListeCandidatureViewModel lc = new ListeCandidatureViewModel
             {
-                ListeDesResponsables = all.ToList(),
-
+                ListeDesPoles = candidature.ToList(),
+               
             };
 
 
@@ -77,13 +97,29 @@ namespace PoleFrance.Controllers
         }
 
 
-        public ActionResult ListeToutesInscriptions()
+        
+        public ActionResult AffichageCandidature(decimal id)
         {
 
 
+            PolesDataContext bd = new PolesDataContext();
+
+            var infsportives = from i in bd.InformationSportive
+                               where i.Candidatureid == id
+                               select i;
+
+            
 
 
-            return View();
+            AffichageCandidature af = new AffichageCandidature
+            {
+                InformationsSportives = infsportives.ToList(),
+
+            };
+
+                              
+
+            return View(af);
 
         }
 

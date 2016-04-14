@@ -27,10 +27,60 @@
 
     <div id="form-div-big">
 
+        <table class="tableau">
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Sexe</th>
+                <th>Age</th>
+                <th>Poids</th>
+                <th>Email</th>
+                <th>Tel</th>
+                <th>Tel Parents</th>
+                <th>En voir plus</th>
 
-</div>
+            </tr>
+
+            @{
+                foreach (var cand in Model.ListeDesPoles)
+                {
+                    <tr>
+                        <td>@cand.Candidature.Nom</td>
+                        <td>@cand.Candidature.Prenom</td>
+                        <td>@cand.Candidature.Sexe</td>
+                        <td>@cand.Candidature.CategorieAgeActuelle</td>
+                        <td>@cand.Candidature.CategoriePoidsActuelle</td>
+                        <td>@cand.Candidature.AdresseEmail</td>
+                        <td>@cand.Candidature.Telephone</td>
+                        <td>@cand.Candidature.TelephoneParents</td>
+                        
+                        <td style="text-align:center;">
+                            <a href='@Url.Action("AffichageCandidature", "Responsable",  new {id=@cand.Candidatureid})'>
+                                <img style="width:20px; height:20px; " src='@Url.Content("~/Content/Images/Admin/resp.png")' />
+                            </a>
+                        </td>
+                        
+                    </tr>
+                }
+            }
+        </table>
+
+      
+
 
     </div>
+
+   
+
+    <div class="form-group-align">
+
+        <div class="submit" id="form-moitie" style="margin-left:2.5px; width: 150px; margin-top: 20px;">
+            <a href='@Url.Action("ResponsableHome", "Responsable")' id="button-red">Retour</a>
+            <div class="ease"></div>
+        </div>
+    </div>   
+
+</div>
 
 
 

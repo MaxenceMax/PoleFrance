@@ -1,0 +1,78 @@
+﻿@model PoleFrance.ViewModels.AffichageCandidature
+@{
+    ViewBag.Title = "AffichageCandidature";
+}
+
+<div class="contenu">
+
+    <div class="start">
+        <div class="start-total">
+            <div class="start-intermediaire">
+                <a href="http://www.ffjudo.com/" id="logo" title="retour Accueil">
+                    <img src="~/Content/Images/logo.png" alt="Fédération Française de Judo">
+                </a>
+                <div class="start-content">
+                    <h1>Liste des Candidatures </h1>
+                    <span>Vous pouvez apercevoir toutes les demandes de candidatures pour les Pôles.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="etape1">
+        <div class="arrow-down-white"></div>
+
+    </div>
+    <div class="arrow-down-blue"></div>
+
+    <div id="form-div-big">
+
+        <table class="tableau">
+
+
+            <tr>
+                <th>Competition</th>
+                <th>Age</th>
+                <th>Poids</th>
+                <th>Resultat</th>
+
+
+                @{
+                    foreach (var aff in Model.InformationsSportives)
+                    {
+
+            <tr>
+                <td> @aff.Competition</td>
+                <td> @aff.CategorieAge</td>
+                <td> @aff.CategoriePoids</td>
+                <td> @aff.Resultat</td>
+            </tr>
+
+
+
+        }
+
+
+    }
+
+        </table>
+
+    </div>
+
+    <div class="form-group-align">
+
+        <div class="submit" id="form-moitie" style="margin-left:2.5px; width: 150px; margin-top: 20px;">
+            <a href='@Url.Action("ListeMesInscriptions", "Responsable")' id="button-red">Retour</a>
+            <div class="ease"></div>
+        </div>
+    </div>   
+
+
+</div>
+
+
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+

@@ -1,7 +1,87 @@
-﻿
+﻿@model PoleFrance.ViewModels.ListeCandidatureViewModel
+
 @{
     ViewBag.Title = "ListeToutesInscriptions";
 }
 
-<h2>ListeToutesInscriptions</h2>
+<div class="contenu">
 
+    <div class="start">
+        <div class="start-total">
+            <div class="start-intermediaire">
+                <a href="http://www.ffjudo.com/" id="logo" title="retour Accueil">
+                    <img src="~/Content/Images/logo.png" alt="Fédération Française de Judo">
+                </a>
+                <div class="start-content">
+                    <h1>Liste des Candidatures </h1>
+                    <span>Vous pouvez apercevoir toutes les demandes de candidatures pour les Pôles.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="etape1">
+        <div class="arrow-down-white"></div>
+
+    </div>
+    <div class="arrow-down-blue"></div>
+
+    <div id="form-div-big">
+
+        <table class="tableau">
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Sexe</th>
+                <th>Age</th>
+                <th>Poids</th>
+                <th>Pôle demandé</th>
+                <!-- <th>En voir plus</th> -->
+
+            </tr>
+
+            @{
+                foreach (var cand in Model.ListeDesPoles)
+                {
+                    <tr>
+                        
+                        <td>@cand.Candidature.Nom</td>
+                        <td>@cand.Candidature.Prenom</td>
+                        <td>@cand.Candidature.Sexe</td>
+                        <td>@cand.Candidature.CategorieAgeActuelle</td>
+                        <td>@cand.Candidature.CategoriePoidsActuelle</td>
+                        <td>@cand.Pole.Nom</td>
+
+                      <!--<td style="text-align:center;">
+                            <a href='@Url.Action("AffichageCandidature", "Responsable",  new {id=@cand.Candidatureid})'>
+                                <img style="width:20px; height:20px; " src='@Url.Content("~/Content/Images/Admin/resp.png")' />
+                            </a>
+                        </td> -->  
+
+                    </tr>
+                }
+            }
+
+
+
+        </table>
+
+
+    </div>
+
+    <div class="form-group-align">
+
+        <div class="submit" id="form-moitie" style="margin-left:2.5px; width: 150px; margin-top: 20px;">
+            <a href='@Url.Action("ResponsableHome", "Responsable")' id="button-red">Retour</a>
+            <div class="ease"></div>
+        </div>
+    </div>   
+
+
+</div>
+
+
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

@@ -8,7 +8,6 @@ namespace PoleFrance.ViewModels
     public class ListeCandidatureViewModel
     {
 
-        public List<Models.Candidature> ListeDesCandidatures { get; set; }
-
+        public List<Models.PoleCandidature> ListeDesPoles { get; set; }
     }
 }
