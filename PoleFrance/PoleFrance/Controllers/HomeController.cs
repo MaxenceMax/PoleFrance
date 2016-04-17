@@ -152,7 +152,7 @@ namespace PoleFrance.Controllers
 
             // Enregistrement des destinataires
             email.To.Add(new MailAddress(model.Candidature.AdresseEmail));
-            email.To.Add(new MailAddress(model.Candidature.AdresseEmailParent));
+            email.CC.Add(new MailAddress(model.Candidature.AdresseEmailParent));
 
             PolesDataContext bd = new PolesDataContext();
             Pole p = (from i in bd.Pole
