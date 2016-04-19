@@ -45,6 +45,15 @@ html{
   text-align:center;
 }
 
+.form-text-infos
+{
+    color:#fff;
+	font-size: 18px;
+	line-height: 22px;
+	margin-bottom: 5px;
+	width:100%;
+}
+
 .feedback-input {
 	color:#3c3c3c;
 	font-size: 18px;

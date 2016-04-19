@@ -1,9 +1,4 @@
 ﻿@model PoleFrance.ViewModels.ListeCandidatureViewModel
-
-@{
-    ViewBag.Title = "ListeMesInscriptions";
-}
-
 <div class="contenu">
 
     <div class="start">
@@ -14,7 +9,7 @@
                 </a>
                 <div class="start-content">
                     <h1>Liste des Candidatures </h1>
-                    <span>Vous pouvez apercevoir toutes les demandes de candidatures pour les Pôles.</span>
+                    <span>Vous pouvez apercevoir toutes les demandes de candidatures pour votre structure.</span>
                 </div>
             </div>
         </div>
@@ -56,7 +51,7 @@
                         
                         <td style="text-align:center;">
                             <a href='@Url.Action("AffichageCandidature", "Responsable",  new {id=@cand.Candidatureid})'>
-                                <img style="width:20px; height:20px; " src='@Url.Content("~/Content/Images/Admin/resp.png")' />
+                                <img style="width:20px; height:20px; " src='@Url.Content("~/Content/Images/Admin/loupe.png")' />
                             </a>
                         </td>
                         
@@ -64,22 +59,13 @@
                 }
             }
         </table>
-
-      
-
-
-    </div>
-
-   
-
-    <div class="form-group-align">
-
-        <div class="submit" id="form-moitie" style="margin-left:2.5px; width: 150px; margin-top: 20px;">
-            <a href='@Url.Action("ResponsableHome", "Responsable")' id="button-red">Retour</a>
-            <div class="ease"></div>
+        <div class="form-group-align">
+            <div class="submit" id="form-moitie" style="margin-left:2.5px; width: 150px; margin-top: 20px;">
+                <a href='@Url.Action("ResponsableHome", "Responsable")' id="button-red">Retour</a>
+                <div class="ease"></div>
+            </div>
         </div>
-    </div>   
-
+    </div>
 </div>
 
 

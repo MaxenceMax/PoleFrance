@@ -105,6 +105,7 @@ namespace PoleFrance.Controllers
             model.Candidature.Internat = model.Internat;
             model.Candidature.AutorisationParent = model.AutorisationParent;
             model.Candidature.Redirection = model.Redirection;
+            model.Candidature.Traitement = 0;
 
             // ABout scolaire infos
             model.Candidature.InformationScolaire = model.InformationScolaire;

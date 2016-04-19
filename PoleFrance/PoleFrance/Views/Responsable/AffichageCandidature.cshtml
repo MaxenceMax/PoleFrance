@@ -12,67 +12,190 @@
                     <img src="~/Content/Images/logo.png" alt="Fédération Française de Judo">
                 </a>
                 <div class="start-content">
-                    <h1>Liste des Candidatures </h1>
-                    <span>Vous pouvez apercevoir toutes les demandes de candidatures pour les Pôles.</span>
+                    <h1>Détail Candidat : </h1>
+                    <span>
+                        Vous trouverez toutes les informations rensignées le @Model.PoleCandidature.Candidature.DateDemarche par le judoka : <br />
+                        <b style="margin:20px;">@Model.PoleCandidature.Candidature.Prenom @Model.PoleCandidature.Candidature.Nom</b>
+                    </span>
                 </div>
             </div>
         </div>
     </div>
     <div class="etape1">
         <div class="arrow-down-white"></div>
-
     </div>
     <div class="arrow-down-blue"></div>
 
     <div id="form-div-big">
+        <div class="titre-form-blanc">
+            Informations générales :
+            <div class="white-separator"></div>
+        </div>
+        <div class="form-content" style="text-align:left">
+            <div class="form-content-mid">
+                <div class="form-text-infos">@Model.PoleCandidature.Candidature.NumLicencie</div>
+                <div class="form-text-infos">@Model.PoleCandidature.Candidature.Nom</div>
+                <div class="form-text-infos">@Model.PoleCandidature.Candidature.Prenom</div>
+                <div class="form-text-infos">@Model.PoleCandidature.Candidature.Rue</div>
+                <div style="display:flex">
+                    <div class="form-text-infos" style="width:auto">@Model.PoleCandidature.Candidature.CodePostal</div>
+                    <div class="form-text-infos" style="margin-left:10px;">@Model.PoleCandidature.Candidature.Ville</div>
+                </div>
+                <div class="form-desc" style="width:auto;margin-right:10px;">Autorisation parentale : @{if ((bool)Model.PoleCandidature.Candidature.AutorisationParent)
+                    { <b>Oui</b>}
+                    else { <b>Non</b>} }</div>
+            </div>
+            <div class="form-content-mid">
+                <div class="form-text-infos"><b>Date de Naissance : </b>@Model.PoleCandidature.Candidature.DateNaissance</div>
+                <div class="sous-sous-titre-form-blanc">Contact judoka</div><div class="white-separator-little"></div>
+                <div class="form-text-infos"><b>Téléphone : </b>@Model.PoleCandidature.Candidature.Telephone</div>
+                <div class="form-text-infos"><b>Email : </b>@Model.PoleCandidature.Candidature.AdresseEmail</div>
+                <div class="sous-sous-titre-form-blanc">Contact parents</div><div class="white-separator-little"></div>
+                <div class="form-text-infos"><b>Téléphone : </b>@Model.PoleCandidature.Candidature.TelephoneParents</div>
+                <div class="form-text-infos"><b>Email : </b>@Model.PoleCandidature.Candidature.AdresseEmailParent</div>
+            </div>
+        </div>
+        <div class="sous-titre-form-blanc">
+            Informations complémentaires :
+        </div>
+        <div class="white-separator-little"></div>
+        <div class="form-content" style="text-align:left">
+            <div class="form-content-mid">
+                <div style="display:flex">
+                    <div class="form-text-infos"><b>Sexe : </b>@Model.PoleCandidature.Candidature.Sexe</div>
+                    <div class="form-text-infos"><b>Poids : </b>@Model.PoleCandidature.Candidature.Poids</div>
+                </div>
+                <div style="display:flex">
+                    <div class="form-text-infos"><b>Taille : </b>@Model.PoleCandidature.Candidature.Taille</div>
+                    <div class="form-text-infos"><b>Catégorie de Poids : </b>@Model.PoleCandidature.Candidature.CategoriePoidsActuelle</div>
+                </div>
+            </div>
+            <div class="form-content-mid">
+                <div class="form-text-infos"><b>Catégorie d'âge : </b>@Model.PoleCandidature.Candidature.CategorieAgeActuelle</div>
+                <div class="form-text-infos"><b>Pôle actuel : </b>@Model.PoleCandidature.Candidature.PoleActuel</div>
+            </div>
+        </div>
+    </div>
+    <div id="form-div-big">
+        <div class="titre-form-blanc">
+            Informations sportives :
+            <div class="white-separator"></div>
+        </div>
+        <div class="form-desc" style="margin-top:3px;margin-bottom:10px;margin-left:10px;">Trois meilleurs résultats :</div>
+            @{
 
-        <table class="tableau">
+                foreach (var comp in Model.PoleCandidature.Candidature.InformationSportive.ToList())
+                {
+                    <div class="form-compétition" style="text-align:left">
+                        <div class="form-content">
+                            <div style="width:70%">
+                                <div class="form-text-infos"><b>Compétition : </b>@comp.Competition</div>
+                            </div>
+                            <div style="width:30%;margin-left:3px;">
+                                <div class="form-text-infos"><b>Catégorie d'âge : </b>@comp.CategorieAge</div>
+                            </div>
+                        </div>
 
+                        <div class="form-content">
+                            <div style="width:33%;">
+                                <div class="form-text-infos"><b>Catégorie de poids : </b>@comp.CategoriePoids</div>
+                            </div>
+                            <div style="width:33%;margin-left:3px;">
+                                <div class="form-text-infos"><b>Résultat : </b>@comp.Resultat</div>
+                            </div>
+                            <div style="width:33%;margin-left:3px;">
+                                <div class="form-text-infos"><b>Année : </b>@comp.Annee
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-            <tr>
-                <th>Competition</th>
-                <th>Age</th>
-                <th>Poids</th>
-                <th>Resultat</th>
-
-
-                @{
-                    foreach (var aff in Model.InformationsSportives)
-                    {
-
-            <tr>
-                <td> @aff.Competition</td>
-                <td> @aff.CategorieAge</td>
-                <td> @aff.CategoriePoids</td>
-                <td> @aff.Resultat</td>
-            </tr>
-
-
-
-        }
-
-
-    }
-
-        </table>
-
+                }
+            }
     </div>
 
-    <div class="form-group-align">
-
-        <div class="submit" id="form-moitie" style="margin-left:2.5px; width: 150px; margin-top: 20px;">
-            <a href='@Url.Action("ListeMesInscriptions", "Responsable")' id="button-red">Retour</a>
-            <div class="ease"></div>
+    <div id="form-div-big" style="text-align:left">
+        <div class="titre-form-blanc">
+            Informations scolaires :
+            <div class="white-separator"></div>
         </div>
-    </div>   
+        <div  style="margin-top:10px;" class="sous-titre-form-blanc">
+            Etablissement et formation actuel :
+        </div>
+        <div class="white-separator-little"></div>
+        <div class="form-content">
+            <div class="form-content-mid" style="padding-bottom:0px;">
+                <div class="form-text-infos"><b>Etablissement : </b>@Model.PoleCandidature.Candidature.InformationScolaire.Etablissement</div>
+            </div>
+            <div class="form-content-mid" style="padding-bottom:0px;">
+                <div class="form-text-infos"><b>Téléphone : </b>@Model.PoleCandidature.Candidature.InformationScolaire.Telephone</div>
+            </div>
+        </div>
+        <div style="padding-right:10px;padding-left:10px;">
+            <div class="form-text-infos"><b>Adresse : </b>@Model.PoleCandidature.Candidature.InformationScolaire.Adresse</div>
+            <div class="form-text-infos"><b>Formation / Classe : </b>@Model.PoleCandidature.Candidature.InformationScolaire.Classe</div>
+        </div>
+        <div class="sous-titre-form-blanc"> Souhait scolaire pour l'année de rentrée en structure :</div>
+        <div class="white-separator-little"></div>
+        <div style="padding-right:10px;padding-left:10px;padding-top:10px;">
+            <div class="form-text-infos"><b>Etablissement : </b>@Model.PoleCandidature.Candidature.InformationScolaire.SouhaitScolaire.First().Etablissement</div>
+            <div class="form-text-infos"><b>Formation / Classe : </b>@Model.PoleCandidature.Candidature.InformationScolaire.SouhaitScolaire.First().Classe</div>
+        </div>
+        
+        <div class="form-content">
+            <div class="form-content-mid">
+                @{  
+                    int i = 1;
+                    foreach (var langue in Model.PoleCandidature.Candidature.InformationScolaire.SouhaitScolaire.First().Langue.ToList())
+                    {
+                        <div class="form-text-infos"><b>Langue vivante @i : </b>@langue.Langue1</div>
+                        i++;
+                    }
+                }
+            </div>
+            <div class="form-content-mid" style="padding-bottom:0px;">
+                @{
+                    foreach (var option in Model.PoleCandidature.Candidature.InformationScolaire.SouhaitScolaire.First().Options.ToList())
+                    {
+                        <div class="form-text-infos"><b>Option : </b>@option.NomOption</div>
+                    }
+                }
+                <div style="display:flex;margin-top:10px;">
+                    <div class="form-desc" style="width:auto;margin-right:10px;">Demande internat : @{if ((bool)Model.PoleCandidature.Candidature.Internat) { <b>Oui</b>} else { <b>Non</b>} }</div>
+                </div>
+            </div>
+        </div>
+    </div>
+@using (Html.BeginForm("AffichageCandidature", "Responsable"))
+{
+    @Html.HiddenFor(model => model.polecandidatureId, new { Value = Model.polecandidatureId })
+    <div id="form-div-big" style="text-align:left">
+        <div class="titre-form-blanc">
+            Statut Inscription :
+            <div class="white-separator"></div>
+        </div>
+        <div class="form-content" style="display:block">
+            <div class="form-desc">
+                Vous pouvez ici faire l'une de ces choix pour la candidature :
+            </div>
+            <div class="form-desc" style="display:flex;margin-top:10px;">
 
 
-</div>
-
-
-
-
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-
+                <span style="margin-right:10px;">En attente de statut</span>@Html.RadioButtonFor(model => model.Traitement, 0) 
+                &nbsp;<span style="margin-right:10px;">Pré-selectionner</span>@Html.RadioButtonFor(model => model.Traitement, 1)
+                &nbsp;<span style="margin-right:10px;margin-left:10px;">Rediriger</span>@Html.RadioButtonFor(model => model.Traitement, 2)
+                &nbsp;<span style="margin-right:10px;margin-left:10px;">Ecarter</span>@Html.RadioButtonFor(model => model.Traitement, 3)
+            </div>
+        </div>
+        <div class="form-content" style="margin-top:30px;">
+            <div class="submit" style="width:150px;">
+                <a href='@Url.Action("ListeMesInscriptions", "Responsable")' id="button-red">Retour</a>
+                <div class="ease"></div>
+            </div>
+            <div class="submit" style="margin-left:10px;">
+                <input type="submit" onclick="window.location='#closed'" value="Valider et envoyer votre candidature" id="button-blue" />
+                <div class="ease"></div>
+            </div>
+        </div>
+    </div>
+}

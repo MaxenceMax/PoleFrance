@@ -185,7 +185,7 @@
                             new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Résultat" } })
                     </div>
                     <div style="width:33%;margin-left:3px;">
-                        @Html.EditorFor(model => model.Information1.Annee,
+                        @Html.EditorFor(model => model.Information2.Annee,
                             new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Année" } })
                     </div>
                 </div>
@@ -213,7 +213,7 @@
                             new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Résultat" } })
                     </div>
                     <div style="width:33%;margin-left:3px;">
-                        @Html.EditorFor(model => model.Information1.Annee,
+                        @Html.EditorFor(model => model.Information3.Annee,
                             new { htmlAttributes = new { @class = "feedback-input-little", @placeholder = "Année" } })
                     </div>
                 </div>
@@ -279,7 +279,7 @@
                     <div style="width:100%;">
                         <div class="autorisation-parentale">
                             Autorisation parentale
-                            @Html.CheckBoxFor(model => model.Internat, new { @style = "margin-left:10px" })
+                            @Html.CheckBoxFor(model => model.AutorisationParent, new { @style = "margin-left:10px" })
                         </div>
                     </div>                    
                 </div>

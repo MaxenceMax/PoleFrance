@@ -1,92 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Poles" Class="PolesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=dev2.ffjudo.local\mssql12;Initial Catalog=Poles;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PolesConnectionString1" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Pole" Member="Pole">
-    <Type Name="Pole">
-      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Nom" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
-      <Association Name="Pole_PoleCandidature" Member="PoleCandidature" ThisKey="id" OtherKey="Poleid" Type="PoleCandidature" />
-      <Association Name="Pole_Responsable" Member="Responsable" ThisKey="id" OtherKey="Poleid" Type="Responsable" />
-    </Type>
-  </Table>
-  <Table Name="dbo.InformationScolaire" Member="InformationScolaire">
-    <Type Name="InformationScolaire">
-      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Etablissement" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="Adresse" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Telephone" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="Classe" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Association Name="InformationScolaire_SouhaitScolaire" Member="SouhaitScolaire" ThisKey="id" OtherKey="InformationScolaireid" Type="SouhaitScolaire" />
-      <Association Name="InformationScolaire_Candidature" Member="Candidature" ThisKey="id" OtherKey="InformationScolaireid" Type="Candidature" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Langue" Member="Langue">
-    <Type Name="Langue">
-      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Langue" Member="Langue1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="SouhaitScolaireid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Association Name="SouhaitScolaire_Langue" Member="SouhaitScolaire" ThisKey="SouhaitScolaireid" OtherKey="id" Type="SouhaitScolaire" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Options" Member="Options">
-    <Type Name="Options">
-      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="NomOption" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="SouhaitScolaireid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Association Name="SouhaitScolaire_Options" Member="SouhaitScolaire" ThisKey="SouhaitScolaireid" OtherKey="id" Type="SouhaitScolaire" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.PoleCandidature" Member="PoleCandidature">
-    <Type Name="PoleCandidature">
-      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Poleid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Column Name="Candidatureid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Association Name="Pole_PoleCandidature" Member="Pole" ThisKey="Poleid" OtherKey="id" Type="Pole" IsForeignKey="true" />
-      <Association Name="Candidature_PoleCandidature" Member="Candidature" ThisKey="Candidatureid" OtherKey="id" Type="Candidature" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.SouhaitScolaire" Member="SouhaitScolaire">
-    <Type Name="SouhaitScolaire">
-      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Etablissement" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="Classe" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
-      <Column Name="InformationScolaireid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Association Name="SouhaitScolaire_Langue" Member="Langue" ThisKey="id" OtherKey="SouhaitScolaireid" Type="Langue" />
-      <Association Name="SouhaitScolaire_Options" Member="Options" ThisKey="id" OtherKey="SouhaitScolaireid" Type="Options" />
-      <Association Name="InformationScolaire_SouhaitScolaire" Member="InformationScolaire" ThisKey="InformationScolaireid" OtherKey="id" Type="InformationScolaire" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.SuperAdmin" Member="SuperAdmin">
-    <Type Name="SuperAdmin">
-      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Login" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="Password" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="[Open]" Member="Open" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Responsable" Member="Responsable">
-    <Type Name="Responsable">
-      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Nom" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Prenom" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="AdresseEmail" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Login" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
-      <Column Name="Password" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
-      <Column Name="Poleid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Association Name="Pole_Responsable" Member="Pole" ThisKey="Poleid" OtherKey="id" Type="Pole" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.InformationSportive" Member="InformationSportive">
-    <Type Name="InformationSportive">
-      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Competition" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
-      <Column Name="CategorieAge" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="CategoriePoids" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="Resultat" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="Candidatureid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Column Name="Annee" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Association Name="Candidature_InformationSportive" Member="Candidature" ThisKey="Candidatureid" OtherKey="id" Type="Candidature" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Candidature" Member="Candidature">
     <Type Name="Candidature">
       <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -113,11 +26,98 @@
       <Column Name="DateNaissance" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="CategoriePoidsActuelle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="TelephoneParents" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="AdresseEmailParent" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Traitement" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Association Name="Candidature_PoleCandidature" Member="PoleCandidature" ThisKey="id" OtherKey="Candidatureid" Type="PoleCandidature" />
+      <Column Name="AdresseEmailParent" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Traitement" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Association Name="Candidature_InformationSportive" Member="InformationSportive" ThisKey="id" OtherKey="Candidatureid" Type="InformationSportive" />
+      <Association Name="Candidature_PoleCandidature" Member="PoleCandidature" ThisKey="id" OtherKey="Candidatureid" Type="PoleCandidature" />
       <Association Name="InformationScolaire_Candidature" Member="InformationScolaire" ThisKey="InformationScolaireid" OtherKey="id" Type="InformationScolaire" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InformationScolaire" Member="InformationScolaire">
+    <Type Name="InformationScolaire">
+      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Etablissement" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Adresse" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="Telephone" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Classe" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Association Name="InformationScolaire_Candidature" Member="Candidature" ThisKey="id" OtherKey="InformationScolaireid" Type="Candidature" />
+      <Association Name="InformationScolaire_SouhaitScolaire" Member="SouhaitScolaire" ThisKey="id" OtherKey="InformationScolaireid" Type="SouhaitScolaire" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InformationSportive" Member="InformationSportive">
+    <Type Name="InformationSportive">
+      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Competition" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="CategorieAge" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CategoriePoids" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Resultat" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Candidatureid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Annee" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Candidature_InformationSportive" Member="Candidature" ThisKey="Candidatureid" OtherKey="id" Type="Candidature" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Langue" Member="Langue">
+    <Type Name="Langue">
+      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Langue" Member="Langue1" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="SouhaitScolaireid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Association Name="SouhaitScolaire_Langue" Member="SouhaitScolaire" ThisKey="SouhaitScolaireid" OtherKey="id" Type="SouhaitScolaire" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Options" Member="Options">
+    <Type Name="Options">
+      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NomOption" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="SouhaitScolaireid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Association Name="SouhaitScolaire_Options" Member="SouhaitScolaire" ThisKey="SouhaitScolaireid" OtherKey="id" Type="SouhaitScolaire" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PoleCandidature" Member="PoleCandidature">
+    <Type Name="PoleCandidature">
+      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Poleid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Candidatureid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Association Name="Candidature_PoleCandidature" Member="Candidature" ThisKey="Candidatureid" OtherKey="id" Type="Candidature" IsForeignKey="true" />
+      <Association Name="Pole_PoleCandidature" Member="Pole" ThisKey="Poleid" OtherKey="id" Type="Pole" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Responsable" Member="Responsable">
+    <Type Name="Responsable">
+      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nom" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Prenom" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AdresseEmail" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Login" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="Poleid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Association Name="Pole_Responsable" Member="Pole" ThisKey="Poleid" OtherKey="id" Type="Pole" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SouhaitScolaire" Member="SouhaitScolaire">
+    <Type Name="SouhaitScolaire">
+      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Etablissement" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Classe" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="InformationScolaireid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Association Name="SouhaitScolaire_Langue" Member="Langue" ThisKey="id" OtherKey="SouhaitScolaireid" Type="Langue" />
+      <Association Name="SouhaitScolaire_Options" Member="Options" ThisKey="id" OtherKey="SouhaitScolaireid" Type="Options" />
+      <Association Name="InformationScolaire_SouhaitScolaire" Member="InformationScolaire" ThisKey="InformationScolaireid" OtherKey="id" Type="InformationScolaire" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SuperAdmin" Member="SuperAdmin">
+    <Type Name="SuperAdmin">
+      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Login" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="[Open]" Member="Open" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pole" Member="Pole">
+    <Type Name="Pole">
+      <Column Name="id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nom" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Association Name="Pole_PoleCandidature" Member="PoleCandidature" ThisKey="id" OtherKey="Poleid" Type="PoleCandidature" />
+      <Association Name="Pole_Responsable" Member="Responsable" ThisKey="id" OtherKey="Poleid" Type="Responsable" />
     </Type>
   </Table>
 </Database>
