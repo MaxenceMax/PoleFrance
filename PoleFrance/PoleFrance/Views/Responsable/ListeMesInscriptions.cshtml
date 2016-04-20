@@ -39,7 +39,24 @@
             @{
                 foreach (var cand in Model.ListeDesPoles)
                 {
-                    <tr>
+                    var couleur="";
+                    if (cand.Candidature.Traitement == 0)
+                    {
+                        couleur = "#FFF";
+                    }
+                    else if (cand.Candidature.Traitement == 1)
+                    {
+                        couleur = "#00B649";
+                    }
+                    else if (cand.Candidature.Traitement == 2)
+                    {
+                        couleur = "#BDDC33";
+                    }
+                    else
+                    {
+                        couleur = "#BD0000";
+                    }
+                    <tr style="background-color:@couleur">
                         <td>@cand.Candidature.Nom</td>
                         <td>@cand.Candidature.Prenom</td>
                         <td>@cand.Candidature.Sexe</td>
@@ -48,13 +65,13 @@
                         <td>@cand.Candidature.AdresseEmail</td>
                         <td>@cand.Candidature.Telephone</td>
                         <td>@cand.Candidature.TelephoneParents</td>
-                        
+
                         <td style="text-align:center;">
                             <a href='@Url.Action("AffichageCandidature", "Responsable",  new {id=@cand.Candidatureid})'>
                                 <img style="width:20px; height:20px; " src='@Url.Content("~/Content/Images/Admin/loupe.png")' />
                             </a>
                         </td>
-                        
+
                     </tr>
                 }
             }

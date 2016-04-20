@@ -183,8 +183,12 @@
 
                 <span style="margin-right:10px;">En attente de statut</span>@Html.RadioButtonFor(model => model.Traitement, 0) 
                 &nbsp;<span style="margin-right:10px;">Pré-selectionner</span>@Html.RadioButtonFor(model => model.Traitement, 1)
-                &nbsp;<span style="margin-right:10px;margin-left:10px;">Rediriger</span>@Html.RadioButtonFor(model => model.Traitement, 2)
-                &nbsp;<span style="margin-right:10px;margin-left:10px;">Ecarter</span>@Html.RadioButtonFor(model => model.Traitement, 3)
+                @{if ((bool)!Model.PoleCandidature.Candidature.Redirection)
+                    { 
+                         <span style="margin-right:10px;margin-left:10px;">Rediriger</span>@Html.RadioButtonFor(model => model.Traitement, 2)
+                    }
+                 }
+                    &nbsp;<span style="margin-right:10px;margin-left:10px;">Ecarter</span>@Html.RadioButtonFor(model => model.Traitement, 3)
             </div>
         </div>
         <div class="form-content" style="margin-top:30px;">
@@ -193,7 +197,7 @@
                 <div class="ease"></div>
             </div>
             <div class="submit" style="margin-left:10px;">
-                <input type="submit" onclick="window.location='#closed'" value="Valider et envoyer votre candidature" id="button-blue" />
+                <input type="submit" onclick="window.location='#closed'" value="Appliquer le statut" id="button-blue" />
                 <div class="ease"></div>
             </div>
         </div>
