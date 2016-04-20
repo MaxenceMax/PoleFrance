@@ -35,15 +35,33 @@
                 <th>Age</th>
                 <th>Poids</th>
                 <th>Pôle demandé</th>
-                <!-- <th>En voir plus</th> -->
+                <th>En voir plus</th>
 
             </tr>
 
             @{
                 foreach (var cand in Model.ListeDesPoles)
                 {
-                    <tr>
-                        
+                    var couleur = "";
+                    var couleurText = "#FFF";
+                    if (cand.Candidature.Traitement == 0)
+                    {
+                        couleur = "#FFF";
+                        couleurText = "#333";
+                    }
+                    else if (cand.Candidature.Traitement == 1)
+                    {
+                        couleur = "#00B649";
+                    }
+                    else if (cand.Candidature.Traitement == 2)
+                    {
+                        couleur = "#BDDC33";
+                    }
+                    else
+                    {
+                        couleur = "#BD0000";
+                    }
+                    <tr style="background-color:@couleur;color:@couleurText">
                         <td>@cand.Candidature.Nom</td>
                         <td>@cand.Candidature.Prenom</td>
                         <td>@cand.Candidature.Sexe</td>
@@ -51,11 +69,11 @@
                         <td>@cand.Candidature.CategoriePoidsActuelle</td>
                         <td>@cand.Pole.Nom</td>
 
-                      <!--<td style="text-align:center;">
-                            <a href='@Url.Action("AffichageCandidature", "Responsable",  new {id=@cand.Candidatureid})'>
-                                <img style="width:20px; height:20px; " src='@Url.Content("~/Content/Images/Admin/resp.png")' />
-                            </a>
-                        </td> -->  
+                        <td style="text-align:center;">
+                              <a href='@Url.Action("AffichageCandidature", "Responsable",  new {id=@cand.Candidatureid})'>
+                                  <img style="width:20px; height:20px; " src='@Url.Content("~/Content/Images/Admin/loupe.png")' />
+                              </a>
+                        </td>
 
                     </tr>
                 }

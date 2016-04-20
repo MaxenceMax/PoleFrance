@@ -166,7 +166,11 @@
             </div>
         </div>
     </div>
-@using (Html.BeginForm("AffichageCandidature", "Responsable"))
+
+    @{ 
+        if(@ViewBag.idPoleResp == Model.PoleCandidature.Poleid)
+        { 
+using (Html.BeginForm("AffichageCandidature", "Responsable"))
 {
     @Html.HiddenFor(model => model.polecandidatureId, new { Value = Model.polecandidatureId })
     <div id="form-div-big" style="text-align:left">
@@ -203,3 +207,5 @@
         </div>
     </div>
 }
+                    }
+    }

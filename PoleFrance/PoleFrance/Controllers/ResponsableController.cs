@@ -114,7 +114,19 @@ namespace PoleFrance.Controllers
 
             af.polecandidatureId = poleCandidat.First().id;
             af.PoleCandidature = poleCandidat.First();
+
+            ViewBag.idPoleResp = getIdPoleResp(bd);
             return View(af);
+        }
+
+        private decimal getIdPoleResp(PolesDataContext bd)
+        {
+            var claimIdentity = User.Identity as ClaimsIdentity;
+            var nomResponsable = claimIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var resp = from i in bd.Responsable
+                       where i.Login == nomResponsable
+                       select i;
+            return resp.First().Poleid; 
         }
 
         [HttpPost]
@@ -128,6 +140,7 @@ namespace PoleFrance.Controllers
             var poleCandidat = from i in bd.PoleCandidature
                                where i.id == model.polecandidatureId
                                select i;
+            ViewBag.idPoleResp = getIdPoleResp(bd);
             poleCandidat.First().Candidature.Traitement = model.Traitement;
             bd.SubmitChanges();
             model.polecandidatureId = poleCandidat.First().id;

@@ -39,10 +39,12 @@
             @{
                 foreach (var cand in Model.ListeDesPoles)
                 {
-                    var couleur="";
+                    var couleur = "";
+                    var couleurText = "#FFF";
                     if (cand.Candidature.Traitement == 0)
                     {
                         couleur = "#FFF";
+                        couleurText = "#333";
                     }
                     else if (cand.Candidature.Traitement == 1)
                     {
@@ -56,7 +58,7 @@
                     {
                         couleur = "#BD0000";
                     }
-                    <tr style="background-color:@couleur">
+                    <tr style="background-color:@couleur; color:@couleurText">
                         <td>@cand.Candidature.Nom</td>
                         <td>@cand.Candidature.Prenom</td>
                         <td>@cand.Candidature.Sexe</td>
