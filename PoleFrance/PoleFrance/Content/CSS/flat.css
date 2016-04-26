@@ -243,6 +243,15 @@ input:focus, textarea:focus {
     width:100%;
 }
 
+@media only screen and (max-width: 980px) {
+    .admin-block-conteneur
+    {
+        width:100%;
+        display:block;
+    }
+}
+
+
 @media only screen and (max-width: 580px) {
 	#form-div{
 		left: 3%;
@@ -250,12 +259,6 @@ input:focus, textarea:focus {
 		padding-left: 3%;
 		padding-right: 3%;
 	}
-
-    .admin-block-conteneur
-    {
-        width:100%;
-        display:block;
-    }
 
     #form-div-big{
 		left: 3%;

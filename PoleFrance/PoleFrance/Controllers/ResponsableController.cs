@@ -126,6 +126,8 @@ namespace PoleFrance.Controllers
             var resp = from i in bd.Responsable
                        where i.Login == nomResponsable
                        select i;
+            if (resp.Count() == 0)
+                return 12;
             return resp.First().Poleid; 
         }
 

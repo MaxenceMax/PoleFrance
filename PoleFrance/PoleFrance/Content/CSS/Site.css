@@ -293,6 +293,7 @@ select-custom:focus, select:active {
     background-color:white;
     padding:20px;
     margin:10px;
+    margin-bottom:30px;
     width:300px;
     -moz-border-radius: 1px;
     -webkit-border-radius: 3px;
