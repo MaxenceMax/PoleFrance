@@ -182,12 +182,12 @@
                     Commentaire Inscription :
                     <div class="white-separator"></div>
                 </div>
+                @Html.EditorFor(model => model.PoleCandidature.Candidature.CommentaireLigue, new { htmlAttributes = new { @class = "validate[required,length[6,300]] feedback-input", @id = "comment", @placeholder = "comment" } });
 
                 <div class="form-content" style="margin-top:30px;">
                     <div class="submit" style="width:150px;">
                         <a href='@Url.Action("ListeInscriptions", "Ligue")' id="button-red">Retour</a>
                         <div class="ease"></div>
-                        @Html.EditorFor(model => model.PoleCandidature.Candidature.CommentaireLigue, new { htmlAttributes = new { @class="validate[required,length[6,300]] feedback-input",@id= "comment", @placeholder = "comment" } });
                     </div>
                     <div class="submit" style="margin-left:10px;">
                         <input type="submit" value="Ajouter commentaire" id="button-blue" />
