@@ -160,19 +160,19 @@ namespace PoleFrance.Controllers
 
                                 //Add new line.
                                 
-                                csv += "\r\n";
+                                //csv += "\r\n";
                                 //csv += "; ; ; mamanatroispetitscochons";
-                                var query =
-                                    from v in bd.VuesInformationSportive
-                                    where v.Candidatureid == cand
-                                    select v;
+                                //var query =
+                                //    from v in bd.VuesInformationSportive
+                                //    where v.Candidatureid == cand
+                                //    select v;
 
-                                foreach (VuesInformationSportive q in query)
-                                {
-                                    csv += "; ; ;";
-                                    csv += q.AnneeSportive + ";" + q.CategorieAge + ";" + q.Competition;
-                                    csv += "\r\n";
-                                }
+                                //foreach (VuesInformationSportive q in query)
+                                //{
+                                //    csv += "; ; ;";
+                                //    csv += q.AnneeSportive + ";" + q.CategorieAge + ";" + q.Competition;
+                                //    csv += "\r\n";
+                                //}
 
                                 csv += "\r\n";
                             }
