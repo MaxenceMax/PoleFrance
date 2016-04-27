@@ -179,6 +179,14 @@ namespace PoleFrance.Models
 				return this.GetTable<ResponsableLigue>();
 			}
 		}
+		
+		public System.Data.Linq.Table<VuesInformationSportive> VuesInformationSportive
+		{
+			get
+			{
+				return this.GetTable<VuesInformationSportive>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InformationScolaire")]
@@ -2827,6 +2835,645 @@ namespace PoleFrance.Models
 				if ((this._idLigue != value))
 				{
 					this._idLigue = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VuesInformationSportive")]
+	public partial class VuesInformationSportive
+	{
+		
+		private decimal _id;
+		
+		private System.Nullable<decimal> _Annee;
+		
+		private string _NumLicencie;
+		
+		private System.Nullable<bool> _Redirection;
+		
+		private System.Nullable<bool> _Internat;
+		
+		private System.Nullable<bool> _AutorisationParent;
+		
+		private string _AdresseEmail;
+		
+		private System.Nullable<decimal> _InformationScolaireid;
+		
+		private string _Poids;
+		
+		private string _Taille;
+		
+		private string _PoleActuel;
+		
+		private string _Sexe;
+		
+		private string _Ligue;
+		
+		private string _CategorieAgeActuelle;
+		
+		private string _DateDemarche;
+		
+		private string _Nom;
+		
+		private string _Prenom;
+		
+		private string _Ville;
+		
+		private string _CodePostal;
+		
+		private string _Rue;
+		
+		private string _Telephone;
+		
+		private string _DateNaissance;
+		
+		private string _CategoriePoidsActuelle;
+		
+		private string _TelephoneParents;
+		
+		private string _AdresseEmailParent;
+		
+		private System.Nullable<decimal> _Traitement;
+		
+		private System.Nullable<decimal> _IdLigue;
+		
+		private string _CommentaireLigue;
+		
+		private string _Competition;
+		
+		private string _CategorieAge;
+		
+		private string _CategoriePoids;
+		
+		private string _Resultat;
+		
+		private decimal _Candidatureid;
+		
+		private string _AnneeSportive;
+		
+		private decimal _Poleid;
+		
+		public VuesInformationSportive()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Decimal(18,0) NOT NULL")]
+		public decimal id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this._id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Annee", DbType="Decimal(4,0)")]
+		public System.Nullable<decimal> Annee
+		{
+			get
+			{
+				return this._Annee;
+			}
+			set
+			{
+				if ((this._Annee != value))
+				{
+					this._Annee = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NumLicencie", DbType="VarChar(20)")]
+		public string NumLicencie
+		{
+			get
+			{
+				return this._NumLicencie;
+			}
+			set
+			{
+				if ((this._NumLicencie != value))
+				{
+					this._NumLicencie = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Redirection", DbType="Bit")]
+		public System.Nullable<bool> Redirection
+		{
+			get
+			{
+				return this._Redirection;
+			}
+			set
+			{
+				if ((this._Redirection != value))
+				{
+					this._Redirection = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Internat", DbType="Bit")]
+		public System.Nullable<bool> Internat
+		{
+			get
+			{
+				return this._Internat;
+			}
+			set
+			{
+				if ((this._Internat != value))
+				{
+					this._Internat = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AutorisationParent", DbType="Bit")]
+		public System.Nullable<bool> AutorisationParent
+		{
+			get
+			{
+				return this._AutorisationParent;
+			}
+			set
+			{
+				if ((this._AutorisationParent != value))
+				{
+					this._AutorisationParent = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdresseEmail", DbType="VarChar(100)")]
+		public string AdresseEmail
+		{
+			get
+			{
+				return this._AdresseEmail;
+			}
+			set
+			{
+				if ((this._AdresseEmail != value))
+				{
+					this._AdresseEmail = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InformationScolaireid", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> InformationScolaireid
+		{
+			get
+			{
+				return this._InformationScolaireid;
+			}
+			set
+			{
+				if ((this._InformationScolaireid != value))
+				{
+					this._InformationScolaireid = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Poids", DbType="VarChar(10)")]
+		public string Poids
+		{
+			get
+			{
+				return this._Poids;
+			}
+			set
+			{
+				if ((this._Poids != value))
+				{
+					this._Poids = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Taille", DbType="VarChar(10)")]
+		public string Taille
+		{
+			get
+			{
+				return this._Taille;
+			}
+			set
+			{
+				if ((this._Taille != value))
+				{
+					this._Taille = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PoleActuel", DbType="VarChar(200)")]
+		public string PoleActuel
+		{
+			get
+			{
+				return this._PoleActuel;
+			}
+			set
+			{
+				if ((this._PoleActuel != value))
+				{
+					this._PoleActuel = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sexe", DbType="VarChar(10)")]
+		public string Sexe
+		{
+			get
+			{
+				return this._Sexe;
+			}
+			set
+			{
+				if ((this._Sexe != value))
+				{
+					this._Sexe = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ligue", DbType="VarChar(200)")]
+		public string Ligue
+		{
+			get
+			{
+				return this._Ligue;
+			}
+			set
+			{
+				if ((this._Ligue != value))
+				{
+					this._Ligue = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategorieAgeActuelle", DbType="VarChar(20)")]
+		public string CategorieAgeActuelle
+		{
+			get
+			{
+				return this._CategorieAgeActuelle;
+			}
+			set
+			{
+				if ((this._CategorieAgeActuelle != value))
+				{
+					this._CategorieAgeActuelle = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateDemarche", DbType="VarChar(20)")]
+		public string DateDemarche
+		{
+			get
+			{
+				return this._DateDemarche;
+			}
+			set
+			{
+				if ((this._DateDemarche != value))
+				{
+					this._DateDemarche = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nom", DbType="VarChar(50)")]
+		public string Nom
+		{
+			get
+			{
+				return this._Nom;
+			}
+			set
+			{
+				if ((this._Nom != value))
+				{
+					this._Nom = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prenom", DbType="VarChar(50)")]
+		public string Prenom
+		{
+			get
+			{
+				return this._Prenom;
+			}
+			set
+			{
+				if ((this._Prenom != value))
+				{
+					this._Prenom = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ville", DbType="VarChar(100)")]
+		public string Ville
+		{
+			get
+			{
+				return this._Ville;
+			}
+			set
+			{
+				if ((this._Ville != value))
+				{
+					this._Ville = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CodePostal", DbType="VarChar(10)")]
+		public string CodePostal
+		{
+			get
+			{
+				return this._CodePostal;
+			}
+			set
+			{
+				if ((this._CodePostal != value))
+				{
+					this._CodePostal = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rue", DbType="VarChar(150)")]
+		public string Rue
+		{
+			get
+			{
+				return this._Rue;
+			}
+			set
+			{
+				if ((this._Rue != value))
+				{
+					this._Rue = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Telephone", DbType="VarChar(10)")]
+		public string Telephone
+		{
+			get
+			{
+				return this._Telephone;
+			}
+			set
+			{
+				if ((this._Telephone != value))
+				{
+					this._Telephone = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateNaissance", DbType="VarChar(10)")]
+		public string DateNaissance
+		{
+			get
+			{
+				return this._DateNaissance;
+			}
+			set
+			{
+				if ((this._DateNaissance != value))
+				{
+					this._DateNaissance = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoriePoidsActuelle", DbType="VarChar(50)")]
+		public string CategoriePoidsActuelle
+		{
+			get
+			{
+				return this._CategoriePoidsActuelle;
+			}
+			set
+			{
+				if ((this._CategoriePoidsActuelle != value))
+				{
+					this._CategoriePoidsActuelle = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TelephoneParents", DbType="VarChar(50)")]
+		public string TelephoneParents
+		{
+			get
+			{
+				return this._TelephoneParents;
+			}
+			set
+			{
+				if ((this._TelephoneParents != value))
+				{
+					this._TelephoneParents = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdresseEmailParent", DbType="VarChar(100)")]
+		public string AdresseEmailParent
+		{
+			get
+			{
+				return this._AdresseEmailParent;
+			}
+			set
+			{
+				if ((this._AdresseEmailParent != value))
+				{
+					this._AdresseEmailParent = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Traitement", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> Traitement
+		{
+			get
+			{
+				return this._Traitement;
+			}
+			set
+			{
+				if ((this._Traitement != value))
+				{
+					this._Traitement = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdLigue", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> IdLigue
+		{
+			get
+			{
+				return this._IdLigue;
+			}
+			set
+			{
+				if ((this._IdLigue != value))
+				{
+					this._IdLigue = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CommentaireLigue", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string CommentaireLigue
+		{
+			get
+			{
+				return this._CommentaireLigue;
+			}
+			set
+			{
+				if ((this._CommentaireLigue != value))
+				{
+					this._CommentaireLigue = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Competition", DbType="VarChar(150)")]
+		public string Competition
+		{
+			get
+			{
+				return this._Competition;
+			}
+			set
+			{
+				if ((this._Competition != value))
+				{
+					this._Competition = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategorieAge", DbType="VarChar(100)")]
+		public string CategorieAge
+		{
+			get
+			{
+				return this._CategorieAge;
+			}
+			set
+			{
+				if ((this._CategorieAge != value))
+				{
+					this._CategorieAge = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoriePoids", DbType="VarChar(30)")]
+		public string CategoriePoids
+		{
+			get
+			{
+				return this._CategoriePoids;
+			}
+			set
+			{
+				if ((this._CategoriePoids != value))
+				{
+					this._CategoriePoids = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Resultat", DbType="VarChar(100)")]
+		public string Resultat
+		{
+			get
+			{
+				return this._Resultat;
+			}
+			set
+			{
+				if ((this._Resultat != value))
+				{
+					this._Resultat = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Candidatureid", DbType="Decimal(18,0) NOT NULL")]
+		public decimal Candidatureid
+		{
+			get
+			{
+				return this._Candidatureid;
+			}
+			set
+			{
+				if ((this._Candidatureid != value))
+				{
+					this._Candidatureid = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AnneeSportive", DbType="VarChar(50)")]
+		public string AnneeSportive
+		{
+			get
+			{
+				return this._AnneeSportive;
+			}
+			set
+			{
+				if ((this._AnneeSportive != value))
+				{
+					this._AnneeSportive = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Poleid", DbType="Decimal(18,0) NOT NULL")]
+		public decimal Poleid
+		{
+			get
+			{
+				return this._Poleid;
+			}
+			set
+			{
+				if ((this._Poleid != value))
+				{
+					this._Poleid = value;
 				}
 			}
 		}

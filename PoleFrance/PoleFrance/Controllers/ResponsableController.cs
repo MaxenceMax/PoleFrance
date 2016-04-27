@@ -2,6 +2,9 @@
 using PoleFrance.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -73,6 +76,8 @@ namespace PoleFrance.Controllers
 
 
 
+
+
         public ActionResult ListeToutesInscriptions()
         {
 
@@ -96,6 +101,101 @@ namespace PoleFrance.Controllers
 
         }
 
+        public ActionResult ExtractionInscriptions()
+        {
+
+            string constr = ConfigurationManager.ConnectionStrings["PolesConnectionString1"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+
+                PolesDataContext bd = new PolesDataContext();
+                decimal poleid = 0;
+                var claimIdentity = User.Identity as ClaimsIdentity;
+                if (claimIdentity != null)
+                {
+                    var nomResponsable = claimIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+                    poleid = (from i in bd.Responsable
+                               where i.Login == nomResponsable
+                               select i.Poleid).First();
+
+                    
+
+                }
+
+
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM VuesInformationsGlobales where Poleid like '" + poleid + "'"))
+                {
+                    using (SqlDataAdapter sda = new SqlDataAdapter())
+                    {
+                        cmd.Connection = con;
+                        sda.SelectCommand = cmd;
+                        using (DataTable dt = new DataTable())
+                        {
+                            sda.Fill(dt);
+
+                            //Build the CSV file data as a Comma separated string.
+                            string csv = string.Empty;
+                            decimal cand = 0;
+                            foreach (DataColumn column in dt.Columns)
+                            {
+                                //Add the Header row for CSV file.
+                                csv += column.ColumnName + ';';
+                            }
+
+                            //Add new line.
+                            csv += "\r\n";
+
+                            foreach (DataRow row in dt.Rows)
+                            {
+                                foreach (DataColumn column in dt.Columns)
+                                {
+                                    //Add the Data rows.
+                                    csv += row[column.ColumnName].ToString().Replace(";", ";") + ';';
+                                    if (column.ColumnName=="id")
+                                    {
+                                        cand = (decimal)row[column.ColumnName];
+                                    }
+                                }
+
+                                //Add new line.
+                                
+                                csv += "\r\n";
+                                //csv += "; ; ; mamanatroispetitscochons";
+                                var query =
+                                    from v in bd.VuesInformationSportive
+                                    where v.Candidatureid == cand
+                                    select v;
+
+                                foreach (VuesInformationSportive q in query)
+                                {
+                                    csv += "; ; ;";
+                                    csv += q.AnneeSportive + ";" + q.CategorieAge + ";" + q.Competition;
+                                    csv += "\r\n";
+                                }
+
+                                csv += "\r\n";
+                            }
+
+                            //Download the CSV file.
+                            Response.Clear();
+                            Response.Buffer = true;
+                            Response.AddHeader("content-disposition", "attachment;filename=ListeInscriptions.csv");
+                            Response.ContentEncoding = Encoding.UTF8;
+                            Response.Charset = "UTF-8";
+                            Response.ContentType = "application/text";
+                            Response.Output.Write(csv);
+                            Response.Flush();
+                            Response.End();
+                        }
+                    }
+                }
+            }
+
+
+
+            return RedirectToAction("ResponsableHome", "Responsable");
+        }
 
 
         public ActionResult AffichageCandidature(decimal id)
