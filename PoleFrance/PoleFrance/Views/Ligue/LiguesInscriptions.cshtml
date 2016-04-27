@@ -1,0 +1,94 @@
+﻿@model PoleFrance.ViewModels.ListeCandidatureLigueViewModel
+@{
+    ViewBag.Title = "LiguesInscriptions";
+}
+
+<div class="contenu">
+
+    <div class="start">
+        <div class="start-total">
+            <div class="start-intermediaire">
+                <a href="http://www.ffjudo.com/" id="logo" title="retour Accueil">
+                    <img src="~/Content/Images/logo.png" alt="Fédération Française de Judo">
+                </a>
+                <div class="start-content">
+                    <h1>Liste des Candidatures </h1>
+                    <span>Vous pouvez apercevoir toutes les demandes de candidatures pour la ligue :<br />
+                    @ViewBag.NomLigue </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="etape1">
+        <div class="arrow-down-white"></div>
+
+    </div>
+    <div class="arrow-down-blue"></div>
+
+    <div id="form-div-big">
+
+        <table class="tableau">
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Sexe</th>
+                <th>Age</th>
+                <th>Poids</th>
+                <th>Email</th>
+                <th>Tel</th>
+                <th>Tel Parents</th>
+                <th>En voir plus</th>
+
+            </tr>
+
+            @{
+                foreach (var cand in Model.ListeDesCandidats)
+                {
+                    var couleur = "";
+                    var couleurText = "#FFF";
+                    if (cand.Traitement == 0)
+                    {
+                        couleur = "#FFF";
+                        couleurText = "#333";
+                    }
+                    else if (cand.Traitement == 1)
+                    {
+                        couleur = "#00B649";
+                    }
+                    else if (cand.Traitement == 2)
+                    {
+                        couleur = "#BDDC33";
+                    }
+                    else
+                    {
+                        couleur = "#BD0000";
+                    }
+                    <tr style="background-color:@couleur; color:@couleurText">
+                        <td>@cand.Nom</td>
+                        <td>@cand.Prenom</td>
+                        <td>@cand.Sexe</td>
+                        <td>@cand.CategorieAgeActuelle</td>
+                        <td>@cand.CategoriePoidsActuelle</td>
+                        <td>@cand.AdresseEmail</td>
+                        <td>@cand.Telephone</td>
+                        <td>@cand.TelephoneParents</td>
+
+                        <td style="text-align:center;">
+                            <a href='@Url.Action("AffichageCandidature", "Responsable",  new {id=@cand.id})'>
+                                <img style="width:20px; height:20px; " src='@Url.Content("~/Content/Images/Admin/loupe.png")' />
+                            </a>
+                        </td>
+
+                    </tr>
+                }
+            }
+        </table>
+        <div class="form-group-align">
+            <div class="submit" id="form-moitie" style="margin-left:2.5px; width: 150px; margin-top: 20px;">
+                <a href='@Url.Action("ResponsableHome", "Responsable")' id="button-red">Retour</a>
+                <div class="ease"></div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -231,8 +231,7 @@ namespace PoleFrance.Controllers
             return resp.First().Poleid; 
         }
 
-        [HttpPost]
-        [AllowAnonymous]
+        [HttpPost]        
         [HandleError]
         public ActionResult AffichageCandidature(AffichageCandidature model)
         {

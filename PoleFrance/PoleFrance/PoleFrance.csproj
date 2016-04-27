@@ -223,6 +223,7 @@
       <DependentUpon>Poles.dbml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AffichageCandidature.cs" />
+    <Compile Include="ViewModels\ListeCandidatureLigueViewModel.cs" />
     <Compile Include="ViewModels\ListeCandidatureViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -254,6 +255,8 @@
     <Content Include="Views\Responsable\ListeToutesInscriptions.cshtml" />
     <Content Include="Views\Responsable\AffichageCandidature.cshtml" />
     <Content Include="Views\Ligue\LigueHome.cshtml" />
+    <Content Include="Views\Ligue\LiguesInscriptions.cshtml" />
+    <Content Include="Views\Ligue\DetailCandidat.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
