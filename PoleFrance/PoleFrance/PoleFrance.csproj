@@ -205,6 +205,7 @@
     <Compile Include="Controllers\AuthentificationController.cs" />
     <Compile Include="Controllers\GestionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LigueController.cs" />
     <Compile Include="Controllers\ResponsableController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -252,6 +253,7 @@
     <Content Include="Views\Responsable\ListeMesInscriptions.cshtml" />
     <Content Include="Views\Responsable\ListeToutesInscriptions.cshtml" />
     <Content Include="Views\Responsable\AffichageCandidature.cshtml" />
+    <Content Include="Views\Ligue\LigueHome.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

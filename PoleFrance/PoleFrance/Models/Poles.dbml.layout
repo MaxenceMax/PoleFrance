@@ -2,10 +2,10 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 13.5, 8.5" name="Poles">
   <DataContextMoniker Name="/PolesDataContext" />
   <nestedChildShapes>
-    <classShape Id="a2667fe3-b488-47a8-b38b-15b7eb70a94f" absoluteBounds="8.75, 2.75, 2, 1.7708968098958331">
+    <classShape Id="a2667fe3-b488-47a8-b38b-15b7eb70a94f" absoluteBounds="8.875, 2.875, 2, 1.7708968098958331">
       <DataClassMoniker Name="/PolesDataContext/InformationScolaire" />
       <nestedChildShapes>
-        <elementListCompartment Id="fd28284a-9a78-4019-924e-4395d97833bc" absoluteBounds="8.765, 3.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="fd28284a-9a78-4019-924e-4395d97833bc" absoluteBounds="8.89, 3.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="c78e3659-5dbb-4819-9d9e-b6bacdd4baf1" absoluteBounds="8.875, 0.5, 2, 2.1554996744791666">
@@ -58,7 +58,7 @@
         <classShapeMoniker Id="0bd23eb5-adbc-4fc1-94b8-25edcb23878d" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(10.09375 : 4.52089680989583); (10.09375 : 5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(9.875 : 4.64589680989583); (9.875 : 5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PolesDataContext/InformationScolaire/InformationScolaire_SouhaitScolaire" />
       <nodes>
         <classShapeMoniker Id="a2667fe3-b488-47a8-b38b-15b7eb70a94f" />
@@ -111,7 +111,7 @@
         <classShapeMoniker Id="a8369682-1f2c-4857-bb0d-8ca2e310ec22" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.75 : 3.63544840494792); (8.375 : 3.63544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.875 : 3.76044840494792); (8.375 : 3.76044840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PolesDataContext/InformationScolaire/InformationScolaire_Candidature" />
       <nodes>
         <classShapeMoniker Id="a2667fe3-b488-47a8-b38b-15b7eb70a94f" />
