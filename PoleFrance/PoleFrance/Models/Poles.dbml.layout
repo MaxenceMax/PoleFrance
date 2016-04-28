@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 13.5, 14.875" name="Poles">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 13.5, 15.25" name="Poles">
   <DataContextMoniker Name="/PolesDataContext" />
   <nestedChildShapes>
     <classShape Id="a2667fe3-b488-47a8-b38b-15b7eb70a94f" absoluteBounds="8.875, 2.875, 2, 1.7708968098958331">
@@ -128,6 +128,12 @@
       <DataClassMoniker Name="/PolesDataContext/VuesInformationSportive" />
       <nestedChildShapes>
         <elementListCompartment Id="a6062cf4-6797-4c3b-a3c6-a61b3e2d3703" absoluteBounds="0.63999999999999968, 7.585, 1.9700000000000002, 6.979939778645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="444d12b4-68b1-43e0-a934-d4e0bd124a2f" absoluteBounds="3.125, 7.625, 2, 7.3476383463541657">
+      <DataClassMoniker Name="/PolesDataContext/VuesInformationsGlobales" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aad9e2c6-3130-4c56-a378-a2b041bcab91" absoluteBounds="3.1399999999999997, 8.085, 1.9700000000000002, 6.7876383463541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

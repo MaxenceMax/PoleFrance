@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -103,98 +104,193 @@ namespace PoleFrance.Controllers
 
         public ActionResult ExtractionInscriptions()
         {
+            
+            StringWriter sw = new StringWriter();
+           
+      
+            Response.ClearContent();
+            Response.AddHeader("content-disposition", "attachment;filename=ListeInscriptions.csv");
+            Response.ContentType = "text/csv";
+            Response.Charset = "utf-8";
+            Response.Write("\uFEFF");
 
-            string constr = ConfigurationManager.ConnectionStrings["PolesConnectionString1"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(constr))
+
+            PolesDataContext bd = new PolesDataContext();
+
+            decimal poleid = 0;
+            var claimIdentity = User.Identity as ClaimsIdentity;
+            if (claimIdentity != null)
             {
+                var nomResponsable = claimIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-                PolesDataContext bd = new PolesDataContext();
-                decimal poleid = 0;
-                var claimIdentity = User.Identity as ClaimsIdentity;
-                if (claimIdentity != null)
-                {
-                    var nomResponsable = claimIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-                    poleid = (from i in bd.Responsable
-                               where i.Login == nomResponsable
-                               select i.Poleid).First();
-
-                    
-
-                }
-
-
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM VuesInformationsGlobales where Poleid like '" + poleid + "'"))
-                {
-                    using (SqlDataAdapter sda = new SqlDataAdapter())
-                    {
-                        cmd.Connection = con;
-                        sda.SelectCommand = cmd;
-                        using (DataTable dt = new DataTable())
-                        {
-                            sda.Fill(dt);
-
-                            //Build the CSV file data as a Comma separated string.
-                            string csv = string.Empty;
-                            decimal cand = 0;
-                            foreach (DataColumn column in dt.Columns)
-                            {
-                                //Add the Header row for CSV file.
-                                csv += column.ColumnName + ';';
-                            }
-
-                            //Add new line.
-                            csv += "\r\n";
-
-                            foreach (DataRow row in dt.Rows)
-                            {
-                                foreach (DataColumn column in dt.Columns)
-                                {
-                                    //Add the Data rows.
-                                    csv += row[column.ColumnName].ToString().Replace(";", ";") + ';';
-                                    if (column.ColumnName=="id")
-                                    {
-                                        cand = (decimal)row[column.ColumnName];
-                                    }
-                                }
-
-                                //Add new line.
-                                
-                                //csv += "\r\n";
-                                //csv += "; ; ; mamanatroispetitscochons";
-                                //var query =
-                                //    from v in bd.VuesInformationSportive
-                                //    where v.Candidatureid == cand
-                                //    select v;
-
-                                //foreach (VuesInformationSportive q in query)
-                                //{
-                                //    csv += "; ; ;";
-                                //    csv += q.AnneeSportive + ";" + q.CategorieAge + ";" + q.Competition;
-                                //    csv += "\r\n";
-                                //}
-
-                                csv += "\r\n";
-                            }
-
-                            //Download the CSV file.
-                            Response.Clear();
-                            Response.Buffer = true;
-                            Response.AddHeader("content-disposition", "attachment;filename=ListeInscriptions.csv");
-                            Response.ContentEncoding = Encoding.UTF8;
-                            Response.Charset = "UTF-8";
-                            Response.ContentType = "application/text";
-                            Response.Output.Write(csv);
-                            Response.Flush();
-                            Response.End();
-                        }
-                    }
-                }
+                poleid = (from i in bd.Responsable
+                          where i.Login == nomResponsable
+                          select i.Poleid).First();
             }
 
 
+            var infosglobales = from i in bd.VuesInformationsGlobales
+                                where i.Poleid == poleid
+                                select i;
+            sw.WriteLine("\"NOM\";\"Prénom\";\"Année\";\"Numéro de Licence\";\"Sexe\";\"Pole Actuel\";\"Statut de la demande\";\"Commentaire Ligue\";\"Adresse Mail\";\"Catégorie d'âge\";\"Catégorie de poids\";\"Taille\";\"Poids\";\"Adresse\";\"Code Postal\";\"Ville\";\"Téléphone\";\"Téléphone Parents\";\"Email Parents\";\"Classe Actuelle\";\"Etablissement Actuel\";\"Adresse Etablissement Actuel\";\"Classe Souhaitée\";\"Etablissement Souhaité\"");
+
+            foreach (var info in infosglobales)
+            {
+
+
+                sw.WriteLine(string.Format("\"{0}\";\"{1}\";\"{2}\";\"{3}\";\"{4}\";\"{5}\";\"{6}\";\"{7}\";\"{8}\";\"{9}\";\"{10}\";\"{11}\";\"{12}\";\"{13}\";\"{14}\";\"{15}\";\"{16}\";\"{17}\";\"{18}\";\"{19}\";\"{20}\";\"{21}\";\"{22}\";\"{23}\"",
+
+                info.Nom,
+                info.Prenom,
+                info.Annee,
+                info.NumLicencie,
+                info.Sexe,
+                info.PoleActuel,
+                getTraitement(info.Traitement),
+                info.CommentaireLigue,
+                info.AdresseEmail,
+                info.CategorieAgeActuelle,
+                info.CategoriePoidsActuelle,
+                info.Taille,
+                info.Poids,
+                info.Rue,
+                info.CodePostal,
+                info.Ville,
+                info.Telephone,
+                info.TelephoneParents,
+                info.AdresseEmailParent,
+                info.Classe,
+                info.Etablissement,
+                info.Adresse,
+                info.ClasseSouhait,
+                info.EtablissementSouhait
+
+                ));
+
+                sw.WriteLine();
+                sw.WriteLine("\" \";\"Résultats Sportifs\";\"Compétition\";\"Résultat\";\"Catégorie d'âge\";\"Catégorie de poids\";\"Année\";");
+                var infosSportives = from i in bd.VuesInformationSportive
+                                     where i.Candidatureid == info.id
+                                     select i;
+
+                foreach (var infos in infosSportives)
+                {
+
+
+                    sw.WriteLine(string.Format("\"{0}\";\"{1}\";\"{2}\";\"{3}\";\"{4}\";\"{5}\";\"{6}\"",
+
+                        " ",
+                        " ",
+                        infos.Competition,
+                        infos.Resultat,
+                        infos.CategorieAge,
+                        infos.CategoriePoids,
+                        infos.AnneeSportive
+
+                  ));
+
+                }
+                sw.WriteLine();
+
+            }
+
+            Response.Write(sw.ToString());
+            Response.End();
 
             return RedirectToAction("ResponsableHome", "Responsable");
+        }
+
+
+        public ActionResult ExtractionToutesInscriptions()
+        {
+
+
+            StringWriter sw = new StringWriter();
+
+           
+
+            Response.ClearContent();
+            Response.AddHeader("content-disposition", "attachment;filename=ListeInscriptions.csv");
+            Response.ContentType = "text/csv";
+            Response.Charset = "utf-8";
+            Response.Write("\uFEFF");
+
+
+            PolesDataContext bd = new PolesDataContext();
+
+          
+
+
+            var infosglobales = from i in bd.VuesInformationsGlobales
+                                select i;
+
+            sw.WriteLine("\"NOM\";\"Prénom\";\"Année\";\"Numéro de Licence\";\"Sexe\";\"Pole Actuel\";\"Statut de la demande\";\"Commentaire Ligue\";\"Adresse Mail\";\"Catégorie d'âge\";\"Catégorie de poids\";\"Taille\";\"Poids\";\"Adresse\";\"Code Postal\";\"Ville\";\"Téléphone\";\"Téléphone Parents\";\"Email Parents\";\"Classe Actuelle\";\"Etablissement Actuel\";\"Adresse Etablissement Actuel\";\"Classe Souhaitée\";\"Etablissement Souhaité\"");
+
+            foreach (var info in infosglobales)
+            {
+
+
+                sw.WriteLine(string.Format("\"{0}\";\"{1}\";\"{2}\";\"{3}\";\"{4}\";\"{5}\";\"{6}\";\"{7}\";\"{8}\";\"{9}\";\"{10}\";\"{11}\";\"{12}\";\"{13}\";\"{14}\";\"{15}\";\"{16}\";\"{17}\";\"{18}\";\"{19}\";\"{20}\";\"{21}\";\"{22}\";\"{23}\"",
+
+                info.Nom,
+                info.Prenom,
+                info.Annee,
+                info.NumLicencie,
+                info.Sexe,
+                info.PoleActuel,
+                getTraitement(info.Traitement),
+                info.CommentaireLigue,
+                info.AdresseEmail,
+                info.CategorieAgeActuelle,
+                info.CategoriePoidsActuelle,
+                info.Taille,
+                info.Poids,
+                info.Rue,
+                info.CodePostal,
+                info.Ville,
+                info.Telephone,
+                info.TelephoneParents,
+                info.AdresseEmailParent,
+                info.Classe,
+                info.Etablissement,
+                info.Adresse,
+                info.ClasseSouhait,
+                info.EtablissementSouhait
+
+                ));
+
+                sw.WriteLine();
+                sw.WriteLine("\" \";\"Résultats Sportifs\";\"Compétition\";\"Résultat\";\"Catégorie d'âge\";\"Catégorie de poids\";\"Année\";");
+                var infosSportives = from i in bd.VuesInformationSportive
+                                     where i.Candidatureid == info.id
+                                     select i;
+
+                foreach (var infos in infosSportives)
+                {
+
+
+                    sw.WriteLine(string.Format("\"{0}\";\"{1}\";\"{2}\";\"{3}\";\"{4}\";\"{5}\";\"{6}\"",
+
+                        " ",
+                        " ",
+                        infos.Competition,
+                        infos.Resultat,
+                        infos.CategorieAge,
+                        infos.CategoriePoids,
+                        infos.AnneeSportive
+
+                  ));
+
+                }
+                sw.WriteLine();
+
+            }
+
+            Response.Write(sw.ToString());
+            Response.End();
+
+
+            return RedirectToAction("AdminHome", "Gestion");
         }
 
 
@@ -230,6 +326,35 @@ namespace PoleFrance.Controllers
                 return 12;
             return resp.First().Poleid; 
         }
+
+        private string getTraitement(decimal? trait)
+        {
+
+            string retour = "";
+            if (trait == 0)
+                retour = "En attente de statut";
+            else if (trait == 1)
+                retour = "Préselectionné";
+            else if (trait == 2)
+                retour = "Possible redirection";
+            else if (trait == 3)
+                retour = "Provisoirement écarté";
+
+            return retour;
+        }
+
+        private string getBoolean(bool vrai)
+        {
+            string retour = "";
+            if (vrai == true)
+                retour = "Oui";
+            else if (vrai == false)
+                retour = "Non";
+
+            return retour;
+
+        }
+
 
         [HttpPost]        
         [HandleError]
