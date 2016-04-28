@@ -1,4 +1,5 @@
 ﻿@model PoleFrance.ViewModels.ListeCandidatureViewModel
+@using System.Security.Claims
 
 @{
     ViewBag.Title = "ListeToutesInscriptions";
@@ -70,7 +71,7 @@
                         <td>@cand.Pole.Nom</td>
 
                         <td style="text-align:center;">
-                              <a href='@Url.Action("AffichageCandidature", "Responsable",  new {id=@cand.Candidatureid})'>
+                              <a href='@Url.Action("AffichageCandidature", "Responsable", new { id = @cand.Candidatureid })'>
                                   <img style="width:20px; height:20px; " src='@Url.Content("~/Content/Images/Admin/loupe.png")' />
                               </a>
                         </td>
@@ -79,12 +80,37 @@
                 }
             }
         </table>
-        <div class="form-group-align">
-            <div class="submit" id="form-moitie" style="margin-left:2.5px; width: 150px; margin-top: 20px;">
-                <a href='@Url.Action("ResponsableHome", "Responsable")' id="button-red">Retour</a>
-                <div class="ease"></div>
-            </div>
-        </div>   
+        @{
+            var userRoles = new List<Claim>();
+            if (Request.IsAuthenticated)
+            {
+                var claimIdentity = User.Identity as ClaimsIdentity;
+                if (claimIdentity != null)
+                {
+                    userRoles = claimIdentity.FindAll(ClaimTypes.Role).ToList();
+                }
+            }
+            var role = userRoles.First();
+            if (role.Value == "Responsable")
+            {
+                <div class="form-group-align">
+                    <div class="submit" id="form-moitie" style="margin-left:2.5px; width: 150px; margin-top: 20px;">
+                        <a href='@Url.Action("ResponsableHome", "Responsable")' id="button-red">Retour</a>
+                        <div class="ease"></div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="form-group-align">
+                    <div class="submit" id="form-moitie" style="margin-left:2.5px; width: 150px; margin-top: 20px;">
+                        <a href='@Url.Action("AdminHome", "Gestion")' id="button-red">Retour</a>
+                        <div class="ease"></div>
+                    </div>
+                </div>
+            }
+        }
+          
     </div>
 </div>
 

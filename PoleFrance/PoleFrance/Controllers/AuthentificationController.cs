@@ -8,6 +8,7 @@ using PoleFrance.Models;
 using System.Text;
 using System.Security.Cryptography;
 using System.Collections.Generic;
+using PoleFrance.ViewModels;
 
 namespace PoleFrance.Controllers
 {
@@ -28,26 +29,17 @@ namespace PoleFrance.Controllers
         {
             ViewBag.ReturnUrl = returnUrl;
 
+
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
-            if (!ValidateUser(model.Login, model.Password))
+            StatutConnection statut = ValidateUser(model.Login, model.Password);
+            if (!statut.Connected)
             {
                 ModelState.AddModelError(string.Empty, "Le nom d'utilisateur ou le mot de passe est incorrect.");
                 return View(model);
             }
-
-            // L'authentification est réussie, 
-            // injecter l'identifiant utilisateur dans le cookie d'authentification :
-          /*  var loginClaim = new Claim(ClaimTypes.NameIdentifier, model.Login);
-            var claimsIdentity = new ClaimsIdentity(new[] { loginClaim }, DefaultAuthenticationTypes.ApplicationCookie);
-            var ctx = Request.GetOwinContext();
-            var authenticationManager = ctx.Authentication;
-            authenticationManager.SignIn(claimsIdentity); */
-
-            
-
             // L'authentification est réussie, 
             // injecter les informations utilisateur dans le cookie d'authentification :
             var userClaims = new List<Claim>();
@@ -58,7 +50,11 @@ namespace PoleFrance.Controllers
             {
                 userClaims.AddRange(LoadRolesAdmin(model.Login));
             }
-            else {
+            else if(statut.isLigue){
+                userClaims.AddRange(LoadRolesResponsableLigue(model.Login));
+            }
+            else
+            {
                 userClaims.AddRange(LoadRolesResponsable(model.Login));
             }
             var claimsIdentity = new ClaimsIdentity(userClaims, DefaultAuthenticationTypes.ApplicationCookie);
@@ -71,16 +67,12 @@ namespace PoleFrance.Controllers
             {
                 return RedirectToAction("AdminHome", "Gestion");
             }
+            else if(statut.isLigue){
+                return RedirectToAction("LigueHome", "Ligue");
+            }
             else {
                 return RedirectToAction("ResponsableHome", "Responsable");
             }
-
-            /*
-            // Rediriger vers l'URL d'origine :
-            if (Url.IsLocalUrl(ViewBag.ReturnUrl))
-                return Redirect(ViewBag.ReturnUrl);
-            // Par défaut, rediriger vers la page d'accueil :
-            return RedirectToAction("Inscription", "Home"); */
         }
 
         private IEnumerable<Claim> LoadRolesAdmin(string login)
@@ -97,55 +89,38 @@ namespace PoleFrance.Controllers
             
         }
 
-        private bool ValidateUser(string login, string password)
+        private IEnumerable<Claim> LoadRolesResponsableLigue(string login)
         {
+            yield return new Claim(ClaimTypes.Role, "ResponsableLigue");
+        }
 
-             PolesDataContext bd = new PolesDataContext();
-
-             bool connecte = false;
-
-             if(login == "admin")
+        private StatutConnection ValidateUser(string login, string password)
+        {
+            
+            PolesDataContext bd = new PolesDataContext();
+            StatutConnection statut = new StatutConnection();
+            statut.isLigue = false;
+            statut.Connected = false;
+            if(login == "admin")
             {
-                int numCount = (from i in bd.SuperAdmin
+                statut.Connected = (from i in bd.SuperAdmin
                                 where i.Login == login && i.Password == encrypt(password)
-                                select i).Count();
-
-                if (numCount != 0)
-                {
-                    connecte = true;
-                }
-
+                                select i).Count() != 0 ;
             }
-
              else
             {
-
-                int numCount = (from i in bd.Responsable
-                                where i.Login == login && i.Password == encrypt(password)
-                                select i).Count();
-
-                if (numCount != 0)
-                {
-                    connecte = true;
-                }
-
+                statut.Connected = (from i in bd.Responsable
+                            where i.Login == login && i.Password == encrypt(password)
+                            select i).Count() != 0;
             }
-
-            
-
-
-             return connecte;  
-
-            /*
-           bool connecte = false; 
-
-            if (login == "test" && password == "test")
+             if(!statut.Connected)
             {
-                connecte = true;
-            } 
-           
-            return connecte; */
-            //return login == password;
+                statut.Connected = (from i in bd.ResponsableLigue
+                            where i.Login == login && i.Password == encrypt(password)
+                            select i).Count() != 0;
+                statut.isLigue = true;
+            }
+            return statut;  
         }
 
         [HttpGet]

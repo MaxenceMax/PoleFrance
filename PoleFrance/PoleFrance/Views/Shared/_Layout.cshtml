@@ -50,11 +50,17 @@
                         </ul>
 
                     }
-                    else
+                    else if(role.Value=="Responsable")
                     {
 
                         <ul class="nav navbar-nav">
                             <li>@Html.ActionLink("Gestion", "ResponsableHome", "Responsable")</li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Gestion", "LigueHome", "Ligue")</li>
                         </ul>
                     }
 

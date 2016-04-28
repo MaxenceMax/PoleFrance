@@ -36,6 +36,7 @@
     <div class="arrow-down-blue"></div>
     @using (Html.BeginForm("Inscription2", "Home"))
     {
+        @Html.HiddenFor(model => model.Candidature.IdLigue, new { Value = Model.Candidature.IdLigue })
         <div id="form-div-big">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="titre-form-blanc">
