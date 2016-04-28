@@ -67,7 +67,7 @@
                         <td>@cand.Sexe</td>
                         <td>@cand.CategorieAgeActuelle</td>
                         <td>@cand.CategoriePoidsActuelle</td>
-                        <td>@cand.Nom</td>
+                        <td>@cand.PoleCandidature.First().Pole.Nom</td>
 
                         <td style="text-align:center;">
                             <a href='@Url.Action("DetailCandidat", "Ligue", new { id = @cand.id })'>

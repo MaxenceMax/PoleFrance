@@ -68,7 +68,9 @@ namespace PoleFrance.Controllers
         {
             // get all pôle from database
             PolesDataContext bd = new PolesDataContext();
-            var all = bd.Pole;
+            var all = (from i in bd.Pole
+                       where i.id != 4
+                       select i).ToList();
             return all;
         }
 
