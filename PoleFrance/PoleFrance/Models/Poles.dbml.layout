@@ -1,9 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 13.5, 15.25" name="Poles">
-=======
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 13.25, 14.875" name="Poles">
->>>>>>> origin/master
   <DataContextMoniker Name="/PolesDataContext" />
   <nestedChildShapes>
     <classShape Id="a2667fe3-b488-47a8-b38b-15b7eb70a94f" absoluteBounds="8.875, 2.875, 2, 1.7708968098958331">
