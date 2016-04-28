@@ -215,6 +215,68 @@ namespace PoleFrance.Controllers
             return false;
         }
 
+
+        //public ActionResult MAJBDLIGUE()
+        //{
+
+
+        //    PolesDataContext bd = new PolesDataContext();
+        //    var allcanditature = bd.Candidature;
+
+        //    foreach (var all in allcanditature)
+        //    {
+
+        //        /**
+        //        Create url from licencie
+        //        */
+        //        String url = "http://www.ffjda.org/ws_mobile/webRestGet/service.svc/infoLigueASP/";
+        //        String numLicChange = all.NumLicencie.Replace("*", "@").Replace(" ", "§");
+        //        /**
+        //        Make the request
+        //        */
+        //        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url + numLicChange);
+        //        try
+        //        {
+        //            WebResponse response = request.GetResponse();
+        //            using (Stream responseStream = response.GetResponseStream())
+        //            {
+        //                // Reader to open http response
+        //                StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
+        //                String back = reader.ReadToEnd();
+
+
+        //                var dict = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(back);
+        //                string ligue = (string)dict["infoLigueASPResult"];
+
+        //                if (ligue == "75" || ligue == "77" || ligue == "78" || ligue == "92" || ligue == "93" || ligue == "94" || ligue == "95")
+        //                    ligue = "03";
+
+        //                all.Ligue = ligue;
+        //                all.IdLigue = ligue;
+        //                bd.SubmitChanges();
+
+        //            }
+
+        //        }
+        //        catch (WebException ex)
+        //        {
+        //            WebResponse errorResponse = ex.Response;
+        //            using (Stream responseStream = errorResponse.GetResponseStream())
+        //            {
+        //                StreamReader reader = new StreamReader(responseStream, Encoding.GetEncoding("utf-8"));
+        //                String errorText = reader.ReadToEnd();
+        //                // log errorText
+        //            }
+        //            throw;
+        //        }
+        //    }
+
+
+        //    return RedirectToAction("Inscription", "Home");
+
+        //}
+
+
         /** call web service url and check the licence number*/
         private Boolean IsExistInWebService(Models.Candidature model)
         {
@@ -278,7 +340,7 @@ namespace PoleFrance.Controllers
                     {
                         if((String)item == "75" || (String)item == "77" || (String)item == "78" || (String)item == "92" || (String)item == "93" || (String)item == "94" || (String)item == "95")
                         {
-                            model.IdLigue = "3";
+                            model.IdLigue = "03";
                         }
                         else
                         {

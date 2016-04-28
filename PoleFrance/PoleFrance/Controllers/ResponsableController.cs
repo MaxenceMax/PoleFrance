@@ -106,8 +106,9 @@ namespace PoleFrance.Controllers
         {
             
             StringWriter sw = new StringWriter();
-           
-      
+
+            sw.WriteLine("\"NOM\";\"Prénom\";\"Année\";\"Numéro de Licence\";\"Sexe\";\"Pole Actuel\";\"Statut de la demande\";\"Commentaire Ligue\";\"Adresse Mail\";\"Catégorie d'âge\";\"Catégorie de poids\";\"Taille\";\"Poids\";\"Adresse\";\"Code Postal\";\"Ville\";\"Téléphone\";\"Téléphone Parents\";\"Email Parents\";\"Classe Actuelle\";\"Etablissement Actuel\";\"Adresse Etablissement Actuel\";\"Classe Souhaitée\";\"Etablissement Souhaité\"");
+
             Response.ClearContent();
             Response.AddHeader("content-disposition", "attachment;filename=ListeInscriptions.csv");
             Response.ContentType = "text/csv";
@@ -132,7 +133,9 @@ namespace PoleFrance.Controllers
             var infosglobales = from i in bd.VuesInformationsGlobales
                                 where i.Poleid == poleid
                                 select i;
-            sw.WriteLine("\"NOM\";\"Prénom\";\"Année\";\"Numéro de Licence\";\"Sexe\";\"Pole Actuel\";\"Statut de la demande\";\"Commentaire Ligue\";\"Adresse Mail\";\"Catégorie d'âge\";\"Catégorie de poids\";\"Taille\";\"Poids\";\"Adresse\";\"Code Postal\";\"Ville\";\"Téléphone\";\"Téléphone Parents\";\"Email Parents\";\"Classe Actuelle\";\"Etablissement Actuel\";\"Adresse Etablissement Actuel\";\"Classe Souhaitée\";\"Etablissement Souhaité\"");
+
+
+           
 
             foreach (var info in infosglobales)
             {
