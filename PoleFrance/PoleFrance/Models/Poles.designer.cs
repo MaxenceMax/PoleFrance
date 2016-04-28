@@ -164,6 +164,14 @@ namespace PoleFrance.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<VuesInformationSportive> VuesInformationSportive
+		{
+			get
+			{
+				return this.GetTable<VuesInformationSportive>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Candidature> Candidature
 		{
 			get
@@ -177,14 +185,6 @@ namespace PoleFrance.Models
 			get
 			{
 				return this.GetTable<ResponsableLigue>();
-			}
-		}
-		
-		public System.Data.Linq.Table<VuesInformationSportive> VuesInformationSportive
-		{
-			get
-			{
-				return this.GetTable<VuesInformationSportive>();
 			}
 		}
 		
@@ -1906,948 +1906,6 @@ namespace PoleFrance.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Candidature")]
-	public partial class Candidature : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private decimal _id;
-		
-		private System.Nullable<decimal> _Annee;
-		
-		private string _NumLicencie;
-		
-		private System.Nullable<bool> _Redirection;
-		
-		private System.Nullable<bool> _Internat;
-		
-		private System.Nullable<bool> _AutorisationParent;
-		
-		private string _AdresseEmail;
-		
-		private System.Nullable<decimal> _InformationScolaireid;
-		
-		private string _Poids;
-		
-		private string _Taille;
-		
-		private string _PoleActuel;
-		
-		private string _Sexe;
-		
-		private string _Ligue;
-		
-		private string _CategorieAgeActuelle;
-		
-		private string _DateDemarche;
-		
-		private string _Nom;
-		
-		private string _Prenom;
-		
-		private string _Ville;
-		
-		private string _CodePostal;
-		
-		private string _Rue;
-		
-		private string _Telephone;
-		
-		private string _DateNaissance;
-		
-		private string _CategoriePoidsActuelle;
-		
-		private string _TelephoneParents;
-		
-		private string _AdresseEmailParent;
-		
-		private System.Nullable<decimal> _Traitement;
-		
-		private System.Nullable<decimal> _IdLigue;
-		
-		private string _CommentaireLigue;
-		
-		private EntitySet<InformationSportive> _InformationSportive;
-		
-		private EntitySet<PoleCandidature> _PoleCandidature;
-		
-		private EntityRef<InformationScolaire> _InformationScolaire;
-		
-    #region Définitions de méthodes d'extensibilité
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(decimal value);
-    partial void OnidChanged();
-    partial void OnAnneeChanging(System.Nullable<decimal> value);
-    partial void OnAnneeChanged();
-    partial void OnNumLicencieChanging(string value);
-    partial void OnNumLicencieChanged();
-    partial void OnRedirectionChanging(System.Nullable<bool> value);
-    partial void OnRedirectionChanged();
-    partial void OnInternatChanging(System.Nullable<bool> value);
-    partial void OnInternatChanged();
-    partial void OnAutorisationParentChanging(System.Nullable<bool> value);
-    partial void OnAutorisationParentChanged();
-    partial void OnAdresseEmailChanging(string value);
-    partial void OnAdresseEmailChanged();
-    partial void OnInformationScolaireidChanging(System.Nullable<decimal> value);
-    partial void OnInformationScolaireidChanged();
-    partial void OnPoidsChanging(string value);
-    partial void OnPoidsChanged();
-    partial void OnTailleChanging(string value);
-    partial void OnTailleChanged();
-    partial void OnPoleActuelChanging(string value);
-    partial void OnPoleActuelChanged();
-    partial void OnSexeChanging(string value);
-    partial void OnSexeChanged();
-    partial void OnLigueChanging(string value);
-    partial void OnLigueChanged();
-    partial void OnCategorieAgeActuelleChanging(string value);
-    partial void OnCategorieAgeActuelleChanged();
-    partial void OnDateDemarcheChanging(string value);
-    partial void OnDateDemarcheChanged();
-    partial void OnNomChanging(string value);
-    partial void OnNomChanged();
-    partial void OnPrenomChanging(string value);
-    partial void OnPrenomChanged();
-    partial void OnVilleChanging(string value);
-    partial void OnVilleChanged();
-    partial void OnCodePostalChanging(string value);
-    partial void OnCodePostalChanged();
-    partial void OnRueChanging(string value);
-    partial void OnRueChanged();
-    partial void OnTelephoneChanging(string value);
-    partial void OnTelephoneChanged();
-    partial void OnDateNaissanceChanging(string value);
-    partial void OnDateNaissanceChanged();
-    partial void OnCategoriePoidsActuelleChanging(string value);
-    partial void OnCategoriePoidsActuelleChanged();
-    partial void OnTelephoneParentsChanging(string value);
-    partial void OnTelephoneParentsChanged();
-    partial void OnAdresseEmailParentChanging(string value);
-    partial void OnAdresseEmailParentChanged();
-    partial void OnTraitementChanging(System.Nullable<decimal> value);
-    partial void OnTraitementChanged();
-    partial void OnIdLigueChanging(System.Nullable<decimal> value);
-    partial void OnIdLigueChanged();
-    partial void OnCommentaireLigueChanging(string value);
-    partial void OnCommentaireLigueChanged();
-    #endregion
-		
-		public Candidature()
-		{
-			this._InformationSportive = new EntitySet<InformationSportive>(new Action<InformationSportive>(this.attach_InformationSportive), new Action<InformationSportive>(this.detach_InformationSportive));
-			this._PoleCandidature = new EntitySet<PoleCandidature>(new Action<PoleCandidature>(this.attach_PoleCandidature), new Action<PoleCandidature>(this.detach_PoleCandidature));
-			this._InformationScolaire = default(EntityRef<InformationScolaire>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public decimal id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Annee", DbType="Decimal(4,0)")]
-		public System.Nullable<decimal> Annee
-		{
-			get
-			{
-				return this._Annee;
-			}
-			set
-			{
-				if ((this._Annee != value))
-				{
-					this.OnAnneeChanging(value);
-					this.SendPropertyChanging();
-					this._Annee = value;
-					this.SendPropertyChanged("Annee");
-					this.OnAnneeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NumLicencie", DbType="VarChar(20)")]
-		public string NumLicencie
-		{
-			get
-			{
-				return this._NumLicencie;
-			}
-			set
-			{
-				if ((this._NumLicencie != value))
-				{
-					this.OnNumLicencieChanging(value);
-					this.SendPropertyChanging();
-					this._NumLicencie = value;
-					this.SendPropertyChanged("NumLicencie");
-					this.OnNumLicencieChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Redirection", DbType="Bit")]
-		public System.Nullable<bool> Redirection
-		{
-			get
-			{
-				return this._Redirection;
-			}
-			set
-			{
-				if ((this._Redirection != value))
-				{
-					this.OnRedirectionChanging(value);
-					this.SendPropertyChanging();
-					this._Redirection = value;
-					this.SendPropertyChanged("Redirection");
-					this.OnRedirectionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Internat", DbType="Bit")]
-		public System.Nullable<bool> Internat
-		{
-			get
-			{
-				return this._Internat;
-			}
-			set
-			{
-				if ((this._Internat != value))
-				{
-					this.OnInternatChanging(value);
-					this.SendPropertyChanging();
-					this._Internat = value;
-					this.SendPropertyChanged("Internat");
-					this.OnInternatChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AutorisationParent", DbType="Bit")]
-		public System.Nullable<bool> AutorisationParent
-		{
-			get
-			{
-				return this._AutorisationParent;
-			}
-			set
-			{
-				if ((this._AutorisationParent != value))
-				{
-					this.OnAutorisationParentChanging(value);
-					this.SendPropertyChanging();
-					this._AutorisationParent = value;
-					this.SendPropertyChanged("AutorisationParent");
-					this.OnAutorisationParentChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdresseEmail", DbType="VarChar(100)")]
-		public string AdresseEmail
-		{
-			get
-			{
-				return this._AdresseEmail;
-			}
-			set
-			{
-				if ((this._AdresseEmail != value))
-				{
-					this.OnAdresseEmailChanging(value);
-					this.SendPropertyChanging();
-					this._AdresseEmail = value;
-					this.SendPropertyChanged("AdresseEmail");
-					this.OnAdresseEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InformationScolaireid", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> InformationScolaireid
-		{
-			get
-			{
-				return this._InformationScolaireid;
-			}
-			set
-			{
-				if ((this._InformationScolaireid != value))
-				{
-					if (this._InformationScolaire.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnInformationScolaireidChanging(value);
-					this.SendPropertyChanging();
-					this._InformationScolaireid = value;
-					this.SendPropertyChanged("InformationScolaireid");
-					this.OnInformationScolaireidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Poids", DbType="VarChar(10)")]
-		public string Poids
-		{
-			get
-			{
-				return this._Poids;
-			}
-			set
-			{
-				if ((this._Poids != value))
-				{
-					this.OnPoidsChanging(value);
-					this.SendPropertyChanging();
-					this._Poids = value;
-					this.SendPropertyChanged("Poids");
-					this.OnPoidsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Taille", DbType="VarChar(10)")]
-		public string Taille
-		{
-			get
-			{
-				return this._Taille;
-			}
-			set
-			{
-				if ((this._Taille != value))
-				{
-					this.OnTailleChanging(value);
-					this.SendPropertyChanging();
-					this._Taille = value;
-					this.SendPropertyChanged("Taille");
-					this.OnTailleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PoleActuel", DbType="VarChar(200)")]
-		public string PoleActuel
-		{
-			get
-			{
-				return this._PoleActuel;
-			}
-			set
-			{
-				if ((this._PoleActuel != value))
-				{
-					this.OnPoleActuelChanging(value);
-					this.SendPropertyChanging();
-					this._PoleActuel = value;
-					this.SendPropertyChanged("PoleActuel");
-					this.OnPoleActuelChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sexe", DbType="VarChar(10)")]
-		public string Sexe
-		{
-			get
-			{
-				return this._Sexe;
-			}
-			set
-			{
-				if ((this._Sexe != value))
-				{
-					this.OnSexeChanging(value);
-					this.SendPropertyChanging();
-					this._Sexe = value;
-					this.SendPropertyChanged("Sexe");
-					this.OnSexeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ligue", DbType="VarChar(200)")]
-		public string Ligue
-		{
-			get
-			{
-				return this._Ligue;
-			}
-			set
-			{
-				if ((this._Ligue != value))
-				{
-					this.OnLigueChanging(value);
-					this.SendPropertyChanging();
-					this._Ligue = value;
-					this.SendPropertyChanged("Ligue");
-					this.OnLigueChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategorieAgeActuelle", DbType="VarChar(20)")]
-		public string CategorieAgeActuelle
-		{
-			get
-			{
-				return this._CategorieAgeActuelle;
-			}
-			set
-			{
-				if ((this._CategorieAgeActuelle != value))
-				{
-					this.OnCategorieAgeActuelleChanging(value);
-					this.SendPropertyChanging();
-					this._CategorieAgeActuelle = value;
-					this.SendPropertyChanged("CategorieAgeActuelle");
-					this.OnCategorieAgeActuelleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateDemarche", DbType="VarChar(20)")]
-		public string DateDemarche
-		{
-			get
-			{
-				return this._DateDemarche;
-			}
-			set
-			{
-				if ((this._DateDemarche != value))
-				{
-					this.OnDateDemarcheChanging(value);
-					this.SendPropertyChanging();
-					this._DateDemarche = value;
-					this.SendPropertyChanged("DateDemarche");
-					this.OnDateDemarcheChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nom", DbType="VarChar(50)")]
-		public string Nom
-		{
-			get
-			{
-				return this._Nom;
-			}
-			set
-			{
-				if ((this._Nom != value))
-				{
-					this.OnNomChanging(value);
-					this.SendPropertyChanging();
-					this._Nom = value;
-					this.SendPropertyChanged("Nom");
-					this.OnNomChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prenom", DbType="VarChar(50)")]
-		public string Prenom
-		{
-			get
-			{
-				return this._Prenom;
-			}
-			set
-			{
-				if ((this._Prenom != value))
-				{
-					this.OnPrenomChanging(value);
-					this.SendPropertyChanging();
-					this._Prenom = value;
-					this.SendPropertyChanged("Prenom");
-					this.OnPrenomChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ville", DbType="VarChar(100)")]
-		public string Ville
-		{
-			get
-			{
-				return this._Ville;
-			}
-			set
-			{
-				if ((this._Ville != value))
-				{
-					this.OnVilleChanging(value);
-					this.SendPropertyChanging();
-					this._Ville = value;
-					this.SendPropertyChanged("Ville");
-					this.OnVilleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CodePostal", DbType="VarChar(10)")]
-		public string CodePostal
-		{
-			get
-			{
-				return this._CodePostal;
-			}
-			set
-			{
-				if ((this._CodePostal != value))
-				{
-					this.OnCodePostalChanging(value);
-					this.SendPropertyChanging();
-					this._CodePostal = value;
-					this.SendPropertyChanged("CodePostal");
-					this.OnCodePostalChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rue", DbType="VarChar(150)")]
-		public string Rue
-		{
-			get
-			{
-				return this._Rue;
-			}
-			set
-			{
-				if ((this._Rue != value))
-				{
-					this.OnRueChanging(value);
-					this.SendPropertyChanging();
-					this._Rue = value;
-					this.SendPropertyChanged("Rue");
-					this.OnRueChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Telephone", DbType="VarChar(10)")]
-		public string Telephone
-		{
-			get
-			{
-				return this._Telephone;
-			}
-			set
-			{
-				if ((this._Telephone != value))
-				{
-					this.OnTelephoneChanging(value);
-					this.SendPropertyChanging();
-					this._Telephone = value;
-					this.SendPropertyChanged("Telephone");
-					this.OnTelephoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateNaissance", DbType="VarChar(10)")]
-		public string DateNaissance
-		{
-			get
-			{
-				return this._DateNaissance;
-			}
-			set
-			{
-				if ((this._DateNaissance != value))
-				{
-					this.OnDateNaissanceChanging(value);
-					this.SendPropertyChanging();
-					this._DateNaissance = value;
-					this.SendPropertyChanged("DateNaissance");
-					this.OnDateNaissanceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoriePoidsActuelle", DbType="VarChar(50)")]
-		public string CategoriePoidsActuelle
-		{
-			get
-			{
-				return this._CategoriePoidsActuelle;
-			}
-			set
-			{
-				if ((this._CategoriePoidsActuelle != value))
-				{
-					this.OnCategoriePoidsActuelleChanging(value);
-					this.SendPropertyChanging();
-					this._CategoriePoidsActuelle = value;
-					this.SendPropertyChanged("CategoriePoidsActuelle");
-					this.OnCategoriePoidsActuelleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TelephoneParents", DbType="VarChar(50)")]
-		public string TelephoneParents
-		{
-			get
-			{
-				return this._TelephoneParents;
-			}
-			set
-			{
-				if ((this._TelephoneParents != value))
-				{
-					this.OnTelephoneParentsChanging(value);
-					this.SendPropertyChanging();
-					this._TelephoneParents = value;
-					this.SendPropertyChanged("TelephoneParents");
-					this.OnTelephoneParentsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdresseEmailParent", DbType="VarChar(100)")]
-		public string AdresseEmailParent
-		{
-			get
-			{
-				return this._AdresseEmailParent;
-			}
-			set
-			{
-				if ((this._AdresseEmailParent != value))
-				{
-					this.OnAdresseEmailParentChanging(value);
-					this.SendPropertyChanging();
-					this._AdresseEmailParent = value;
-					this.SendPropertyChanged("AdresseEmailParent");
-					this.OnAdresseEmailParentChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Traitement", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> Traitement
-		{
-			get
-			{
-				return this._Traitement;
-			}
-			set
-			{
-				if ((this._Traitement != value))
-				{
-					this.OnTraitementChanging(value);
-					this.SendPropertyChanging();
-					this._Traitement = value;
-					this.SendPropertyChanged("Traitement");
-					this.OnTraitementChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdLigue", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> IdLigue
-		{
-			get
-			{
-				return this._IdLigue;
-			}
-			set
-			{
-				if ((this._IdLigue != value))
-				{
-					this.OnIdLigueChanging(value);
-					this.SendPropertyChanging();
-					this._IdLigue = value;
-					this.SendPropertyChanged("IdLigue");
-					this.OnIdLigueChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CommentaireLigue", DbType="Text", UpdateCheck=UpdateCheck.Never)]
-		public string CommentaireLigue
-		{
-			get
-			{
-				return this._CommentaireLigue;
-			}
-			set
-			{
-				if ((this._CommentaireLigue != value))
-				{
-					this.OnCommentaireLigueChanging(value);
-					this.SendPropertyChanging();
-					this._CommentaireLigue = value;
-					this.SendPropertyChanged("CommentaireLigue");
-					this.OnCommentaireLigueChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Candidature_InformationSportive", Storage="_InformationSportive", ThisKey="id", OtherKey="Candidatureid")]
-		public EntitySet<InformationSportive> InformationSportive
-		{
-			get
-			{
-				return this._InformationSportive;
-			}
-			set
-			{
-				this._InformationSportive.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Candidature_PoleCandidature", Storage="_PoleCandidature", ThisKey="id", OtherKey="Candidatureid")]
-		public EntitySet<PoleCandidature> PoleCandidature
-		{
-			get
-			{
-				return this._PoleCandidature;
-			}
-			set
-			{
-				this._PoleCandidature.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InformationScolaire_Candidature", Storage="_InformationScolaire", ThisKey="InformationScolaireid", OtherKey="id", IsForeignKey=true)]
-		public InformationScolaire InformationScolaire
-		{
-			get
-			{
-				return this._InformationScolaire.Entity;
-			}
-			set
-			{
-				InformationScolaire previousValue = this._InformationScolaire.Entity;
-				if (((previousValue != value) 
-							|| (this._InformationScolaire.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._InformationScolaire.Entity = null;
-						previousValue.Candidature.Remove(this);
-					}
-					this._InformationScolaire.Entity = value;
-					if ((value != null))
-					{
-						value.Candidature.Add(this);
-						this._InformationScolaireid = value.id;
-					}
-					else
-					{
-						this._InformationScolaireid = default(Nullable<decimal>);
-					}
-					this.SendPropertyChanged("InformationScolaire");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_InformationSportive(InformationSportive entity)
-		{
-			this.SendPropertyChanging();
-			entity.Candidature = this;
-		}
-		
-		private void detach_InformationSportive(InformationSportive entity)
-		{
-			this.SendPropertyChanging();
-			entity.Candidature = null;
-		}
-		
-		private void attach_PoleCandidature(PoleCandidature entity)
-		{
-			this.SendPropertyChanging();
-			entity.Candidature = this;
-		}
-		
-		private void detach_PoleCandidature(PoleCandidature entity)
-		{
-			this.SendPropertyChanging();
-			entity.Candidature = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ResponsableLigue")]
-	public partial class ResponsableLigue
-	{
-		
-		private decimal _id;
-		
-		private string _Nom;
-		
-		private string _Prenom;
-		
-		private string _Login;
-		
-		private string _Password;
-		
-		private string _NomLigue;
-		
-		private System.Nullable<decimal> _idLigue;
-		
-		public ResponsableLigue()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.Always, DbType="Decimal(18,0) NOT NULL IDENTITY", IsDbGenerated=true)]
-		public decimal id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this._id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nom", DbType="VarChar(150)")]
-		public string Nom
-		{
-			get
-			{
-				return this._Nom;
-			}
-			set
-			{
-				if ((this._Nom != value))
-				{
-					this._Nom = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prenom", DbType="VarChar(150)")]
-		public string Prenom
-		{
-			get
-			{
-				return this._Prenom;
-			}
-			set
-			{
-				if ((this._Prenom != value))
-				{
-					this._Prenom = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Login", DbType="VarChar(50)")]
-		public string Login
-		{
-			get
-			{
-				return this._Login;
-			}
-			set
-			{
-				if ((this._Login != value))
-				{
-					this._Login = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(50)")]
-		public string Password
-		{
-			get
-			{
-				return this._Password;
-			}
-			set
-			{
-				if ((this._Password != value))
-				{
-					this._Password = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NomLigue", DbType="VarChar(150)")]
-		public string NomLigue
-		{
-			get
-			{
-				return this._NomLigue;
-			}
-			set
-			{
-				if ((this._NomLigue != value))
-				{
-					this._NomLigue = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idLigue", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> idLigue
-		{
-			get
-			{
-				return this._idLigue;
-			}
-			set
-			{
-				if ((this._idLigue != value))
-				{
-					this._idLigue = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VuesInformationSportive")]
 	public partial class VuesInformationSportive
 	{
@@ -3482,6 +2540,948 @@ namespace PoleFrance.Models
 				if ((this._Poleid != value))
 				{
 					this._Poleid = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Candidature")]
+	public partial class Candidature : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private decimal _id;
+		
+		private System.Nullable<decimal> _Annee;
+		
+		private string _NumLicencie;
+		
+		private System.Nullable<bool> _Redirection;
+		
+		private System.Nullable<bool> _Internat;
+		
+		private System.Nullable<bool> _AutorisationParent;
+		
+		private string _AdresseEmail;
+		
+		private System.Nullable<decimal> _InformationScolaireid;
+		
+		private string _Poids;
+		
+		private string _Taille;
+		
+		private string _PoleActuel;
+		
+		private string _Sexe;
+		
+		private string _Ligue;
+		
+		private string _CategorieAgeActuelle;
+		
+		private string _DateDemarche;
+		
+		private string _Nom;
+		
+		private string _Prenom;
+		
+		private string _Ville;
+		
+		private string _CodePostal;
+		
+		private string _Rue;
+		
+		private string _Telephone;
+		
+		private string _DateNaissance;
+		
+		private string _CategoriePoidsActuelle;
+		
+		private string _TelephoneParents;
+		
+		private string _AdresseEmailParent;
+		
+		private System.Nullable<decimal> _Traitement;
+		
+		private string _IdLigue;
+		
+		private string _CommentaireLigue;
+		
+		private EntitySet<InformationSportive> _InformationSportive;
+		
+		private EntitySet<PoleCandidature> _PoleCandidature;
+		
+		private EntityRef<InformationScolaire> _InformationScolaire;
+		
+    #region Définitions de méthodes d'extensibilité
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(decimal value);
+    partial void OnidChanged();
+    partial void OnAnneeChanging(System.Nullable<decimal> value);
+    partial void OnAnneeChanged();
+    partial void OnNumLicencieChanging(string value);
+    partial void OnNumLicencieChanged();
+    partial void OnRedirectionChanging(System.Nullable<bool> value);
+    partial void OnRedirectionChanged();
+    partial void OnInternatChanging(System.Nullable<bool> value);
+    partial void OnInternatChanged();
+    partial void OnAutorisationParentChanging(System.Nullable<bool> value);
+    partial void OnAutorisationParentChanged();
+    partial void OnAdresseEmailChanging(string value);
+    partial void OnAdresseEmailChanged();
+    partial void OnInformationScolaireidChanging(System.Nullable<decimal> value);
+    partial void OnInformationScolaireidChanged();
+    partial void OnPoidsChanging(string value);
+    partial void OnPoidsChanged();
+    partial void OnTailleChanging(string value);
+    partial void OnTailleChanged();
+    partial void OnPoleActuelChanging(string value);
+    partial void OnPoleActuelChanged();
+    partial void OnSexeChanging(string value);
+    partial void OnSexeChanged();
+    partial void OnLigueChanging(string value);
+    partial void OnLigueChanged();
+    partial void OnCategorieAgeActuelleChanging(string value);
+    partial void OnCategorieAgeActuelleChanged();
+    partial void OnDateDemarcheChanging(string value);
+    partial void OnDateDemarcheChanged();
+    partial void OnNomChanging(string value);
+    partial void OnNomChanged();
+    partial void OnPrenomChanging(string value);
+    partial void OnPrenomChanged();
+    partial void OnVilleChanging(string value);
+    partial void OnVilleChanged();
+    partial void OnCodePostalChanging(string value);
+    partial void OnCodePostalChanged();
+    partial void OnRueChanging(string value);
+    partial void OnRueChanged();
+    partial void OnTelephoneChanging(string value);
+    partial void OnTelephoneChanged();
+    partial void OnDateNaissanceChanging(string value);
+    partial void OnDateNaissanceChanged();
+    partial void OnCategoriePoidsActuelleChanging(string value);
+    partial void OnCategoriePoidsActuelleChanged();
+    partial void OnTelephoneParentsChanging(string value);
+    partial void OnTelephoneParentsChanged();
+    partial void OnAdresseEmailParentChanging(string value);
+    partial void OnAdresseEmailParentChanged();
+    partial void OnTraitementChanging(System.Nullable<decimal> value);
+    partial void OnTraitementChanged();
+    partial void OnIdLigueChanging(string value);
+    partial void OnIdLigueChanged();
+    partial void OnCommentaireLigueChanging(string value);
+    partial void OnCommentaireLigueChanged();
+    #endregion
+		
+		public Candidature()
+		{
+			this._InformationSportive = new EntitySet<InformationSportive>(new Action<InformationSportive>(this.attach_InformationSportive), new Action<InformationSportive>(this.detach_InformationSportive));
+			this._PoleCandidature = new EntitySet<PoleCandidature>(new Action<PoleCandidature>(this.attach_PoleCandidature), new Action<PoleCandidature>(this.detach_PoleCandidature));
+			this._InformationScolaire = default(EntityRef<InformationScolaire>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public decimal id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Annee", DbType="Decimal(4,0)")]
+		public System.Nullable<decimal> Annee
+		{
+			get
+			{
+				return this._Annee;
+			}
+			set
+			{
+				if ((this._Annee != value))
+				{
+					this.OnAnneeChanging(value);
+					this.SendPropertyChanging();
+					this._Annee = value;
+					this.SendPropertyChanged("Annee");
+					this.OnAnneeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NumLicencie", DbType="VarChar(20)")]
+		public string NumLicencie
+		{
+			get
+			{
+				return this._NumLicencie;
+			}
+			set
+			{
+				if ((this._NumLicencie != value))
+				{
+					this.OnNumLicencieChanging(value);
+					this.SendPropertyChanging();
+					this._NumLicencie = value;
+					this.SendPropertyChanged("NumLicencie");
+					this.OnNumLicencieChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Redirection", DbType="Bit")]
+		public System.Nullable<bool> Redirection
+		{
+			get
+			{
+				return this._Redirection;
+			}
+			set
+			{
+				if ((this._Redirection != value))
+				{
+					this.OnRedirectionChanging(value);
+					this.SendPropertyChanging();
+					this._Redirection = value;
+					this.SendPropertyChanged("Redirection");
+					this.OnRedirectionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Internat", DbType="Bit")]
+		public System.Nullable<bool> Internat
+		{
+			get
+			{
+				return this._Internat;
+			}
+			set
+			{
+				if ((this._Internat != value))
+				{
+					this.OnInternatChanging(value);
+					this.SendPropertyChanging();
+					this._Internat = value;
+					this.SendPropertyChanged("Internat");
+					this.OnInternatChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AutorisationParent", DbType="Bit")]
+		public System.Nullable<bool> AutorisationParent
+		{
+			get
+			{
+				return this._AutorisationParent;
+			}
+			set
+			{
+				if ((this._AutorisationParent != value))
+				{
+					this.OnAutorisationParentChanging(value);
+					this.SendPropertyChanging();
+					this._AutorisationParent = value;
+					this.SendPropertyChanged("AutorisationParent");
+					this.OnAutorisationParentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdresseEmail", DbType="VarChar(100)")]
+		public string AdresseEmail
+		{
+			get
+			{
+				return this._AdresseEmail;
+			}
+			set
+			{
+				if ((this._AdresseEmail != value))
+				{
+					this.OnAdresseEmailChanging(value);
+					this.SendPropertyChanging();
+					this._AdresseEmail = value;
+					this.SendPropertyChanged("AdresseEmail");
+					this.OnAdresseEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InformationScolaireid", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> InformationScolaireid
+		{
+			get
+			{
+				return this._InformationScolaireid;
+			}
+			set
+			{
+				if ((this._InformationScolaireid != value))
+				{
+					if (this._InformationScolaire.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnInformationScolaireidChanging(value);
+					this.SendPropertyChanging();
+					this._InformationScolaireid = value;
+					this.SendPropertyChanged("InformationScolaireid");
+					this.OnInformationScolaireidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Poids", DbType="VarChar(10)")]
+		public string Poids
+		{
+			get
+			{
+				return this._Poids;
+			}
+			set
+			{
+				if ((this._Poids != value))
+				{
+					this.OnPoidsChanging(value);
+					this.SendPropertyChanging();
+					this._Poids = value;
+					this.SendPropertyChanged("Poids");
+					this.OnPoidsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Taille", DbType="VarChar(10)")]
+		public string Taille
+		{
+			get
+			{
+				return this._Taille;
+			}
+			set
+			{
+				if ((this._Taille != value))
+				{
+					this.OnTailleChanging(value);
+					this.SendPropertyChanging();
+					this._Taille = value;
+					this.SendPropertyChanged("Taille");
+					this.OnTailleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PoleActuel", DbType="VarChar(200)")]
+		public string PoleActuel
+		{
+			get
+			{
+				return this._PoleActuel;
+			}
+			set
+			{
+				if ((this._PoleActuel != value))
+				{
+					this.OnPoleActuelChanging(value);
+					this.SendPropertyChanging();
+					this._PoleActuel = value;
+					this.SendPropertyChanged("PoleActuel");
+					this.OnPoleActuelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sexe", DbType="VarChar(10)")]
+		public string Sexe
+		{
+			get
+			{
+				return this._Sexe;
+			}
+			set
+			{
+				if ((this._Sexe != value))
+				{
+					this.OnSexeChanging(value);
+					this.SendPropertyChanging();
+					this._Sexe = value;
+					this.SendPropertyChanged("Sexe");
+					this.OnSexeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ligue", DbType="VarChar(200)")]
+		public string Ligue
+		{
+			get
+			{
+				return this._Ligue;
+			}
+			set
+			{
+				if ((this._Ligue != value))
+				{
+					this.OnLigueChanging(value);
+					this.SendPropertyChanging();
+					this._Ligue = value;
+					this.SendPropertyChanged("Ligue");
+					this.OnLigueChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategorieAgeActuelle", DbType="VarChar(20)")]
+		public string CategorieAgeActuelle
+		{
+			get
+			{
+				return this._CategorieAgeActuelle;
+			}
+			set
+			{
+				if ((this._CategorieAgeActuelle != value))
+				{
+					this.OnCategorieAgeActuelleChanging(value);
+					this.SendPropertyChanging();
+					this._CategorieAgeActuelle = value;
+					this.SendPropertyChanged("CategorieAgeActuelle");
+					this.OnCategorieAgeActuelleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateDemarche", DbType="VarChar(20)")]
+		public string DateDemarche
+		{
+			get
+			{
+				return this._DateDemarche;
+			}
+			set
+			{
+				if ((this._DateDemarche != value))
+				{
+					this.OnDateDemarcheChanging(value);
+					this.SendPropertyChanging();
+					this._DateDemarche = value;
+					this.SendPropertyChanged("DateDemarche");
+					this.OnDateDemarcheChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nom", DbType="VarChar(50)")]
+		public string Nom
+		{
+			get
+			{
+				return this._Nom;
+			}
+			set
+			{
+				if ((this._Nom != value))
+				{
+					this.OnNomChanging(value);
+					this.SendPropertyChanging();
+					this._Nom = value;
+					this.SendPropertyChanged("Nom");
+					this.OnNomChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prenom", DbType="VarChar(50)")]
+		public string Prenom
+		{
+			get
+			{
+				return this._Prenom;
+			}
+			set
+			{
+				if ((this._Prenom != value))
+				{
+					this.OnPrenomChanging(value);
+					this.SendPropertyChanging();
+					this._Prenom = value;
+					this.SendPropertyChanged("Prenom");
+					this.OnPrenomChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ville", DbType="VarChar(100)")]
+		public string Ville
+		{
+			get
+			{
+				return this._Ville;
+			}
+			set
+			{
+				if ((this._Ville != value))
+				{
+					this.OnVilleChanging(value);
+					this.SendPropertyChanging();
+					this._Ville = value;
+					this.SendPropertyChanged("Ville");
+					this.OnVilleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CodePostal", DbType="VarChar(10)")]
+		public string CodePostal
+		{
+			get
+			{
+				return this._CodePostal;
+			}
+			set
+			{
+				if ((this._CodePostal != value))
+				{
+					this.OnCodePostalChanging(value);
+					this.SendPropertyChanging();
+					this._CodePostal = value;
+					this.SendPropertyChanged("CodePostal");
+					this.OnCodePostalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rue", DbType="VarChar(150)")]
+		public string Rue
+		{
+			get
+			{
+				return this._Rue;
+			}
+			set
+			{
+				if ((this._Rue != value))
+				{
+					this.OnRueChanging(value);
+					this.SendPropertyChanging();
+					this._Rue = value;
+					this.SendPropertyChanged("Rue");
+					this.OnRueChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Telephone", DbType="VarChar(10)")]
+		public string Telephone
+		{
+			get
+			{
+				return this._Telephone;
+			}
+			set
+			{
+				if ((this._Telephone != value))
+				{
+					this.OnTelephoneChanging(value);
+					this.SendPropertyChanging();
+					this._Telephone = value;
+					this.SendPropertyChanged("Telephone");
+					this.OnTelephoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateNaissance", DbType="VarChar(10)")]
+		public string DateNaissance
+		{
+			get
+			{
+				return this._DateNaissance;
+			}
+			set
+			{
+				if ((this._DateNaissance != value))
+				{
+					this.OnDateNaissanceChanging(value);
+					this.SendPropertyChanging();
+					this._DateNaissance = value;
+					this.SendPropertyChanged("DateNaissance");
+					this.OnDateNaissanceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoriePoidsActuelle", DbType="VarChar(50)")]
+		public string CategoriePoidsActuelle
+		{
+			get
+			{
+				return this._CategoriePoidsActuelle;
+			}
+			set
+			{
+				if ((this._CategoriePoidsActuelle != value))
+				{
+					this.OnCategoriePoidsActuelleChanging(value);
+					this.SendPropertyChanging();
+					this._CategoriePoidsActuelle = value;
+					this.SendPropertyChanged("CategoriePoidsActuelle");
+					this.OnCategoriePoidsActuelleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TelephoneParents", DbType="VarChar(50)")]
+		public string TelephoneParents
+		{
+			get
+			{
+				return this._TelephoneParents;
+			}
+			set
+			{
+				if ((this._TelephoneParents != value))
+				{
+					this.OnTelephoneParentsChanging(value);
+					this.SendPropertyChanging();
+					this._TelephoneParents = value;
+					this.SendPropertyChanged("TelephoneParents");
+					this.OnTelephoneParentsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdresseEmailParent", DbType="VarChar(100)")]
+		public string AdresseEmailParent
+		{
+			get
+			{
+				return this._AdresseEmailParent;
+			}
+			set
+			{
+				if ((this._AdresseEmailParent != value))
+				{
+					this.OnAdresseEmailParentChanging(value);
+					this.SendPropertyChanging();
+					this._AdresseEmailParent = value;
+					this.SendPropertyChanged("AdresseEmailParent");
+					this.OnAdresseEmailParentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Traitement", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> Traitement
+		{
+			get
+			{
+				return this._Traitement;
+			}
+			set
+			{
+				if ((this._Traitement != value))
+				{
+					this.OnTraitementChanging(value);
+					this.SendPropertyChanging();
+					this._Traitement = value;
+					this.SendPropertyChanged("Traitement");
+					this.OnTraitementChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdLigue", DbType="VarChar(50)")]
+		public string IdLigue
+		{
+			get
+			{
+				return this._IdLigue;
+			}
+			set
+			{
+				if ((this._IdLigue != value))
+				{
+					this.OnIdLigueChanging(value);
+					this.SendPropertyChanging();
+					this._IdLigue = value;
+					this.SendPropertyChanged("IdLigue");
+					this.OnIdLigueChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CommentaireLigue", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string CommentaireLigue
+		{
+			get
+			{
+				return this._CommentaireLigue;
+			}
+			set
+			{
+				if ((this._CommentaireLigue != value))
+				{
+					this.OnCommentaireLigueChanging(value);
+					this.SendPropertyChanging();
+					this._CommentaireLigue = value;
+					this.SendPropertyChanged("CommentaireLigue");
+					this.OnCommentaireLigueChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Candidature_InformationSportive", Storage="_InformationSportive", ThisKey="id", OtherKey="Candidatureid")]
+		public EntitySet<InformationSportive> InformationSportive
+		{
+			get
+			{
+				return this._InformationSportive;
+			}
+			set
+			{
+				this._InformationSportive.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Candidature_PoleCandidature", Storage="_PoleCandidature", ThisKey="id", OtherKey="Candidatureid")]
+		public EntitySet<PoleCandidature> PoleCandidature
+		{
+			get
+			{
+				return this._PoleCandidature;
+			}
+			set
+			{
+				this._PoleCandidature.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InformationScolaire_Candidature", Storage="_InformationScolaire", ThisKey="InformationScolaireid", OtherKey="id", IsForeignKey=true)]
+		public InformationScolaire InformationScolaire
+		{
+			get
+			{
+				return this._InformationScolaire.Entity;
+			}
+			set
+			{
+				InformationScolaire previousValue = this._InformationScolaire.Entity;
+				if (((previousValue != value) 
+							|| (this._InformationScolaire.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._InformationScolaire.Entity = null;
+						previousValue.Candidature.Remove(this);
+					}
+					this._InformationScolaire.Entity = value;
+					if ((value != null))
+					{
+						value.Candidature.Add(this);
+						this._InformationScolaireid = value.id;
+					}
+					else
+					{
+						this._InformationScolaireid = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("InformationScolaire");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_InformationSportive(InformationSportive entity)
+		{
+			this.SendPropertyChanging();
+			entity.Candidature = this;
+		}
+		
+		private void detach_InformationSportive(InformationSportive entity)
+		{
+			this.SendPropertyChanging();
+			entity.Candidature = null;
+		}
+		
+		private void attach_PoleCandidature(PoleCandidature entity)
+		{
+			this.SendPropertyChanging();
+			entity.Candidature = this;
+		}
+		
+		private void detach_PoleCandidature(PoleCandidature entity)
+		{
+			this.SendPropertyChanging();
+			entity.Candidature = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ResponsableLigue")]
+	public partial class ResponsableLigue
+	{
+		
+		private decimal _id;
+		
+		private string _Nom;
+		
+		private string _Prenom;
+		
+		private string _Login;
+		
+		private string _Password;
+		
+		private string _NomLigue;
+		
+		private string _idLigue;
+		
+		public ResponsableLigue()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.Always, DbType="Decimal(18,0) NOT NULL IDENTITY", IsDbGenerated=true)]
+		public decimal id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this._id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nom", DbType="VarChar(150)")]
+		public string Nom
+		{
+			get
+			{
+				return this._Nom;
+			}
+			set
+			{
+				if ((this._Nom != value))
+				{
+					this._Nom = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prenom", DbType="VarChar(150)")]
+		public string Prenom
+		{
+			get
+			{
+				return this._Prenom;
+			}
+			set
+			{
+				if ((this._Prenom != value))
+				{
+					this._Prenom = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Login", DbType="VarChar(50)")]
+		public string Login
+		{
+			get
+			{
+				return this._Login;
+			}
+			set
+			{
+				if ((this._Login != value))
+				{
+					this._Login = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(50)")]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this._Password = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NomLigue", DbType="VarChar(150)")]
+		public string NomLigue
+		{
+			get
+			{
+				return this._NomLigue;
+			}
+			set
+			{
+				if ((this._NomLigue != value))
+				{
+					this._NomLigue = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idLigue", DbType="VarChar(50)")]
+		public string idLigue
+		{
+			get
+			{
+				return this._idLigue;
+			}
+			set
+			{
+				if ((this._idLigue != value))
+				{
+					this._idLigue = value;
 				}
 			}
 		}

@@ -271,6 +271,21 @@ namespace PoleFrance.Controllers
                     model.Sexe = (String)item;
                     items.TryGetValue("tel", out item);
                     model.Telephone = (String)item;
+
+
+                    items.TryGetValue("ligue", out item);
+                    if((String)item != "")
+                    {
+                        if((String)item == "75" || (String)item == "77" || (String)item == "78" || (String)item == "92" || (String)item == "93" || (String)item == "94" || (String)item == "95")
+                        {
+                            model.IdLigue = "3";
+                        }
+                        else
+                        {
+                            model.IdLigue = (String)item;
+                        }
+                    }
+
                     return true;
                   }
             }

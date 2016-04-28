@@ -174,19 +174,19 @@
     </div>
 
     @{
-        using (Html.BeginForm("AffichageCandidature", "Responsable"))
+        using (Html.BeginForm("DetailCandidat", "Ligue"))
         {
             @Html.HiddenFor(model => model.polecandidatureId, new { Value = Model.polecandidatureId })
             <div id="form-div-big" style="text-align:left">
-                <div class="titre-form-blanc">
+                <div class="titre-form-blanc" style="margin-bottom:10px;">
                     Commentaire Inscription :
                     <div class="white-separator"></div>
                 </div>
-                @Html.EditorFor(model => model.PoleCandidature.Candidature.CommentaireLigue, new { htmlAttributes = new { @class = "validate[required,length[6,300]] feedback-input", @id = "comment", @placeholder = "comment" } });
+                @Html.TextAreaFor(model => model.PoleCandidature.Candidature.CommentaireLigue,new { @class = "validate[required,length[6,300]] feedback-input", @id = "comment", @placeholder = "Commentaire sur le judoka"});
 
                 <div class="form-content" style="margin-top:30px;">
                     <div class="submit" style="width:150px;">
-                        <a href='@Url.Action("ListeInscriptions", "Ligue")' id="button-red">Retour</a>
+                        <a href='@Url.Action("LiguesInscriptions", "Ligue")' id="button-red">Retour</a>
                         <div class="ease"></div>
                     </div>
                     <div class="submit" style="margin-left:10px;">
