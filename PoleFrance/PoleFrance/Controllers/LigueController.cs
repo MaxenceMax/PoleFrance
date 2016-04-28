@@ -29,6 +29,8 @@ namespace PoleFrance.Controllers
                     var req = (from i in bd.ResponsableLigue
                                where i.Login == loginLigue
                                select i).First();
+                    ViewBag.NomLigue = req.NomLigue;
+                    ViewBag.NomResp = req.Prenom + " " + req.Nom;
                 }
             }
 

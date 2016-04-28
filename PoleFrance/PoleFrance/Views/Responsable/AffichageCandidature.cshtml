@@ -166,6 +166,22 @@
             </div>
         </div>
     </div>
+    <div id="form-div-big">
+        <div class="titre-form-blanc" style="margin-bottom:10px;">
+            Commentaire Responsable de ligue :
+            <div class="white-separator"></div>
+        </div>
+            @{
+                if (Model.PoleCandidature.Candidature.CommentaireLigue == null || Model.PoleCandidature.Candidature.CommentaireLigue == "")
+                {
+                    <div class="form-text-infos" style="text-align:left;">Pas de commentaire.</div>
+                }
+                else
+                {
+                    <div class="form-text-infos" style="text-align:left;">   @Model.PoleCandidature.Candidature.CommentaireLigue</div>
+                }
+            }
+    </div>
 
     @{ 
         if(@ViewBag.idPoleResp == Model.PoleCandidature.Poleid)

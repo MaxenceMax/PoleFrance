@@ -159,6 +159,7 @@
     <Content Include="Content\Images\Admin\carre.png" />
     <Content Include="Content\Images\Admin\close.png" />
     <Content Include="Content\Images\Admin\cross.png" />
+    <Content Include="Content\Images\Admin\download.png" />
     <Content Include="Content\Images\Admin\loupe.png" />
     <Content Include="Content\Images\Admin\open.png" />
     <Content Include="Content\Images\Admin\registrations.png" />

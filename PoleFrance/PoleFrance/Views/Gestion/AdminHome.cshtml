@@ -27,6 +27,10 @@
 
     
     <div id="form-div-big">
+        <div class="sous-titre-form-blanc">
+            Vos Actions :
+            <div class="white-separator"></div>
+        </div>
         <div class="admin-block-conteneur-alignement">
             <div class="admin-block-conteneur">
                 <div class="admin-block" onclick="location.href='@Url.Action("ListeResponsable", "Gestion")'">
@@ -39,19 +43,20 @@
                     <div class="admin-block-image"><img src="@Url.Content(ViewBag.image)" /></div>
                     <div class="admin-block-desc">@ViewBag.texte</div>
                 </div>
-                </div>
+            </div>
             <div class="admin-block-conteneur-alignement">
-                <div class="admin-block" onclick="location.href='@Url.Action("ListeToutesInscriptions", "Responsable")'">
-                    <div class="admin-block-titre">Inscriptions</div>
-                    <div class="admin-block-image"><img src="@Url.Content("~/Content/Images/Admin/registrations.png")" /></div>
-                    <div class="admin-block-desc">Dans cette section vous pouvez voir la liste des inscriptions pour toutes les structures.</div>
+                <div class="admin-block-conteneur">
+                    <div class="admin-block" onclick="location.href='@Url.Action("ListeToutesInscriptions", "Responsable")'">
+                        <div class="admin-block-titre">Inscriptions</div>
+                        <div class="admin-block-image"><img src="@Url.Content("~/Content/Images/Admin/registrations.png")" /></div>
+                        <div class="admin-block-desc">Dans cette section vous pouvez voir la liste des inscriptions pour toutes les structures.</div>
+                    </div>
+                    <div class="admin-block" onclick="location.href='@Url.Action("ExtractionToutesInscriptions", "Responsable")'">
+                        <div class="admin-block-titre">Extraction des inscriptions</div>
+                        <div class="admin-block-image"><img src="@Url.Content("~/Content/Images/Admin/download.png")" /></div>
+                        <div class="admin-block-desc">En cliquant sur ce bouton vous pouvez extraire la liste de toutes les inscriptions</div>
+                    </div>
                 </div>
-                <div class="admin-block" onclick="location.href='@Url.Action("ExtractionToutesInscriptions", "Responsable")'">
-                    <div class="admin-block-titre">Extraction de toutes les inscriptions</div>
-                    <div class="admin-block-image"><img src="@Url.Content("~/Content/Images/Admin/registrations.png")" /></div>
-                    <div class="admin-block-desc">En cliquant sur ce bouton vous pouvez extraire la liste de toutes les inscriptions</div>
-                </div>
-
             </div>
         </div>
 

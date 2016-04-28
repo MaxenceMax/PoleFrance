@@ -34,9 +34,7 @@
                 <th>Sexe</th>
                 <th>Age</th>
                 <th>Poids</th>
-                <th>Email</th>
-                <th>Tel</th>
-                <th>Tel Parents</th>
+                <th>Pôle demandé</th>
                 <th>En voir plus</th>
 
             </tr>
@@ -63,18 +61,16 @@
                     {
                         couleur = "#BD0000";
                     }
-                    <tr style="background-color:@couleur; color:@couleurText">
+                    <tr style="background-color:@couleur;color:@couleurText">
                         <td>@cand.Nom</td>
                         <td>@cand.Prenom</td>
                         <td>@cand.Sexe</td>
                         <td>@cand.CategorieAgeActuelle</td>
                         <td>@cand.CategoriePoidsActuelle</td>
-                        <td>@cand.AdresseEmail</td>
-                        <td>@cand.Telephone</td>
-                        <td>@cand.TelephoneParents</td>
+                        <td>@cand.Nom</td>
 
                         <td style="text-align:center;">
-                            <a href='@Url.Action("DetailCandidat", "Ligue",  new {id=@cand.id})'>
+                            <a href='@Url.Action("DetailCandidat", "Ligue", new { id = @cand.id })'>
                                 <img style="width:20px; height:20px; " src='@Url.Content("~/Content/Images/Admin/loupe.png")' />
                             </a>
                         </td>
