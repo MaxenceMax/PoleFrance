@@ -30,40 +30,40 @@ namespace PoleFrance.Models
 		
     #region Définitions de méthodes d'extensibilité
     partial void OnCreated();
+    partial void InsertCandidature(Candidature instance);
+    partial void UpdateCandidature(Candidature instance);
+    partial void DeleteCandidature(Candidature instance);
     partial void InsertInformationScolaire(InformationScolaire instance);
     partial void UpdateInformationScolaire(InformationScolaire instance);
     partial void DeleteInformationScolaire(InformationScolaire instance);
     partial void InsertInformationSportive(InformationSportive instance);
     partial void UpdateInformationSportive(InformationSportive instance);
     partial void DeleteInformationSportive(InformationSportive instance);
+    partial void InsertSouhaitScolaire(SouhaitScolaire instance);
+    partial void UpdateSouhaitScolaire(SouhaitScolaire instance);
+    partial void DeleteSouhaitScolaire(SouhaitScolaire instance);
     partial void InsertLangue(Langue instance);
     partial void UpdateLangue(Langue instance);
     partial void DeleteLangue(Langue instance);
     partial void InsertOptions(Options instance);
     partial void UpdateOptions(Options instance);
     partial void DeleteOptions(Options instance);
+    partial void InsertPole(Pole instance);
+    partial void UpdatePole(Pole instance);
+    partial void DeletePole(Pole instance);
     partial void InsertPoleCandidature(PoleCandidature instance);
     partial void UpdatePoleCandidature(PoleCandidature instance);
     partial void DeletePoleCandidature(PoleCandidature instance);
     partial void InsertResponsable(Responsable instance);
     partial void UpdateResponsable(Responsable instance);
     partial void DeleteResponsable(Responsable instance);
-    partial void InsertSouhaitScolaire(SouhaitScolaire instance);
-    partial void UpdateSouhaitScolaire(SouhaitScolaire instance);
-    partial void DeleteSouhaitScolaire(SouhaitScolaire instance);
     partial void InsertSuperAdmin(SuperAdmin instance);
     partial void UpdateSuperAdmin(SuperAdmin instance);
     partial void DeleteSuperAdmin(SuperAdmin instance);
-    partial void InsertPole(Pole instance);
-    partial void UpdatePole(Pole instance);
-    partial void DeletePole(Pole instance);
-    partial void InsertCandidature(Candidature instance);
-    partial void UpdateCandidature(Candidature instance);
-    partial void DeleteCandidature(Candidature instance);
     #endregion
 		
 		public PolesDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["PolesConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["PolesConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -92,6 +92,14 @@ namespace PoleFrance.Models
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<Candidature> Candidature
+		{
+			get
+			{
+				return this.GetTable<Candidature>();
+			}
+		}
+		
 		public System.Data.Linq.Table<InformationScolaire> InformationScolaire
 		{
 			get
@@ -105,6 +113,14 @@ namespace PoleFrance.Models
 			get
 			{
 				return this.GetTable<InformationSportive>();
+			}
+		}
+		
+		public System.Data.Linq.Table<SouhaitScolaire> SouhaitScolaire
+		{
+			get
+			{
+				return this.GetTable<SouhaitScolaire>();
 			}
 		}
 		
@@ -124,6 +140,14 @@ namespace PoleFrance.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<Pole> Pole
+		{
+			get
+			{
+				return this.GetTable<Pole>();
+			}
+		}
+		
 		public System.Data.Linq.Table<PoleCandidature> PoleCandidature
 		{
 			get
@@ -140,11 +164,11 @@ namespace PoleFrance.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<SouhaitScolaire> SouhaitScolaire
+		public System.Data.Linq.Table<ResponsableLigue> ResponsableLigue
 		{
 			get
 			{
-				return this.GetTable<SouhaitScolaire>();
+				return this.GetTable<ResponsableLigue>();
 			}
 		}
 		
@@ -153,30 +177,6 @@ namespace PoleFrance.Models
 			get
 			{
 				return this.GetTable<SuperAdmin>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Pole> Pole
-		{
-			get
-			{
-				return this.GetTable<Pole>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Candidature> Candidature
-		{
-			get
-			{
-				return this.GetTable<Candidature>();
-			}
-		}
-		
-		public System.Data.Linq.Table<ResponsableLigue> ResponsableLigue
-		{
-			get
-			{
-				return this.GetTable<ResponsableLigue>();
 			}
 		}
 		
@@ -194,1715 +194,6 @@ namespace PoleFrance.Models
 			{
 				return this.GetTable<VuesInformationSportive>();
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InformationScolaire")]
-	public partial class InformationScolaire : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private decimal _id;
-		
-		private string _Etablissement;
-		
-		private string _Adresse;
-		
-		private string _Telephone;
-		
-		private string _Classe;
-		
-		private EntitySet<SouhaitScolaire> _SouhaitScolaire;
-		
-		private EntitySet<Candidature> _Candidature;
-		
-    #region Définitions de méthodes d'extensibilité
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(decimal value);
-    partial void OnidChanged();
-    partial void OnEtablissementChanging(string value);
-    partial void OnEtablissementChanged();
-    partial void OnAdresseChanging(string value);
-    partial void OnAdresseChanged();
-    partial void OnTelephoneChanging(string value);
-    partial void OnTelephoneChanged();
-    partial void OnClasseChanging(string value);
-    partial void OnClasseChanged();
-    #endregion
-		
-		public InformationScolaire()
-		{
-			this._SouhaitScolaire = new EntitySet<SouhaitScolaire>(new Action<SouhaitScolaire>(this.attach_SouhaitScolaire), new Action<SouhaitScolaire>(this.detach_SouhaitScolaire));
-			this._Candidature = new EntitySet<Candidature>(new Action<Candidature>(this.attach_Candidature), new Action<Candidature>(this.detach_Candidature));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public decimal id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Etablissement", DbType="VarChar(200)")]
-		public string Etablissement
-		{
-			get
-			{
-				return this._Etablissement;
-			}
-			set
-			{
-				if ((this._Etablissement != value))
-				{
-					this.OnEtablissementChanging(value);
-					this.SendPropertyChanging();
-					this._Etablissement = value;
-					this.SendPropertyChanged("Etablissement");
-					this.OnEtablissementChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Adresse", DbType="VarChar(300)")]
-		public string Adresse
-		{
-			get
-			{
-				return this._Adresse;
-			}
-			set
-			{
-				if ((this._Adresse != value))
-				{
-					this.OnAdresseChanging(value);
-					this.SendPropertyChanging();
-					this._Adresse = value;
-					this.SendPropertyChanged("Adresse");
-					this.OnAdresseChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Telephone", DbType="VarChar(100)")]
-		public string Telephone
-		{
-			get
-			{
-				return this._Telephone;
-			}
-			set
-			{
-				if ((this._Telephone != value))
-				{
-					this.OnTelephoneChanging(value);
-					this.SendPropertyChanging();
-					this._Telephone = value;
-					this.SendPropertyChanged("Telephone");
-					this.OnTelephoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Classe", DbType="VarChar(150)")]
-		public string Classe
-		{
-			get
-			{
-				return this._Classe;
-			}
-			set
-			{
-				if ((this._Classe != value))
-				{
-					this.OnClasseChanging(value);
-					this.SendPropertyChanging();
-					this._Classe = value;
-					this.SendPropertyChanged("Classe");
-					this.OnClasseChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InformationScolaire_SouhaitScolaire", Storage="_SouhaitScolaire", ThisKey="id", OtherKey="InformationScolaireid")]
-		public EntitySet<SouhaitScolaire> SouhaitScolaire
-		{
-			get
-			{
-				return this._SouhaitScolaire;
-			}
-			set
-			{
-				this._SouhaitScolaire.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InformationScolaire_Candidature", Storage="_Candidature", ThisKey="id", OtherKey="InformationScolaireid")]
-		public EntitySet<Candidature> Candidature
-		{
-			get
-			{
-				return this._Candidature;
-			}
-			set
-			{
-				this._Candidature.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_SouhaitScolaire(SouhaitScolaire entity)
-		{
-			this.SendPropertyChanging();
-			entity.InformationScolaire = this;
-		}
-		
-		private void detach_SouhaitScolaire(SouhaitScolaire entity)
-		{
-			this.SendPropertyChanging();
-			entity.InformationScolaire = null;
-		}
-		
-		private void attach_Candidature(Candidature entity)
-		{
-			this.SendPropertyChanging();
-			entity.InformationScolaire = this;
-		}
-		
-		private void detach_Candidature(Candidature entity)
-		{
-			this.SendPropertyChanging();
-			entity.InformationScolaire = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InformationSportive")]
-	public partial class InformationSportive : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private decimal _id;
-		
-		private string _Competition;
-		
-		private string _CategorieAge;
-		
-		private string _CategoriePoids;
-		
-		private string _Resultat;
-		
-		private decimal _Candidatureid;
-		
-		private string _Annee;
-		
-		private EntityRef<Candidature> _Candidature;
-		
-    #region Définitions de méthodes d'extensibilité
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(decimal value);
-    partial void OnidChanged();
-    partial void OnCompetitionChanging(string value);
-    partial void OnCompetitionChanged();
-    partial void OnCategorieAgeChanging(string value);
-    partial void OnCategorieAgeChanged();
-    partial void OnCategoriePoidsChanging(string value);
-    partial void OnCategoriePoidsChanged();
-    partial void OnResultatChanging(string value);
-    partial void OnResultatChanged();
-    partial void OnCandidatureidChanging(decimal value);
-    partial void OnCandidatureidChanged();
-    partial void OnAnneeChanging(string value);
-    partial void OnAnneeChanged();
-    #endregion
-		
-		public InformationSportive()
-		{
-			this._Candidature = default(EntityRef<Candidature>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public decimal id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Competition", DbType="VarChar(150)")]
-		public string Competition
-		{
-			get
-			{
-				return this._Competition;
-			}
-			set
-			{
-				if ((this._Competition != value))
-				{
-					this.OnCompetitionChanging(value);
-					this.SendPropertyChanging();
-					this._Competition = value;
-					this.SendPropertyChanged("Competition");
-					this.OnCompetitionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategorieAge", DbType="VarChar(100)")]
-		public string CategorieAge
-		{
-			get
-			{
-				return this._CategorieAge;
-			}
-			set
-			{
-				if ((this._CategorieAge != value))
-				{
-					this.OnCategorieAgeChanging(value);
-					this.SendPropertyChanging();
-					this._CategorieAge = value;
-					this.SendPropertyChanged("CategorieAge");
-					this.OnCategorieAgeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoriePoids", DbType="VarChar(30)")]
-		public string CategoriePoids
-		{
-			get
-			{
-				return this._CategoriePoids;
-			}
-			set
-			{
-				if ((this._CategoriePoids != value))
-				{
-					this.OnCategoriePoidsChanging(value);
-					this.SendPropertyChanging();
-					this._CategoriePoids = value;
-					this.SendPropertyChanged("CategoriePoids");
-					this.OnCategoriePoidsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Resultat", DbType="VarChar(100)")]
-		public string Resultat
-		{
-			get
-			{
-				return this._Resultat;
-			}
-			set
-			{
-				if ((this._Resultat != value))
-				{
-					this.OnResultatChanging(value);
-					this.SendPropertyChanging();
-					this._Resultat = value;
-					this.SendPropertyChanged("Resultat");
-					this.OnResultatChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Candidatureid", DbType="Decimal(18,0) NOT NULL")]
-		public decimal Candidatureid
-		{
-			get
-			{
-				return this._Candidatureid;
-			}
-			set
-			{
-				if ((this._Candidatureid != value))
-				{
-					if (this._Candidature.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCandidatureidChanging(value);
-					this.SendPropertyChanging();
-					this._Candidatureid = value;
-					this.SendPropertyChanged("Candidatureid");
-					this.OnCandidatureidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Annee", DbType="VarChar(50)")]
-		public string Annee
-		{
-			get
-			{
-				return this._Annee;
-			}
-			set
-			{
-				if ((this._Annee != value))
-				{
-					this.OnAnneeChanging(value);
-					this.SendPropertyChanging();
-					this._Annee = value;
-					this.SendPropertyChanged("Annee");
-					this.OnAnneeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Candidature_InformationSportive", Storage="_Candidature", ThisKey="Candidatureid", OtherKey="id", IsForeignKey=true)]
-		public Candidature Candidature
-		{
-			get
-			{
-				return this._Candidature.Entity;
-			}
-			set
-			{
-				Candidature previousValue = this._Candidature.Entity;
-				if (((previousValue != value) 
-							|| (this._Candidature.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Candidature.Entity = null;
-						previousValue.InformationSportive.Remove(this);
-					}
-					this._Candidature.Entity = value;
-					if ((value != null))
-					{
-						value.InformationSportive.Add(this);
-						this._Candidatureid = value.id;
-					}
-					else
-					{
-						this._Candidatureid = default(decimal);
-					}
-					this.SendPropertyChanged("Candidature");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Langue")]
-	public partial class Langue : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private decimal _id;
-		
-		private string _Langue1;
-		
-		private decimal _SouhaitScolaireid;
-		
-		private EntityRef<SouhaitScolaire> _SouhaitScolaire;
-		
-    #region Définitions de méthodes d'extensibilité
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(decimal value);
-    partial void OnidChanged();
-    partial void OnLangue1Changing(string value);
-    partial void OnLangue1Changed();
-    partial void OnSouhaitScolaireidChanging(decimal value);
-    partial void OnSouhaitScolaireidChanged();
-    #endregion
-		
-		public Langue()
-		{
-			this._SouhaitScolaire = default(EntityRef<SouhaitScolaire>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public decimal id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Langue", Storage="_Langue1", DbType="VarChar(150)")]
-		public string Langue1
-		{
-			get
-			{
-				return this._Langue1;
-			}
-			set
-			{
-				if ((this._Langue1 != value))
-				{
-					this.OnLangue1Changing(value);
-					this.SendPropertyChanging();
-					this._Langue1 = value;
-					this.SendPropertyChanged("Langue1");
-					this.OnLangue1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SouhaitScolaireid", DbType="Decimal(18,0) NOT NULL")]
-		public decimal SouhaitScolaireid
-		{
-			get
-			{
-				return this._SouhaitScolaireid;
-			}
-			set
-			{
-				if ((this._SouhaitScolaireid != value))
-				{
-					if (this._SouhaitScolaire.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSouhaitScolaireidChanging(value);
-					this.SendPropertyChanging();
-					this._SouhaitScolaireid = value;
-					this.SendPropertyChanged("SouhaitScolaireid");
-					this.OnSouhaitScolaireidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SouhaitScolaire_Langue", Storage="_SouhaitScolaire", ThisKey="SouhaitScolaireid", OtherKey="id", IsForeignKey=true)]
-		public SouhaitScolaire SouhaitScolaire
-		{
-			get
-			{
-				return this._SouhaitScolaire.Entity;
-			}
-			set
-			{
-				SouhaitScolaire previousValue = this._SouhaitScolaire.Entity;
-				if (((previousValue != value) 
-							|| (this._SouhaitScolaire.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SouhaitScolaire.Entity = null;
-						previousValue.Langue.Remove(this);
-					}
-					this._SouhaitScolaire.Entity = value;
-					if ((value != null))
-					{
-						value.Langue.Add(this);
-						this._SouhaitScolaireid = value.id;
-					}
-					else
-					{
-						this._SouhaitScolaireid = default(decimal);
-					}
-					this.SendPropertyChanged("SouhaitScolaire");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Options")]
-	public partial class Options : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private decimal _id;
-		
-		private string _NomOption;
-		
-		private decimal _SouhaitScolaireid;
-		
-		private EntityRef<SouhaitScolaire> _SouhaitScolaire;
-		
-    #region Définitions de méthodes d'extensibilité
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(decimal value);
-    partial void OnidChanged();
-    partial void OnNomOptionChanging(string value);
-    partial void OnNomOptionChanged();
-    partial void OnSouhaitScolaireidChanging(decimal value);
-    partial void OnSouhaitScolaireidChanged();
-    #endregion
-		
-		public Options()
-		{
-			this._SouhaitScolaire = default(EntityRef<SouhaitScolaire>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public decimal id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NomOption", DbType="VarChar(150)")]
-		public string NomOption
-		{
-			get
-			{
-				return this._NomOption;
-			}
-			set
-			{
-				if ((this._NomOption != value))
-				{
-					this.OnNomOptionChanging(value);
-					this.SendPropertyChanging();
-					this._NomOption = value;
-					this.SendPropertyChanged("NomOption");
-					this.OnNomOptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SouhaitScolaireid", DbType="Decimal(18,0) NOT NULL")]
-		public decimal SouhaitScolaireid
-		{
-			get
-			{
-				return this._SouhaitScolaireid;
-			}
-			set
-			{
-				if ((this._SouhaitScolaireid != value))
-				{
-					if (this._SouhaitScolaire.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSouhaitScolaireidChanging(value);
-					this.SendPropertyChanging();
-					this._SouhaitScolaireid = value;
-					this.SendPropertyChanged("SouhaitScolaireid");
-					this.OnSouhaitScolaireidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SouhaitScolaire_Options", Storage="_SouhaitScolaire", ThisKey="SouhaitScolaireid", OtherKey="id", IsForeignKey=true)]
-		public SouhaitScolaire SouhaitScolaire
-		{
-			get
-			{
-				return this._SouhaitScolaire.Entity;
-			}
-			set
-			{
-				SouhaitScolaire previousValue = this._SouhaitScolaire.Entity;
-				if (((previousValue != value) 
-							|| (this._SouhaitScolaire.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SouhaitScolaire.Entity = null;
-						previousValue.Options.Remove(this);
-					}
-					this._SouhaitScolaire.Entity = value;
-					if ((value != null))
-					{
-						value.Options.Add(this);
-						this._SouhaitScolaireid = value.id;
-					}
-					else
-					{
-						this._SouhaitScolaireid = default(decimal);
-					}
-					this.SendPropertyChanged("SouhaitScolaire");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PoleCandidature")]
-	public partial class PoleCandidature : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private decimal _id;
-		
-		private decimal _Poleid;
-		
-		private decimal _Candidatureid;
-		
-		private EntityRef<Pole> _Pole;
-		
-		private EntityRef<Candidature> _Candidature;
-		
-    #region Définitions de méthodes d'extensibilité
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(decimal value);
-    partial void OnidChanged();
-    partial void OnPoleidChanging(decimal value);
-    partial void OnPoleidChanged();
-    partial void OnCandidatureidChanging(decimal value);
-    partial void OnCandidatureidChanged();
-    #endregion
-		
-		public PoleCandidature()
-		{
-			this._Pole = default(EntityRef<Pole>);
-			this._Candidature = default(EntityRef<Candidature>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public decimal id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Poleid", DbType="Decimal(18,0) NOT NULL")]
-		public decimal Poleid
-		{
-			get
-			{
-				return this._Poleid;
-			}
-			set
-			{
-				if ((this._Poleid != value))
-				{
-					if (this._Pole.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPoleidChanging(value);
-					this.SendPropertyChanging();
-					this._Poleid = value;
-					this.SendPropertyChanged("Poleid");
-					this.OnPoleidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Candidatureid", DbType="Decimal(18,0) NOT NULL")]
-		public decimal Candidatureid
-		{
-			get
-			{
-				return this._Candidatureid;
-			}
-			set
-			{
-				if ((this._Candidatureid != value))
-				{
-					if (this._Candidature.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCandidatureidChanging(value);
-					this.SendPropertyChanging();
-					this._Candidatureid = value;
-					this.SendPropertyChanged("Candidatureid");
-					this.OnCandidatureidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pole_PoleCandidature", Storage="_Pole", ThisKey="Poleid", OtherKey="id", IsForeignKey=true)]
-		public Pole Pole
-		{
-			get
-			{
-				return this._Pole.Entity;
-			}
-			set
-			{
-				Pole previousValue = this._Pole.Entity;
-				if (((previousValue != value) 
-							|| (this._Pole.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Pole.Entity = null;
-						previousValue.PoleCandidature.Remove(this);
-					}
-					this._Pole.Entity = value;
-					if ((value != null))
-					{
-						value.PoleCandidature.Add(this);
-						this._Poleid = value.id;
-					}
-					else
-					{
-						this._Poleid = default(decimal);
-					}
-					this.SendPropertyChanged("Pole");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Candidature_PoleCandidature", Storage="_Candidature", ThisKey="Candidatureid", OtherKey="id", IsForeignKey=true)]
-		public Candidature Candidature
-		{
-			get
-			{
-				return this._Candidature.Entity;
-			}
-			set
-			{
-				Candidature previousValue = this._Candidature.Entity;
-				if (((previousValue != value) 
-							|| (this._Candidature.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Candidature.Entity = null;
-						previousValue.PoleCandidature.Remove(this);
-					}
-					this._Candidature.Entity = value;
-					if ((value != null))
-					{
-						value.PoleCandidature.Add(this);
-						this._Candidatureid = value.id;
-					}
-					else
-					{
-						this._Candidatureid = default(decimal);
-					}
-					this.SendPropertyChanged("Candidature");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Responsable")]
-	public partial class Responsable : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private decimal _id;
-		
-		private string _Nom;
-		
-		private string _Prenom;
-		
-		private string _AdresseEmail;
-		
-		private string _Login;
-		
-		private string _Password;
-		
-		private decimal _Poleid;
-		
-		private EntityRef<Pole> _Pole;
-		
-    #region Définitions de méthodes d'extensibilité
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(decimal value);
-    partial void OnidChanged();
-    partial void OnNomChanging(string value);
-    partial void OnNomChanged();
-    partial void OnPrenomChanging(string value);
-    partial void OnPrenomChanged();
-    partial void OnAdresseEmailChanging(string value);
-    partial void OnAdresseEmailChanged();
-    partial void OnLoginChanging(string value);
-    partial void OnLoginChanged();
-    partial void OnPasswordChanging(string value);
-    partial void OnPasswordChanged();
-    partial void OnPoleidChanging(decimal value);
-    partial void OnPoleidChanged();
-    #endregion
-		
-		public Responsable()
-		{
-			this._Pole = default(EntityRef<Pole>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public decimal id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nom", DbType="VarChar(50)")]
-		public string Nom
-		{
-			get
-			{
-				return this._Nom;
-			}
-			set
-			{
-				if ((this._Nom != value))
-				{
-					this.OnNomChanging(value);
-					this.SendPropertyChanging();
-					this._Nom = value;
-					this.SendPropertyChanged("Nom");
-					this.OnNomChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prenom", DbType="VarChar(50)")]
-		public string Prenom
-		{
-			get
-			{
-				return this._Prenom;
-			}
-			set
-			{
-				if ((this._Prenom != value))
-				{
-					this.OnPrenomChanging(value);
-					this.SendPropertyChanging();
-					this._Prenom = value;
-					this.SendPropertyChanged("Prenom");
-					this.OnPrenomChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdresseEmail", DbType="VarChar(200)")]
-		public string AdresseEmail
-		{
-			get
-			{
-				return this._AdresseEmail;
-			}
-			set
-			{
-				if ((this._AdresseEmail != value))
-				{
-					this.OnAdresseEmailChanging(value);
-					this.SendPropertyChanging();
-					this._AdresseEmail = value;
-					this.SendPropertyChanged("AdresseEmail");
-					this.OnAdresseEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Login", DbType="VarChar(60)")]
-		public string Login
-		{
-			get
-			{
-				return this._Login;
-			}
-			set
-			{
-				if ((this._Login != value))
-				{
-					this.OnLoginChanging(value);
-					this.SendPropertyChanging();
-					this._Login = value;
-					this.SendPropertyChanged("Login");
-					this.OnLoginChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(60)")]
-		public string Password
-		{
-			get
-			{
-				return this._Password;
-			}
-			set
-			{
-				if ((this._Password != value))
-				{
-					this.OnPasswordChanging(value);
-					this.SendPropertyChanging();
-					this._Password = value;
-					this.SendPropertyChanged("Password");
-					this.OnPasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Poleid", DbType="Decimal(18,0) NOT NULL")]
-		public decimal Poleid
-		{
-			get
-			{
-				return this._Poleid;
-			}
-			set
-			{
-				if ((this._Poleid != value))
-				{
-					if (this._Pole.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPoleidChanging(value);
-					this.SendPropertyChanging();
-					this._Poleid = value;
-					this.SendPropertyChanged("Poleid");
-					this.OnPoleidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pole_Responsable", Storage="_Pole", ThisKey="Poleid", OtherKey="id", IsForeignKey=true)]
-		public Pole Pole
-		{
-			get
-			{
-				return this._Pole.Entity;
-			}
-			set
-			{
-				Pole previousValue = this._Pole.Entity;
-				if (((previousValue != value) 
-							|| (this._Pole.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Pole.Entity = null;
-						previousValue.Responsable.Remove(this);
-					}
-					this._Pole.Entity = value;
-					if ((value != null))
-					{
-						value.Responsable.Add(this);
-						this._Poleid = value.id;
-					}
-					else
-					{
-						this._Poleid = default(decimal);
-					}
-					this.SendPropertyChanged("Pole");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SouhaitScolaire")]
-	public partial class SouhaitScolaire : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private decimal _id;
-		
-		private string _Etablissement;
-		
-		private string _Classe;
-		
-		private decimal _InformationScolaireid;
-		
-		private EntitySet<Langue> _Langue;
-		
-		private EntitySet<Options> _Options;
-		
-		private EntityRef<InformationScolaire> _InformationScolaire;
-		
-    #region Définitions de méthodes d'extensibilité
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(decimal value);
-    partial void OnidChanged();
-    partial void OnEtablissementChanging(string value);
-    partial void OnEtablissementChanged();
-    partial void OnClasseChanging(string value);
-    partial void OnClasseChanged();
-    partial void OnInformationScolaireidChanging(decimal value);
-    partial void OnInformationScolaireidChanged();
-    #endregion
-		
-		public SouhaitScolaire()
-		{
-			this._Langue = new EntitySet<Langue>(new Action<Langue>(this.attach_Langue), new Action<Langue>(this.detach_Langue));
-			this._Options = new EntitySet<Options>(new Action<Options>(this.attach_Options), new Action<Options>(this.detach_Options));
-			this._InformationScolaire = default(EntityRef<InformationScolaire>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public decimal id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Etablissement", DbType="VarChar(200)")]
-		public string Etablissement
-		{
-			get
-			{
-				return this._Etablissement;
-			}
-			set
-			{
-				if ((this._Etablissement != value))
-				{
-					this.OnEtablissementChanging(value);
-					this.SendPropertyChanging();
-					this._Etablissement = value;
-					this.SendPropertyChanged("Etablissement");
-					this.OnEtablissementChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Classe", DbType="VarChar(150)")]
-		public string Classe
-		{
-			get
-			{
-				return this._Classe;
-			}
-			set
-			{
-				if ((this._Classe != value))
-				{
-					this.OnClasseChanging(value);
-					this.SendPropertyChanging();
-					this._Classe = value;
-					this.SendPropertyChanged("Classe");
-					this.OnClasseChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InformationScolaireid", DbType="Decimal(18,0) NOT NULL")]
-		public decimal InformationScolaireid
-		{
-			get
-			{
-				return this._InformationScolaireid;
-			}
-			set
-			{
-				if ((this._InformationScolaireid != value))
-				{
-					if (this._InformationScolaire.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnInformationScolaireidChanging(value);
-					this.SendPropertyChanging();
-					this._InformationScolaireid = value;
-					this.SendPropertyChanged("InformationScolaireid");
-					this.OnInformationScolaireidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SouhaitScolaire_Langue", Storage="_Langue", ThisKey="id", OtherKey="SouhaitScolaireid")]
-		public EntitySet<Langue> Langue
-		{
-			get
-			{
-				return this._Langue;
-			}
-			set
-			{
-				this._Langue.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SouhaitScolaire_Options", Storage="_Options", ThisKey="id", OtherKey="SouhaitScolaireid")]
-		public EntitySet<Options> Options
-		{
-			get
-			{
-				return this._Options;
-			}
-			set
-			{
-				this._Options.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InformationScolaire_SouhaitScolaire", Storage="_InformationScolaire", ThisKey="InformationScolaireid", OtherKey="id", IsForeignKey=true)]
-		public InformationScolaire InformationScolaire
-		{
-			get
-			{
-				return this._InformationScolaire.Entity;
-			}
-			set
-			{
-				InformationScolaire previousValue = this._InformationScolaire.Entity;
-				if (((previousValue != value) 
-							|| (this._InformationScolaire.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._InformationScolaire.Entity = null;
-						previousValue.SouhaitScolaire.Remove(this);
-					}
-					this._InformationScolaire.Entity = value;
-					if ((value != null))
-					{
-						value.SouhaitScolaire.Add(this);
-						this._InformationScolaireid = value.id;
-					}
-					else
-					{
-						this._InformationScolaireid = default(decimal);
-					}
-					this.SendPropertyChanged("InformationScolaire");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Langue(Langue entity)
-		{
-			this.SendPropertyChanging();
-			entity.SouhaitScolaire = this;
-		}
-		
-		private void detach_Langue(Langue entity)
-		{
-			this.SendPropertyChanging();
-			entity.SouhaitScolaire = null;
-		}
-		
-		private void attach_Options(Options entity)
-		{
-			this.SendPropertyChanging();
-			entity.SouhaitScolaire = this;
-		}
-		
-		private void detach_Options(Options entity)
-		{
-			this.SendPropertyChanging();
-			entity.SouhaitScolaire = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SuperAdmin")]
-	public partial class SuperAdmin : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private decimal _id;
-		
-		private string _Login;
-		
-		private string _Password;
-		
-		private System.Nullable<bool> _Open;
-		
-    #region Définitions de méthodes d'extensibilité
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(decimal value);
-    partial void OnidChanged();
-    partial void OnLoginChanging(string value);
-    partial void OnLoginChanged();
-    partial void OnPasswordChanging(string value);
-    partial void OnPasswordChanged();
-    partial void OnOpenChanging(System.Nullable<bool> value);
-    partial void OnOpenChanged();
-    #endregion
-		
-		public SuperAdmin()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public decimal id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Login", DbType="VarChar(30)")]
-		public string Login
-		{
-			get
-			{
-				return this._Login;
-			}
-			set
-			{
-				if ((this._Login != value))
-				{
-					this.OnLoginChanging(value);
-					this.SendPropertyChanging();
-					this._Login = value;
-					this.SendPropertyChanged("Login");
-					this.OnLoginChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(300)")]
-		public string Password
-		{
-			get
-			{
-				return this._Password;
-			}
-			set
-			{
-				if ((this._Password != value))
-				{
-					this.OnPasswordChanging(value);
-					this.SendPropertyChanging();
-					this._Password = value;
-					this.SendPropertyChanged("Password");
-					this.OnPasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Open]", Storage="_Open", DbType="Bit")]
-		public System.Nullable<bool> Open
-		{
-			get
-			{
-				return this._Open;
-			}
-			set
-			{
-				if ((this._Open != value))
-				{
-					this.OnOpenChanging(value);
-					this.SendPropertyChanging();
-					this._Open = value;
-					this.SendPropertyChanged("Open");
-					this.OnOpenChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Pole")]
-	public partial class Pole : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private decimal _id;
-		
-		private string _Nom;
-		
-		private EntitySet<PoleCandidature> _PoleCandidature;
-		
-		private EntitySet<Responsable> _Responsable;
-		
-    #region Définitions de méthodes d'extensibilité
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(decimal value);
-    partial void OnidChanged();
-    partial void OnNomChanging(string value);
-    partial void OnNomChanged();
-    #endregion
-		
-		public Pole()
-		{
-			this._PoleCandidature = new EntitySet<PoleCandidature>(new Action<PoleCandidature>(this.attach_PoleCandidature), new Action<PoleCandidature>(this.detach_PoleCandidature));
-			this._Responsable = new EntitySet<Responsable>(new Action<Responsable>(this.attach_Responsable), new Action<Responsable>(this.detach_Responsable));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public decimal id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nom", DbType="VarChar(150)")]
-		public string Nom
-		{
-			get
-			{
-				return this._Nom;
-			}
-			set
-			{
-				if ((this._Nom != value))
-				{
-					this.OnNomChanging(value);
-					this.SendPropertyChanging();
-					this._Nom = value;
-					this.SendPropertyChanged("Nom");
-					this.OnNomChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pole_PoleCandidature", Storage="_PoleCandidature", ThisKey="id", OtherKey="Poleid")]
-		public EntitySet<PoleCandidature> PoleCandidature
-		{
-			get
-			{
-				return this._PoleCandidature;
-			}
-			set
-			{
-				this._PoleCandidature.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pole_Responsable", Storage="_Responsable", ThisKey="id", OtherKey="Poleid")]
-		public EntitySet<Responsable> Responsable
-		{
-			get
-			{
-				return this._Responsable;
-			}
-			set
-			{
-				this._Responsable.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_PoleCandidature(PoleCandidature entity)
-		{
-			this.SendPropertyChanging();
-			entity.Pole = this;
-		}
-		
-		private void detach_PoleCandidature(PoleCandidature entity)
-		{
-			this.SendPropertyChanging();
-			entity.Pole = null;
-		}
-		
-		private void attach_Responsable(Responsable entity)
-		{
-			this.SendPropertyChanging();
-			entity.Pole = this;
-		}
-		
-		private void detach_Responsable(Responsable entity)
-		{
-			this.SendPropertyChanging();
-			entity.Pole = null;
 		}
 	}
 	
@@ -2713,6 +1004,1581 @@ namespace PoleFrance.Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InformationScolaire")]
+	public partial class InformationScolaire : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private decimal _id;
+		
+		private string _Etablissement;
+		
+		private string _Adresse;
+		
+		private string _Telephone;
+		
+		private string _Classe;
+		
+		private EntitySet<Candidature> _Candidature;
+		
+		private EntitySet<SouhaitScolaire> _SouhaitScolaire;
+		
+    #region Définitions de méthodes d'extensibilité
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(decimal value);
+    partial void OnidChanged();
+    partial void OnEtablissementChanging(string value);
+    partial void OnEtablissementChanged();
+    partial void OnAdresseChanging(string value);
+    partial void OnAdresseChanged();
+    partial void OnTelephoneChanging(string value);
+    partial void OnTelephoneChanged();
+    partial void OnClasseChanging(string value);
+    partial void OnClasseChanged();
+    #endregion
+		
+		public InformationScolaire()
+		{
+			this._Candidature = new EntitySet<Candidature>(new Action<Candidature>(this.attach_Candidature), new Action<Candidature>(this.detach_Candidature));
+			this._SouhaitScolaire = new EntitySet<SouhaitScolaire>(new Action<SouhaitScolaire>(this.attach_SouhaitScolaire), new Action<SouhaitScolaire>(this.detach_SouhaitScolaire));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public decimal id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Etablissement", DbType="VarChar(200)")]
+		public string Etablissement
+		{
+			get
+			{
+				return this._Etablissement;
+			}
+			set
+			{
+				if ((this._Etablissement != value))
+				{
+					this.OnEtablissementChanging(value);
+					this.SendPropertyChanging();
+					this._Etablissement = value;
+					this.SendPropertyChanged("Etablissement");
+					this.OnEtablissementChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Adresse", DbType="VarChar(300)")]
+		public string Adresse
+		{
+			get
+			{
+				return this._Adresse;
+			}
+			set
+			{
+				if ((this._Adresse != value))
+				{
+					this.OnAdresseChanging(value);
+					this.SendPropertyChanging();
+					this._Adresse = value;
+					this.SendPropertyChanged("Adresse");
+					this.OnAdresseChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Telephone", DbType="VarChar(100)")]
+		public string Telephone
+		{
+			get
+			{
+				return this._Telephone;
+			}
+			set
+			{
+				if ((this._Telephone != value))
+				{
+					this.OnTelephoneChanging(value);
+					this.SendPropertyChanging();
+					this._Telephone = value;
+					this.SendPropertyChanged("Telephone");
+					this.OnTelephoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Classe", DbType="VarChar(150)")]
+		public string Classe
+		{
+			get
+			{
+				return this._Classe;
+			}
+			set
+			{
+				if ((this._Classe != value))
+				{
+					this.OnClasseChanging(value);
+					this.SendPropertyChanging();
+					this._Classe = value;
+					this.SendPropertyChanged("Classe");
+					this.OnClasseChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InformationScolaire_Candidature", Storage="_Candidature", ThisKey="id", OtherKey="InformationScolaireid")]
+		public EntitySet<Candidature> Candidature
+		{
+			get
+			{
+				return this._Candidature;
+			}
+			set
+			{
+				this._Candidature.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InformationScolaire_SouhaitScolaire", Storage="_SouhaitScolaire", ThisKey="id", OtherKey="InformationScolaireid")]
+		public EntitySet<SouhaitScolaire> SouhaitScolaire
+		{
+			get
+			{
+				return this._SouhaitScolaire;
+			}
+			set
+			{
+				this._SouhaitScolaire.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Candidature(Candidature entity)
+		{
+			this.SendPropertyChanging();
+			entity.InformationScolaire = this;
+		}
+		
+		private void detach_Candidature(Candidature entity)
+		{
+			this.SendPropertyChanging();
+			entity.InformationScolaire = null;
+		}
+		
+		private void attach_SouhaitScolaire(SouhaitScolaire entity)
+		{
+			this.SendPropertyChanging();
+			entity.InformationScolaire = this;
+		}
+		
+		private void detach_SouhaitScolaire(SouhaitScolaire entity)
+		{
+			this.SendPropertyChanging();
+			entity.InformationScolaire = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InformationSportive")]
+	public partial class InformationSportive : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private decimal _id;
+		
+		private string _Competition;
+		
+		private string _CategorieAge;
+		
+		private string _CategoriePoids;
+		
+		private string _Resultat;
+		
+		private decimal _Candidatureid;
+		
+		private string _Annee;
+		
+		private EntityRef<Candidature> _Candidature;
+		
+    #region Définitions de méthodes d'extensibilité
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(decimal value);
+    partial void OnidChanged();
+    partial void OnCompetitionChanging(string value);
+    partial void OnCompetitionChanged();
+    partial void OnCategorieAgeChanging(string value);
+    partial void OnCategorieAgeChanged();
+    partial void OnCategoriePoidsChanging(string value);
+    partial void OnCategoriePoidsChanged();
+    partial void OnResultatChanging(string value);
+    partial void OnResultatChanged();
+    partial void OnCandidatureidChanging(decimal value);
+    partial void OnCandidatureidChanged();
+    partial void OnAnneeChanging(string value);
+    partial void OnAnneeChanged();
+    #endregion
+		
+		public InformationSportive()
+		{
+			this._Candidature = default(EntityRef<Candidature>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public decimal id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Competition", DbType="VarChar(150)")]
+		public string Competition
+		{
+			get
+			{
+				return this._Competition;
+			}
+			set
+			{
+				if ((this._Competition != value))
+				{
+					this.OnCompetitionChanging(value);
+					this.SendPropertyChanging();
+					this._Competition = value;
+					this.SendPropertyChanged("Competition");
+					this.OnCompetitionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategorieAge", DbType="VarChar(100)")]
+		public string CategorieAge
+		{
+			get
+			{
+				return this._CategorieAge;
+			}
+			set
+			{
+				if ((this._CategorieAge != value))
+				{
+					this.OnCategorieAgeChanging(value);
+					this.SendPropertyChanging();
+					this._CategorieAge = value;
+					this.SendPropertyChanged("CategorieAge");
+					this.OnCategorieAgeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoriePoids", DbType="VarChar(30)")]
+		public string CategoriePoids
+		{
+			get
+			{
+				return this._CategoriePoids;
+			}
+			set
+			{
+				if ((this._CategoriePoids != value))
+				{
+					this.OnCategoriePoidsChanging(value);
+					this.SendPropertyChanging();
+					this._CategoriePoids = value;
+					this.SendPropertyChanged("CategoriePoids");
+					this.OnCategoriePoidsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Resultat", DbType="VarChar(100)")]
+		public string Resultat
+		{
+			get
+			{
+				return this._Resultat;
+			}
+			set
+			{
+				if ((this._Resultat != value))
+				{
+					this.OnResultatChanging(value);
+					this.SendPropertyChanging();
+					this._Resultat = value;
+					this.SendPropertyChanged("Resultat");
+					this.OnResultatChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Candidatureid", DbType="Decimal(18,0) NOT NULL")]
+		public decimal Candidatureid
+		{
+			get
+			{
+				return this._Candidatureid;
+			}
+			set
+			{
+				if ((this._Candidatureid != value))
+				{
+					if (this._Candidature.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCandidatureidChanging(value);
+					this.SendPropertyChanging();
+					this._Candidatureid = value;
+					this.SendPropertyChanged("Candidatureid");
+					this.OnCandidatureidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Annee", DbType="VarChar(50)")]
+		public string Annee
+		{
+			get
+			{
+				return this._Annee;
+			}
+			set
+			{
+				if ((this._Annee != value))
+				{
+					this.OnAnneeChanging(value);
+					this.SendPropertyChanging();
+					this._Annee = value;
+					this.SendPropertyChanged("Annee");
+					this.OnAnneeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Candidature_InformationSportive", Storage="_Candidature", ThisKey="Candidatureid", OtherKey="id", IsForeignKey=true)]
+		public Candidature Candidature
+		{
+			get
+			{
+				return this._Candidature.Entity;
+			}
+			set
+			{
+				Candidature previousValue = this._Candidature.Entity;
+				if (((previousValue != value) 
+							|| (this._Candidature.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Candidature.Entity = null;
+						previousValue.InformationSportive.Remove(this);
+					}
+					this._Candidature.Entity = value;
+					if ((value != null))
+					{
+						value.InformationSportive.Add(this);
+						this._Candidatureid = value.id;
+					}
+					else
+					{
+						this._Candidatureid = default(decimal);
+					}
+					this.SendPropertyChanged("Candidature");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SouhaitScolaire")]
+	public partial class SouhaitScolaire : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private decimal _id;
+		
+		private string _Etablissement;
+		
+		private string _Classe;
+		
+		private decimal _InformationScolaireid;
+		
+		private EntitySet<Langue> _Langue;
+		
+		private EntitySet<Options> _Options;
+		
+		private EntityRef<InformationScolaire> _InformationScolaire;
+		
+    #region Définitions de méthodes d'extensibilité
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(decimal value);
+    partial void OnidChanged();
+    partial void OnEtablissementChanging(string value);
+    partial void OnEtablissementChanged();
+    partial void OnClasseChanging(string value);
+    partial void OnClasseChanged();
+    partial void OnInformationScolaireidChanging(decimal value);
+    partial void OnInformationScolaireidChanged();
+    #endregion
+		
+		public SouhaitScolaire()
+		{
+			this._Langue = new EntitySet<Langue>(new Action<Langue>(this.attach_Langue), new Action<Langue>(this.detach_Langue));
+			this._Options = new EntitySet<Options>(new Action<Options>(this.attach_Options), new Action<Options>(this.detach_Options));
+			this._InformationScolaire = default(EntityRef<InformationScolaire>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public decimal id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Etablissement", DbType="VarChar(200)")]
+		public string Etablissement
+		{
+			get
+			{
+				return this._Etablissement;
+			}
+			set
+			{
+				if ((this._Etablissement != value))
+				{
+					this.OnEtablissementChanging(value);
+					this.SendPropertyChanging();
+					this._Etablissement = value;
+					this.SendPropertyChanged("Etablissement");
+					this.OnEtablissementChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Classe", DbType="VarChar(150)")]
+		public string Classe
+		{
+			get
+			{
+				return this._Classe;
+			}
+			set
+			{
+				if ((this._Classe != value))
+				{
+					this.OnClasseChanging(value);
+					this.SendPropertyChanging();
+					this._Classe = value;
+					this.SendPropertyChanged("Classe");
+					this.OnClasseChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InformationScolaireid", DbType="Decimal(18,0) NOT NULL")]
+		public decimal InformationScolaireid
+		{
+			get
+			{
+				return this._InformationScolaireid;
+			}
+			set
+			{
+				if ((this._InformationScolaireid != value))
+				{
+					if (this._InformationScolaire.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnInformationScolaireidChanging(value);
+					this.SendPropertyChanging();
+					this._InformationScolaireid = value;
+					this.SendPropertyChanged("InformationScolaireid");
+					this.OnInformationScolaireidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SouhaitScolaire_Langue", Storage="_Langue", ThisKey="id", OtherKey="SouhaitScolaireid")]
+		public EntitySet<Langue> Langue
+		{
+			get
+			{
+				return this._Langue;
+			}
+			set
+			{
+				this._Langue.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SouhaitScolaire_Options", Storage="_Options", ThisKey="id", OtherKey="SouhaitScolaireid")]
+		public EntitySet<Options> Options
+		{
+			get
+			{
+				return this._Options;
+			}
+			set
+			{
+				this._Options.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InformationScolaire_SouhaitScolaire", Storage="_InformationScolaire", ThisKey="InformationScolaireid", OtherKey="id", IsForeignKey=true)]
+		public InformationScolaire InformationScolaire
+		{
+			get
+			{
+				return this._InformationScolaire.Entity;
+			}
+			set
+			{
+				InformationScolaire previousValue = this._InformationScolaire.Entity;
+				if (((previousValue != value) 
+							|| (this._InformationScolaire.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._InformationScolaire.Entity = null;
+						previousValue.SouhaitScolaire.Remove(this);
+					}
+					this._InformationScolaire.Entity = value;
+					if ((value != null))
+					{
+						value.SouhaitScolaire.Add(this);
+						this._InformationScolaireid = value.id;
+					}
+					else
+					{
+						this._InformationScolaireid = default(decimal);
+					}
+					this.SendPropertyChanged("InformationScolaire");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Langue(Langue entity)
+		{
+			this.SendPropertyChanging();
+			entity.SouhaitScolaire = this;
+		}
+		
+		private void detach_Langue(Langue entity)
+		{
+			this.SendPropertyChanging();
+			entity.SouhaitScolaire = null;
+		}
+		
+		private void attach_Options(Options entity)
+		{
+			this.SendPropertyChanging();
+			entity.SouhaitScolaire = this;
+		}
+		
+		private void detach_Options(Options entity)
+		{
+			this.SendPropertyChanging();
+			entity.SouhaitScolaire = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Langue")]
+	public partial class Langue : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private decimal _id;
+		
+		private string _Langue1;
+		
+		private decimal _SouhaitScolaireid;
+		
+		private EntityRef<SouhaitScolaire> _SouhaitScolaire;
+		
+    #region Définitions de méthodes d'extensibilité
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(decimal value);
+    partial void OnidChanged();
+    partial void OnLangue1Changing(string value);
+    partial void OnLangue1Changed();
+    partial void OnSouhaitScolaireidChanging(decimal value);
+    partial void OnSouhaitScolaireidChanged();
+    #endregion
+		
+		public Langue()
+		{
+			this._SouhaitScolaire = default(EntityRef<SouhaitScolaire>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public decimal id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Langue", Storage="_Langue1", DbType="VarChar(150)")]
+		public string Langue1
+		{
+			get
+			{
+				return this._Langue1;
+			}
+			set
+			{
+				if ((this._Langue1 != value))
+				{
+					this.OnLangue1Changing(value);
+					this.SendPropertyChanging();
+					this._Langue1 = value;
+					this.SendPropertyChanged("Langue1");
+					this.OnLangue1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SouhaitScolaireid", DbType="Decimal(18,0) NOT NULL")]
+		public decimal SouhaitScolaireid
+		{
+			get
+			{
+				return this._SouhaitScolaireid;
+			}
+			set
+			{
+				if ((this._SouhaitScolaireid != value))
+				{
+					if (this._SouhaitScolaire.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSouhaitScolaireidChanging(value);
+					this.SendPropertyChanging();
+					this._SouhaitScolaireid = value;
+					this.SendPropertyChanged("SouhaitScolaireid");
+					this.OnSouhaitScolaireidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SouhaitScolaire_Langue", Storage="_SouhaitScolaire", ThisKey="SouhaitScolaireid", OtherKey="id", IsForeignKey=true)]
+		public SouhaitScolaire SouhaitScolaire
+		{
+			get
+			{
+				return this._SouhaitScolaire.Entity;
+			}
+			set
+			{
+				SouhaitScolaire previousValue = this._SouhaitScolaire.Entity;
+				if (((previousValue != value) 
+							|| (this._SouhaitScolaire.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SouhaitScolaire.Entity = null;
+						previousValue.Langue.Remove(this);
+					}
+					this._SouhaitScolaire.Entity = value;
+					if ((value != null))
+					{
+						value.Langue.Add(this);
+						this._SouhaitScolaireid = value.id;
+					}
+					else
+					{
+						this._SouhaitScolaireid = default(decimal);
+					}
+					this.SendPropertyChanged("SouhaitScolaire");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Options")]
+	public partial class Options : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private decimal _id;
+		
+		private string _NomOption;
+		
+		private decimal _SouhaitScolaireid;
+		
+		private EntityRef<SouhaitScolaire> _SouhaitScolaire;
+		
+    #region Définitions de méthodes d'extensibilité
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(decimal value);
+    partial void OnidChanged();
+    partial void OnNomOptionChanging(string value);
+    partial void OnNomOptionChanged();
+    partial void OnSouhaitScolaireidChanging(decimal value);
+    partial void OnSouhaitScolaireidChanged();
+    #endregion
+		
+		public Options()
+		{
+			this._SouhaitScolaire = default(EntityRef<SouhaitScolaire>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public decimal id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NomOption", DbType="VarChar(150)")]
+		public string NomOption
+		{
+			get
+			{
+				return this._NomOption;
+			}
+			set
+			{
+				if ((this._NomOption != value))
+				{
+					this.OnNomOptionChanging(value);
+					this.SendPropertyChanging();
+					this._NomOption = value;
+					this.SendPropertyChanged("NomOption");
+					this.OnNomOptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SouhaitScolaireid", DbType="Decimal(18,0) NOT NULL")]
+		public decimal SouhaitScolaireid
+		{
+			get
+			{
+				return this._SouhaitScolaireid;
+			}
+			set
+			{
+				if ((this._SouhaitScolaireid != value))
+				{
+					if (this._SouhaitScolaire.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSouhaitScolaireidChanging(value);
+					this.SendPropertyChanging();
+					this._SouhaitScolaireid = value;
+					this.SendPropertyChanged("SouhaitScolaireid");
+					this.OnSouhaitScolaireidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SouhaitScolaire_Options", Storage="_SouhaitScolaire", ThisKey="SouhaitScolaireid", OtherKey="id", IsForeignKey=true)]
+		public SouhaitScolaire SouhaitScolaire
+		{
+			get
+			{
+				return this._SouhaitScolaire.Entity;
+			}
+			set
+			{
+				SouhaitScolaire previousValue = this._SouhaitScolaire.Entity;
+				if (((previousValue != value) 
+							|| (this._SouhaitScolaire.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SouhaitScolaire.Entity = null;
+						previousValue.Options.Remove(this);
+					}
+					this._SouhaitScolaire.Entity = value;
+					if ((value != null))
+					{
+						value.Options.Add(this);
+						this._SouhaitScolaireid = value.id;
+					}
+					else
+					{
+						this._SouhaitScolaireid = default(decimal);
+					}
+					this.SendPropertyChanged("SouhaitScolaire");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Pole")]
+	public partial class Pole : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private decimal _id;
+		
+		private string _Nom;
+		
+		private EntitySet<PoleCandidature> _PoleCandidature;
+		
+		private EntitySet<Responsable> _Responsable;
+		
+    #region Définitions de méthodes d'extensibilité
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(decimal value);
+    partial void OnidChanged();
+    partial void OnNomChanging(string value);
+    partial void OnNomChanged();
+    #endregion
+		
+		public Pole()
+		{
+			this._PoleCandidature = new EntitySet<PoleCandidature>(new Action<PoleCandidature>(this.attach_PoleCandidature), new Action<PoleCandidature>(this.detach_PoleCandidature));
+			this._Responsable = new EntitySet<Responsable>(new Action<Responsable>(this.attach_Responsable), new Action<Responsable>(this.detach_Responsable));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public decimal id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nom", DbType="VarChar(150)")]
+		public string Nom
+		{
+			get
+			{
+				return this._Nom;
+			}
+			set
+			{
+				if ((this._Nom != value))
+				{
+					this.OnNomChanging(value);
+					this.SendPropertyChanging();
+					this._Nom = value;
+					this.SendPropertyChanged("Nom");
+					this.OnNomChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pole_PoleCandidature", Storage="_PoleCandidature", ThisKey="id", OtherKey="Poleid")]
+		public EntitySet<PoleCandidature> PoleCandidature
+		{
+			get
+			{
+				return this._PoleCandidature;
+			}
+			set
+			{
+				this._PoleCandidature.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pole_Responsable", Storage="_Responsable", ThisKey="id", OtherKey="Poleid")]
+		public EntitySet<Responsable> Responsable
+		{
+			get
+			{
+				return this._Responsable;
+			}
+			set
+			{
+				this._Responsable.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_PoleCandidature(PoleCandidature entity)
+		{
+			this.SendPropertyChanging();
+			entity.Pole = this;
+		}
+		
+		private void detach_PoleCandidature(PoleCandidature entity)
+		{
+			this.SendPropertyChanging();
+			entity.Pole = null;
+		}
+		
+		private void attach_Responsable(Responsable entity)
+		{
+			this.SendPropertyChanging();
+			entity.Pole = this;
+		}
+		
+		private void detach_Responsable(Responsable entity)
+		{
+			this.SendPropertyChanging();
+			entity.Pole = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PoleCandidature")]
+	public partial class PoleCandidature : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private decimal _id;
+		
+		private decimal _Poleid;
+		
+		private decimal _Candidatureid;
+		
+		private EntityRef<Candidature> _Candidature;
+		
+		private EntityRef<Pole> _Pole;
+		
+    #region Définitions de méthodes d'extensibilité
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(decimal value);
+    partial void OnidChanged();
+    partial void OnPoleidChanging(decimal value);
+    partial void OnPoleidChanged();
+    partial void OnCandidatureidChanging(decimal value);
+    partial void OnCandidatureidChanged();
+    #endregion
+		
+		public PoleCandidature()
+		{
+			this._Candidature = default(EntityRef<Candidature>);
+			this._Pole = default(EntityRef<Pole>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public decimal id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Poleid", DbType="Decimal(18,0) NOT NULL")]
+		public decimal Poleid
+		{
+			get
+			{
+				return this._Poleid;
+			}
+			set
+			{
+				if ((this._Poleid != value))
+				{
+					if (this._Pole.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPoleidChanging(value);
+					this.SendPropertyChanging();
+					this._Poleid = value;
+					this.SendPropertyChanged("Poleid");
+					this.OnPoleidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Candidatureid", DbType="Decimal(18,0) NOT NULL")]
+		public decimal Candidatureid
+		{
+			get
+			{
+				return this._Candidatureid;
+			}
+			set
+			{
+				if ((this._Candidatureid != value))
+				{
+					if (this._Candidature.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCandidatureidChanging(value);
+					this.SendPropertyChanging();
+					this._Candidatureid = value;
+					this.SendPropertyChanged("Candidatureid");
+					this.OnCandidatureidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Candidature_PoleCandidature", Storage="_Candidature", ThisKey="Candidatureid", OtherKey="id", IsForeignKey=true)]
+		public Candidature Candidature
+		{
+			get
+			{
+				return this._Candidature.Entity;
+			}
+			set
+			{
+				Candidature previousValue = this._Candidature.Entity;
+				if (((previousValue != value) 
+							|| (this._Candidature.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Candidature.Entity = null;
+						previousValue.PoleCandidature.Remove(this);
+					}
+					this._Candidature.Entity = value;
+					if ((value != null))
+					{
+						value.PoleCandidature.Add(this);
+						this._Candidatureid = value.id;
+					}
+					else
+					{
+						this._Candidatureid = default(decimal);
+					}
+					this.SendPropertyChanged("Candidature");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pole_PoleCandidature", Storage="_Pole", ThisKey="Poleid", OtherKey="id", IsForeignKey=true)]
+		public Pole Pole
+		{
+			get
+			{
+				return this._Pole.Entity;
+			}
+			set
+			{
+				Pole previousValue = this._Pole.Entity;
+				if (((previousValue != value) 
+							|| (this._Pole.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Pole.Entity = null;
+						previousValue.PoleCandidature.Remove(this);
+					}
+					this._Pole.Entity = value;
+					if ((value != null))
+					{
+						value.PoleCandidature.Add(this);
+						this._Poleid = value.id;
+					}
+					else
+					{
+						this._Poleid = default(decimal);
+					}
+					this.SendPropertyChanged("Pole");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Responsable")]
+	public partial class Responsable : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private decimal _id;
+		
+		private string _Nom;
+		
+		private string _Prenom;
+		
+		private string _AdresseEmail;
+		
+		private string _Login;
+		
+		private string _Password;
+		
+		private decimal _Poleid;
+		
+		private EntityRef<Pole> _Pole;
+		
+    #region Définitions de méthodes d'extensibilité
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(decimal value);
+    partial void OnidChanged();
+    partial void OnNomChanging(string value);
+    partial void OnNomChanged();
+    partial void OnPrenomChanging(string value);
+    partial void OnPrenomChanged();
+    partial void OnAdresseEmailChanging(string value);
+    partial void OnAdresseEmailChanged();
+    partial void OnLoginChanging(string value);
+    partial void OnLoginChanged();
+    partial void OnPasswordChanging(string value);
+    partial void OnPasswordChanged();
+    partial void OnPoleidChanging(decimal value);
+    partial void OnPoleidChanged();
+    #endregion
+		
+		public Responsable()
+		{
+			this._Pole = default(EntityRef<Pole>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public decimal id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nom", DbType="VarChar(50)")]
+		public string Nom
+		{
+			get
+			{
+				return this._Nom;
+			}
+			set
+			{
+				if ((this._Nom != value))
+				{
+					this.OnNomChanging(value);
+					this.SendPropertyChanging();
+					this._Nom = value;
+					this.SendPropertyChanged("Nom");
+					this.OnNomChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prenom", DbType="VarChar(50)")]
+		public string Prenom
+		{
+			get
+			{
+				return this._Prenom;
+			}
+			set
+			{
+				if ((this._Prenom != value))
+				{
+					this.OnPrenomChanging(value);
+					this.SendPropertyChanging();
+					this._Prenom = value;
+					this.SendPropertyChanged("Prenom");
+					this.OnPrenomChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdresseEmail", DbType="VarChar(200)")]
+		public string AdresseEmail
+		{
+			get
+			{
+				return this._AdresseEmail;
+			}
+			set
+			{
+				if ((this._AdresseEmail != value))
+				{
+					this.OnAdresseEmailChanging(value);
+					this.SendPropertyChanging();
+					this._AdresseEmail = value;
+					this.SendPropertyChanged("AdresseEmail");
+					this.OnAdresseEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Login", DbType="VarChar(60)")]
+		public string Login
+		{
+			get
+			{
+				return this._Login;
+			}
+			set
+			{
+				if ((this._Login != value))
+				{
+					this.OnLoginChanging(value);
+					this.SendPropertyChanging();
+					this._Login = value;
+					this.SendPropertyChanged("Login");
+					this.OnLoginChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(60)")]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this.OnPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Password = value;
+					this.SendPropertyChanged("Password");
+					this.OnPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Poleid", DbType="Decimal(18,0) NOT NULL")]
+		public decimal Poleid
+		{
+			get
+			{
+				return this._Poleid;
+			}
+			set
+			{
+				if ((this._Poleid != value))
+				{
+					if (this._Pole.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPoleidChanging(value);
+					this.SendPropertyChanging();
+					this._Poleid = value;
+					this.SendPropertyChanged("Poleid");
+					this.OnPoleidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pole_Responsable", Storage="_Pole", ThisKey="Poleid", OtherKey="id", IsForeignKey=true)]
+		public Pole Pole
+		{
+			get
+			{
+				return this._Pole.Entity;
+			}
+			set
+			{
+				Pole previousValue = this._Pole.Entity;
+				if (((previousValue != value) 
+							|| (this._Pole.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Pole.Entity = null;
+						previousValue.Responsable.Remove(this);
+					}
+					this._Pole.Entity = value;
+					if ((value != null))
+					{
+						value.Responsable.Add(this);
+						this._Poleid = value.id;
+					}
+					else
+					{
+						this._Poleid = default(decimal);
+					}
+					this.SendPropertyChanged("Pole");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ResponsableLigue")]
 	public partial class ResponsableLigue
 	{
@@ -2844,6 +2710,140 @@ namespace PoleFrance.Models
 				{
 					this._idLigue = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SuperAdmin")]
+	public partial class SuperAdmin : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private decimal _id;
+		
+		private string _Login;
+		
+		private string _Password;
+		
+		private System.Nullable<bool> _Open;
+		
+    #region Définitions de méthodes d'extensibilité
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(decimal value);
+    partial void OnidChanged();
+    partial void OnLoginChanging(string value);
+    partial void OnLoginChanged();
+    partial void OnPasswordChanging(string value);
+    partial void OnPasswordChanged();
+    partial void OnOpenChanging(System.Nullable<bool> value);
+    partial void OnOpenChanged();
+    #endregion
+		
+		public SuperAdmin()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public decimal id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Login", DbType="VarChar(30)")]
+		public string Login
+		{
+			get
+			{
+				return this._Login;
+			}
+			set
+			{
+				if ((this._Login != value))
+				{
+					this.OnLoginChanging(value);
+					this.SendPropertyChanging();
+					this._Login = value;
+					this.SendPropertyChanged("Login");
+					this.OnLoginChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(300)")]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this.OnPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Password = value;
+					this.SendPropertyChanged("Password");
+					this.OnPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Open]", Storage="_Open", DbType="Bit")]
+		public System.Nullable<bool> Open
+		{
+			get
+			{
+				return this._Open;
+			}
+			set
+			{
+				if ((this._Open != value))
+				{
+					this.OnOpenChanging(value);
+					this.SendPropertyChanging();
+					this._Open = value;
+					this.SendPropertyChanged("Open");
+					this.OnOpenChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
