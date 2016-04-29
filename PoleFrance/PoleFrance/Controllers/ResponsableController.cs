@@ -172,6 +172,7 @@ namespace PoleFrance.Controllers
 
                   ));
 
+                  /*
                   sw.WriteLine();
                   sw.WriteLine("\" \";\"Résultats Sportifs\";\"Compétition\";\"Résultat\";\"Catégorie d'âge\";\"Catégorie de poids\";\"Année\";");
                
@@ -193,6 +194,7 @@ namespace PoleFrance.Controllers
 
                   }
                   sw.WriteLine();
+                  */
 
               }
 
@@ -263,6 +265,7 @@ namespace PoleFrance.Controllers
 
                 ));
 
+                /*
                 sw.WriteLine();
                 sw.WriteLine("\" \";\"Résultats Sportifs\";\"Compétition\";\"Résultat\";\"Catégorie d'âge\";\"Catégorie de poids\";\"Année\";");
                
@@ -285,7 +288,7 @@ namespace PoleFrance.Controllers
 
                 }
                 sw.WriteLine();
-
+                */
             }
 
             Response.Write(sw.ToString());
