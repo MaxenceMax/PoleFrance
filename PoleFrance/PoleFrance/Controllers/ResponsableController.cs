@@ -104,100 +104,101 @@ namespace PoleFrance.Controllers
 
         public ActionResult ExtractionInscriptions()
         {
-            
-            StringWriter sw = new StringWriter();
-           
-      
-            Response.ClearContent();
-            Response.AddHeader("content-disposition", "attachment;filename=ListeInscriptions.csv");
-            Response.ContentType = "text/csv";
-            Response.Charset = "utf-8";
-            Response.Write("\uFEFF");
+
+       
+              StringWriter sw = new StringWriter();
 
 
-            PolesDataContext bd = new PolesDataContext();
-
-            decimal poleid = 0;
-            var claimIdentity = User.Identity as ClaimsIdentity;
-            if (claimIdentity != null)
-            {
-                var nomResponsable = claimIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-                poleid = (from i in bd.Responsable
-                          where i.Login == nomResponsable
-                          select i.Poleid).First();
-            }
+              Response.ClearContent();
+              Response.AddHeader("content-disposition", "attachment;filename=ListeInscriptions.csv");
+              Response.ContentType = "text/csv";
+              Response.Charset = "utf-8";
+              Response.Write("\uFEFF");
 
 
-            var infosglobales = from i in bd.VuesInformationsGlobales
-                                where i.Poleid == poleid
+              PolesDataContext bd = new PolesDataContext();
+
+              decimal poleid = 0;
+              var claimIdentity = User.Identity as ClaimsIdentity;
+              if (claimIdentity != null)
+              {
+                  var nomResponsable = claimIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+                  poleid = (from i in bd.Responsable
+                            where i.Login == nomResponsable
+                            select i.Poleid).First();
+              }
+
+              sw.WriteLine("\"NOM\";\"Prénom\";\"Année\";\"Numéro de Licence\";\"Sexe\";\"Pole Actuel\";\"Statut de la demande\";\"Commentaire Ligue\";\"Adresse Mail\";\"Catégorie d'âge\";\"Catégorie de poids\";\"Taille\";\"Poids\";\"Adresse\";\"Code Postal\";\"Ville\";\"Téléphone\";\"Téléphone Parents\";\"Email Parents\";\"Classe Actuelle\";\"Etablissement Actuel\";\"Adresse Etablissement Actuel\";\"Classe Souhaitée\";\"Etablissement Souhaité\"");
+
+
+            var infosglobales = from i in bd.Candidature
+                                join t in bd.PoleCandidature on i.id equals t.Candidatureid
+                                where t.Poleid == poleid
+                                orderby i.Nom ascending
                                 select i;
 
 
-            sw.WriteLine("\"NOM\";\"Prénom\";\"Année\";\"Numéro de Licence\";\"Sexe\";\"Pole Actuel\";\"Statut de la demande\";\"Commentaire Ligue\";\"Adresse Mail\";\"Catégorie d'âge\";\"Catégorie de poids\";\"Taille\";\"Poids\";\"Adresse\";\"Code Postal\";\"Ville\";\"Téléphone\";\"Téléphone Parents\";\"Email Parents\";\"Classe Actuelle\";\"Etablissement Actuel\";\"Adresse Etablissement Actuel\";\"Classe Souhaitée\";\"Etablissement Souhaité\"");
-
             foreach (var info in infosglobales)
-            {
+              {
 
 
-                sw.WriteLine(string.Format("\"{0}\";\"{1}\";\"{2}\";\"{3}\";\"{4}\";\"{5}\";\"{6}\";\"{7}\";\"{8}\";\"{9}\";\"{10}\";\"{11}\";\"{12}\";\"{13}\";\"{14}\";\"{15}\";\"{16}\";\"{17}\";\"{18}\";\"{19}\";\"{20}\";\"{21}\";\"{22}\";\"{23}\"",
+                  sw.WriteLine(string.Format("\"{0}\";\"{1}\";\"{2}\";\"{3}\";\"{4}\";\"{5}\";\"{6}\";\"{7}\";\"{8}\";\"{9}\";\"{10}\";\"{11}\";\"{12}\";\"{13}\";\"{14}\";\"{15}\";\"{16}\";\"{17}\";\"{18}\";\"{19}\";\"{20}\";\"{21}\";\"{22}\";\"{23}\"",
 
-                info.Nom,
-                info.Prenom,
-                info.Annee,
-                info.NumLicencie,
-                info.Sexe,
-                info.PoleActuel,
-                getTraitement(info.Traitement),
-                info.CommentaireLigue,
-                info.AdresseEmail,
-                info.CategorieAgeActuelle,
-                info.CategoriePoidsActuelle,
-                info.Taille,
-                info.Poids,
-                info.Rue,
-                info.CodePostal,
-                info.Ville,
-                info.Telephone,
-                info.TelephoneParents,
-                info.AdresseEmailParent,
-                info.Classe,
-                info.Etablissement,
-                info.Adresse,
-                info.ClasseSouhait,
-                info.EtablissementSouhait
-
-                ));
-
-                sw.WriteLine();
-                sw.WriteLine("\" \";\"Résultats Sportifs\";\"Compétition\";\"Résultat\";\"Catégorie d'âge\";\"Catégorie de poids\";\"Année\";");
-                var infosSportives = from i in bd.VuesInformationSportive
-                                     where i.Candidatureid == info.id
-                                     select i;
-
-                foreach (var infos in infosSportives)
-                {
-
-
-                    sw.WriteLine(string.Format("\"{0}\";\"{1}\";\"{2}\";\"{3}\";\"{4}\";\"{5}\";\"{6}\"",
-
-                        " ",
-                        " ",
-                        infos.Competition,
-                        infos.Resultat,
-                        infos.CategorieAge,
-                        infos.CategoriePoids,
-                        infos.AnneeSportive
+                  info.Nom,
+                  info.Prenom,
+                  info.Annee,
+                  info.NumLicencie,
+                  info.Sexe,
+                  info.PoleActuel,
+                  getTraitement(info.Traitement),
+                  info.CommentaireLigue,
+                  info.AdresseEmail,
+                  info.CategorieAgeActuelle,
+                  info.CategoriePoidsActuelle,
+                  info.Taille,
+                  info.Poids,
+                  info.Rue,
+                  info.CodePostal,
+                  info.Ville,
+                  info.Telephone,
+                  info.TelephoneParents,
+                  info.AdresseEmailParent,
+                  info.InformationScolaire.Classe,
+                  info.InformationScolaire.Etablissement,
+                  info.InformationScolaire.Adresse,
+                  info.InformationScolaire.SouhaitScolaire.First().Classe,
+                  info.InformationScolaire.SouhaitScolaire.First().Etablissement
 
                   ));
 
-                }
-                sw.WriteLine();
+                  sw.WriteLine();
+                  sw.WriteLine("\" \";\"Résultats Sportifs\";\"Compétition\";\"Résultat\";\"Catégorie d'âge\";\"Catégorie de poids\";\"Année\";");
+               
+                  foreach (var infos in info.InformationSportive)
+                  {
 
-            }
 
-            Response.Write(sw.ToString());
-            Response.End();
+                      sw.WriteLine(string.Format("\"{0}\";\"{1}\";\"{2}\";\"{3}\";\"{4}\";\"{5}\";\"{6}\"",
+
+                          " ",
+                          " ",
+                          infos.Competition,
+                          infos.Resultat,
+                          infos.CategorieAge,
+                          infos.CategoriePoids,
+                          infos.Annee
+
+                    ));
+
+                  }
+                  sw.WriteLine();
+
+              }
+
+              Response.Write(sw.ToString());
+              Response.End();
+              
 
             return RedirectToAction("ResponsableHome", "Responsable");
         }
@@ -220,10 +221,11 @@ namespace PoleFrance.Controllers
 
             PolesDataContext bd = new PolesDataContext();
 
-          
 
 
-            var infosglobales = from i in bd.VuesInformationsGlobales
+
+            var infosglobales = from i in bd.Candidature
+                                orderby i.Nom ascending
                                 select i;
 
             sw.WriteLine("\"NOM\";\"Prénom\";\"Année\";\"Numéro de Licence\";\"Sexe\";\"Pole Actuel\";\"Statut de la demande\";\"Commentaire Ligue\";\"Adresse Mail\";\"Catégorie d'âge\";\"Catégorie de poids\";\"Taille\";\"Poids\";\"Adresse\";\"Code Postal\";\"Ville\";\"Téléphone\";\"Téléphone Parents\";\"Email Parents\";\"Classe Actuelle\";\"Etablissement Actuel\";\"Adresse Etablissement Actuel\";\"Classe Souhaitée\";\"Etablissement Souhaité\"");
@@ -253,21 +255,19 @@ namespace PoleFrance.Controllers
                 info.Telephone,
                 info.TelephoneParents,
                 info.AdresseEmailParent,
-                info.Classe,
-                info.Etablissement,
-                info.Adresse,
-                info.ClasseSouhait,
-                info.EtablissementSouhait
+                info.InformationScolaire.Classe,
+                info.InformationScolaire.Etablissement,
+                info.InformationScolaire.Adresse,
+                info.InformationScolaire.SouhaitScolaire.First().Classe,
+                info.InformationScolaire.SouhaitScolaire.First().Etablissement
 
                 ));
 
                 sw.WriteLine();
                 sw.WriteLine("\" \";\"Résultats Sportifs\";\"Compétition\";\"Résultat\";\"Catégorie d'âge\";\"Catégorie de poids\";\"Année\";");
-                var infosSportives = from i in bd.VuesInformationSportive
-                                     where i.Candidatureid == info.id
-                                     select i;
+               
 
-                foreach (var infos in infosSportives)
+                foreach (var infos in info.InformationSportive)
                 {
 
 
@@ -279,7 +279,7 @@ namespace PoleFrance.Controllers
                         infos.Resultat,
                         infos.CategorieAge,
                         infos.CategoriePoids,
-                        infos.AnneeSportive
+                        infos.Annee
 
                   ));
 
