@@ -129,74 +129,75 @@ namespace PoleFrance.Controllers
                             select i.Poleid).First();
               }
 
-              sw.WriteLine("\"NOM\";\"Prénom\";\"Année\";\"Numéro de Licence\";\"Sexe\";\"Pole Actuel\";\"Statut de la demande\";\"Commentaire Ligue\";\"Adresse Mail\";\"Catégorie d'âge\";\"Catégorie de poids\";\"Taille\";\"Poids\";\"Adresse\";\"Code Postal\";\"Ville\";\"Téléphone\";\"Téléphone Parents\";\"Email Parents\";\"Classe Actuelle\";\"Etablissement Actuel\";\"Adresse Etablissement Actuel\";\"Classe Souhaitée\";\"Etablissement Souhaité\"");
+              
 
 
-            var infosglobales = from i in bd.Candidature
-                                join t in bd.PoleCandidature on i.id equals t.Candidatureid
-                                where t.Poleid == poleid
-                                orderby i.Nom ascending
+            var infosglobales = from i in bd.PoleCandidature
+                                where i.Poleid == poleid
+                                orderby i.Candidature.Nom ascending
                                 select i;
 
+            sw.WriteLine("\"NOM\";\"Prénom\";\"Année\";\"Numéro de Licence\";\"Sexe\";\"Pole Actuel\";\"Pole Demandé\";\"Statut de la demande\";\"Commentaire Ligue\";\"Adresse Mail\";\"Catégorie d'âge\";\"Catégorie de poids\";\"Taille\";\"Poids\";\"Adresse\";\"Code Postal\";\"Ville\";\"Téléphone\";\"Téléphone Parents\";\"Email Parents\";\"Classe Actuelle\";\"Etablissement Actuel\";\"Adresse Etablissement Actuel\";\"Classe Souhaitée\";\"Etablissement Souhaité\"");
 
             foreach (var info in infosglobales)
-              {
+            {
 
 
-                  sw.WriteLine(string.Format("\"{0}\";\"{1}\";\"{2}\";\"{3}\";\"{4}\";\"{5}\";\"{6}\";\"{7}\";\"{8}\";\"{9}\";\"{10}\";\"{11}\";\"{12}\";\"{13}\";\"{14}\";\"{15}\";\"{16}\";\"{17}\";\"{18}\";\"{19}\";\"{20}\";\"{21}\";\"{22}\";\"{23}\"",
+                sw.WriteLine(string.Format("\"{0}\";\"{1}\";\"{2}\";\"{3}\";\"{4}\";\"{5}\";\"{6}\";\"{7}\";\"{8}\";\"{9}\";\"{10}\";\"{11}\";\"{12}\";\"{13}\";\"{14}\";\"{15}\";\"{16}\";\"{17}\";\"{18}\";\"{19}\";\"{20}\";\"{21}\";\"{22}\";\"{23}\";\"{24}\"",
 
-                  info.Nom,
-                  info.Prenom,
-                  info.Annee,
-                  info.NumLicencie,
-                  info.Sexe,
-                  info.PoleActuel,
-                  getTraitement(info.Traitement),
-                  info.CommentaireLigue,
-                  info.AdresseEmail,
-                  info.CategorieAgeActuelle,
-                  info.CategoriePoidsActuelle,
-                  info.Taille,
-                  info.Poids,
-                  info.Rue,
-                  info.CodePostal,
-                  info.Ville,
-                  info.Telephone,
-                  info.TelephoneParents,
-                  info.AdresseEmailParent,
-                  info.InformationScolaire.Classe,
-                  info.InformationScolaire.Etablissement,
-                  info.InformationScolaire.Adresse,
-                  info.InformationScolaire.SouhaitScolaire.First().Classe,
-                  info.InformationScolaire.SouhaitScolaire.First().Etablissement
+                info.Candidature.Nom,
+                info.Candidature.Prenom,
+                info.Candidature.Annee,
+                info.Candidature.NumLicencie,
+                info.Candidature.Sexe,
+                info.Candidature.PoleActuel,
+                info.Pole.Nom,
+                getTraitement(info.Candidature.Traitement),
+                info.Candidature.CommentaireLigue,
+                info.Candidature.AdresseEmail,
+                info.Candidature.CategorieAgeActuelle,
+                info.Candidature.CategoriePoidsActuelle,
+                info.Candidature.Taille,
+                info.Candidature.Poids,
+                info.Candidature.Rue,
+                info.Candidature.CodePostal,
+                info.Candidature.Ville,
+                info.Candidature.Telephone,
+                info.Candidature.TelephoneParents,
+                info.Candidature.AdresseEmailParent,
+                info.Candidature.InformationScolaire.Classe,
+                info.Candidature.InformationScolaire.Etablissement,
+                info.Candidature.InformationScolaire.Adresse,
+                info.Candidature.InformationScolaire.SouhaitScolaire.First().Classe,
+                info.Candidature.InformationScolaire.SouhaitScolaire.First().Etablissement
+
+                ));
+
+                /*
+                sw.WriteLine();
+                sw.WriteLine("\" \";\"Résultats Sportifs\";\"Compétition\";\"Résultat\";\"Catégorie d'âge\";\"Catégorie de poids\";\"Année\";");
+
+                foreach (var infos in info.InformationSportive)
+                {
+
+
+                    sw.WriteLine(string.Format("\"{0}\";\"{1}\";\"{2}\";\"{3}\";\"{4}\";\"{5}\";\"{6}\"",
+
+                        " ",
+                        " ",
+                        infos.Competition,
+                        infos.Resultat,
+                        infos.CategorieAge,
+                        infos.CategoriePoids,
+                        infos.Annee
 
                   ));
 
-                  /*
-                  sw.WriteLine();
-                  sw.WriteLine("\" \";\"Résultats Sportifs\";\"Compétition\";\"Résultat\";\"Catégorie d'âge\";\"Catégorie de poids\";\"Année\";");
-               
-                  foreach (var infos in info.InformationSportive)
-                  {
+                }
+                sw.WriteLine();
+                */
 
-
-                      sw.WriteLine(string.Format("\"{0}\";\"{1}\";\"{2}\";\"{3}\";\"{4}\";\"{5}\";\"{6}\"",
-
-                          " ",
-                          " ",
-                          infos.Competition,
-                          infos.Resultat,
-                          infos.CategorieAge,
-                          infos.CategoriePoids,
-                          infos.Annee
-
-                    ));
-
-                  }
-                  sw.WriteLine();
-                  */
-
-              }
+            }
 
               Response.Write(sw.ToString());
               Response.End();
@@ -226,42 +227,43 @@ namespace PoleFrance.Controllers
 
 
 
-            var infosglobales = from i in bd.Candidature
-                                orderby i.Nom ascending
+            var infosglobales = from i in bd.PoleCandidature
+                                orderby i.Candidature.Nom ascending
                                 select i;
 
-            sw.WriteLine("\"NOM\";\"Prénom\";\"Année\";\"Numéro de Licence\";\"Sexe\";\"Pole Actuel\";\"Statut de la demande\";\"Commentaire Ligue\";\"Adresse Mail\";\"Catégorie d'âge\";\"Catégorie de poids\";\"Taille\";\"Poids\";\"Adresse\";\"Code Postal\";\"Ville\";\"Téléphone\";\"Téléphone Parents\";\"Email Parents\";\"Classe Actuelle\";\"Etablissement Actuel\";\"Adresse Etablissement Actuel\";\"Classe Souhaitée\";\"Etablissement Souhaité\"");
+            sw.WriteLine("\"NOM\";\"Prénom\";\"Année\";\"Numéro de Licence\";\"Sexe\";\"Pole Actuel\";\"Pole Demandé\";\"Statut de la demande\";\"Commentaire Ligue\";\"Adresse Mail\";\"Catégorie d'âge\";\"Catégorie de poids\";\"Taille\";\"Poids\";\"Adresse\";\"Code Postal\";\"Ville\";\"Téléphone\";\"Téléphone Parents\";\"Email Parents\";\"Classe Actuelle\";\"Etablissement Actuel\";\"Adresse Etablissement Actuel\";\"Classe Souhaitée\";\"Etablissement Souhaité\"");
 
             foreach (var info in infosglobales)
             {
 
 
-                sw.WriteLine(string.Format("\"{0}\";\"{1}\";\"{2}\";\"{3}\";\"{4}\";\"{5}\";\"{6}\";\"{7}\";\"{8}\";\"{9}\";\"{10}\";\"{11}\";\"{12}\";\"{13}\";\"{14}\";\"{15}\";\"{16}\";\"{17}\";\"{18}\";\"{19}\";\"{20}\";\"{21}\";\"{22}\";\"{23}\"",
+                sw.WriteLine(string.Format("\"{0}\";\"{1}\";\"{2}\";\"{3}\";\"{4}\";\"{5}\";\"{6}\";\"{7}\";\"{8}\";\"{9}\";\"{10}\";\"{11}\";\"{12}\";\"{13}\";\"{14}\";\"{15}\";\"{16}\";\"{17}\";\"{18}\";\"{19}\";\"{20}\";\"{21}\";\"{22}\";\"{23}\";\"{24}\"",
 
-                info.Nom,
-                info.Prenom,
-                info.Annee,
-                info.NumLicencie,
-                info.Sexe,
-                info.PoleActuel,
-                getTraitement(info.Traitement),
-                info.CommentaireLigue,
-                info.AdresseEmail,
-                info.CategorieAgeActuelle,
-                info.CategoriePoidsActuelle,
-                info.Taille,
-                info.Poids,
-                info.Rue,
-                info.CodePostal,
-                info.Ville,
-                info.Telephone,
-                info.TelephoneParents,
-                info.AdresseEmailParent,
-                info.InformationScolaire.Classe,
-                info.InformationScolaire.Etablissement,
-                info.InformationScolaire.Adresse,
-                info.InformationScolaire.SouhaitScolaire.First().Classe,
-                info.InformationScolaire.SouhaitScolaire.First().Etablissement
+                info.Candidature.Nom,
+                info.Candidature.Prenom,
+                info.Candidature.Annee,
+                info.Candidature.NumLicencie,
+                info.Candidature.Sexe,
+                info.Candidature.PoleActuel,
+                info.Pole.Nom,
+                getTraitement(info.Candidature.Traitement),
+                info.Candidature.CommentaireLigue,
+                info.Candidature.AdresseEmail,
+                info.Candidature.CategorieAgeActuelle,
+                info.Candidature.CategoriePoidsActuelle,
+                info.Candidature.Taille,
+                info.Candidature.Poids,
+                info.Candidature.Rue,
+                info.Candidature.CodePostal,
+                info.Candidature.Ville,
+                info.Candidature.Telephone,
+                info.Candidature.TelephoneParents,
+                info.Candidature.AdresseEmailParent,
+                info.Candidature.InformationScolaire.Classe,
+                info.Candidature.InformationScolaire.Etablissement,
+                info.Candidature.InformationScolaire.Adresse,
+                info.Candidature.InformationScolaire.SouhaitScolaire.First().Classe,
+                info.Candidature.InformationScolaire.SouhaitScolaire.First().Etablissement
 
                 ));
 
