@@ -259,6 +259,8 @@
     <Content Include="Views\Ligue\LigueHome.cshtml" />
     <Content Include="Views\Ligue\LiguesInscriptions.cshtml" />
     <Content Include="Views\Ligue\DetailCandidat.cshtml" />
+    <Content Include="Views\Gestion\ListePole.cshtml" />
+    <Content Include="Views\Responsable\HistoriqueInscriptions.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

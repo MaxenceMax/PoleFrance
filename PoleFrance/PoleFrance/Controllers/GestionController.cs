@@ -44,20 +44,24 @@ namespace PoleFrance.Controllers
        //Route pour afficher les responsables
         public ActionResult ListeResponsable()
         {
-
             PolesDataContext bd = new PolesDataContext();
-        
             var all = bd.Responsable;
-
-
             ResponsableViewModel vm = new ResponsableViewModel
             {
                 ListeDesResponsables = all.ToList(),
-              
             };
+            return View(vm);
+        }
 
-
-
+        //Route pour afficher les Pôles
+        public ActionResult ListePole()
+        {
+            PolesDataContext bd = new PolesDataContext();
+            var all = bd.Responsable;
+            ResponsableViewModel vm = new ResponsableViewModel
+            {
+                ListeDesResponsables = all.ToList(),
+            };
             return View(vm);
         }
 

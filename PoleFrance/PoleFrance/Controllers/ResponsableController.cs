@@ -47,6 +47,12 @@ namespace PoleFrance.Controllers
         }
 
 
+        // Génére l'historique des saison pour les inscriptions
+        public ActionResult HistoriqueInscriptions()
+        {
+            return View();
+        }
+
         public ActionResult ListeMesInscriptions()
         {
 
@@ -59,8 +65,8 @@ namespace PoleFrance.Controllers
             var candidature = from i in bd.PoleCandidature
                               join p in bd.Pole on i.Poleid equals p.id
                               join q in bd.Responsable on i.Poleid equals q.Poleid
-                              where q.Login == nomResponsable
-                              orderby i.Candidature.Traitement ascending, i.Candidature.Nom ascending
+                              where q.Login == nomResponsable && i.Candidature.Annee == Int32.Parse(DateTime.Now.Year.ToString())
+            orderby i.Candidature.Traitement ascending, i.Candidature.Nom ascending
                               select i;
 
 
