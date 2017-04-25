@@ -42,12 +42,6 @@
                     <div class="admin-block-image"><img src="@Url.Content("~/Content/Images/Admin/registrations.png")" /></div>
                     <div class="admin-block-desc">Dans cette section vous pouvez voir la liste de vos inscriptions pour @ViewBag.texte</div>
                 </div>
-            </div>
-        </div>
-
-
-        <div class="admin-block-conteneur-alignement">
-            <div class="admin-block-conteneur">
                 <div class="admin-block" onclick="location.href='@Url.Action("ListeToutesInscriptions", "Responsable")'">
                     <div class="admin-block-titre">Toutes les inscriptions</div>
                     <div class="admin-block-image"><img src="@Url.Content("~/Content/Images/Admin/resp.png")" /></div>
@@ -60,6 +54,11 @@
             <div class="admin-block-conteneur">
                 <div class="admin-block" onclick="location.href='@Url.Action("ExtractionInscriptions", "Responsable")'">
                     <div class="admin-block-titre">Extraction des inscriptions</div>
+                    <div class="admin-block-image"><img src="@Url.Content("~/Content/Images/Admin/download.png")" /></div>
+                    <div class="admin-block-desc">En cliquant sur ce bouton vous pouvez extraire la liste de vos inscriptions pour @ViewBag.texte</div>
+                </div>
+                <div class="admin-block" onclick="location.href='@Url.Action("HistoriqueInscriptions", "Responsable")'">
+                    <div class="admin-block-titre">Historique des inscriptions</div>
                     <div class="admin-block-image"><img src="@Url.Content("~/Content/Images/Admin/download.png")" /></div>
                     <div class="admin-block-desc">En cliquant sur ce bouton vous pouvez extraire la liste de vos inscriptions pour @ViewBag.texte</div>
                 </div>

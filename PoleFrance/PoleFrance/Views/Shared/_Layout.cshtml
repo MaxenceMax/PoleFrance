@@ -2,10 +2,7 @@
 @{ 
     ViewBag.Title = "FFJDA - Poles";
 }
-
-
 @{
-  
     var userRoles = new List<Claim>();
     if (Request.IsAuthenticated)
     {
@@ -15,9 +12,6 @@
             userRoles = claimIdentity.FindAll(ClaimTypes.Role).ToList();
         }
     }
-
-    
-    
 }
 
 <!DOCTYPE html>

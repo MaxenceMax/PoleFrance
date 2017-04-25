@@ -22,6 +22,8 @@ namespace PoleFrance.Controllers
 
 
         // GET: Responsable
+        //Route pour ajouter un responsable
+        [Authorize(Roles = "Admin")]
         public ActionResult ResponsableHome()
         {
 
