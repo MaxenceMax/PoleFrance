@@ -37,8 +37,6 @@ namespace PoleFrance.Models
         [Display (Name ="Rue")]
         public String Rue { get; set; }
 
-        [Display (Name ="Ligue")]
-        public String Ligue { get; set; }
 
         [Required]
         [Display (Name ="Nom")]

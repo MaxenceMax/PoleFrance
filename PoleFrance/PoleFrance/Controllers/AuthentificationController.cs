@@ -40,6 +40,8 @@ namespace PoleFrance.Controllers
                 ModelState.AddModelError(string.Empty, "Le nom d'utilisateur ou le mot de passe est incorrect.");
                 return View(model);
             }
+
+
             // L'authentification est réussie, 
             // injecter les informations utilisateur dans le cookie d'authentification :
             var userClaims = new List<Claim>();
