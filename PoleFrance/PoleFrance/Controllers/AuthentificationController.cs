@@ -118,7 +118,7 @@ namespace PoleFrance.Controllers
              if(!statut.Connected)
             {
                 statut.Connected = (from i in bd.ResponsableLigue
-                            where i.Login == login && i.Password == encrypt(password)
+                            where i.Login == login && i.Password == password
                             select i).Count() != 0;
                 statut.isLigue = true;
             }
