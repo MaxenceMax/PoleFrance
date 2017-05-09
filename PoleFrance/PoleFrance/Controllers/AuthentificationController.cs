@@ -109,13 +109,13 @@ namespace PoleFrance.Controllers
                                 where i.Login == login && i.Password == encrypt(password)
                                 select i).Count() != 0 ;
             }
-             else
+            if(!statut.Connected)
             {
                 statut.Connected = (from i in bd.Responsable
                             where i.Login == login && i.Password == encrypt(password)
                             select i).Count() != 0;
             }
-             if(!statut.Connected)
+            if(!statut.Connected)
             {
                 statut.Connected = (from i in bd.ResponsableLigue
                             where i.Login == login && i.Password == password

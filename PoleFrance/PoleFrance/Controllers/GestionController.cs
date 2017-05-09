@@ -18,7 +18,7 @@ namespace PoleFrance.Controllers
 
 
         //Route pour la page d'administration
-        
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminHome()
         {
            
@@ -40,8 +40,8 @@ namespace PoleFrance.Controllers
             return View();
         }
 
-
-       //Route pour afficher les responsables
+        [Authorize(Roles = "Admin")]
+        //Route pour afficher les responsables
         public ActionResult ListeResponsable()
         {
             PolesDataContext bd = new PolesDataContext();
@@ -53,6 +53,7 @@ namespace PoleFrance.Controllers
             return View(vm);
         }
 
+        [Authorize(Roles = "Admin")]
         //Route pour afficher les Pôles
         public ActionResult ListePole()
         {
@@ -65,7 +66,7 @@ namespace PoleFrance.Controllers
             return View(vm);
         }
 
-
+        [Authorize(Roles = "Admin")]
         //Fonction pour ouvrir les inscriptions
         public ActionResult OuvertureInscription()
         {
@@ -106,11 +107,10 @@ namespace PoleFrance.Controllers
             ViewBag.listePole = all;
 
              return View();
-         } 
+         }
 
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        [AllowAnonymous]
         public ActionResult AjoutResponsable(Models.AjoutResponsableModel model)
         {
 
@@ -143,7 +143,7 @@ namespace PoleFrance.Controllers
         }
 
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         public ActionResult SuppressionResponsable(decimal id)
         {
 
@@ -175,6 +175,6 @@ namespace PoleFrance.Controllers
         }
 
 
-}
+    }
 }
 

@@ -23,7 +23,7 @@ namespace PoleFrance.Controllers
 
         // GET: Responsable
         //Route pour ajouter un responsable
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Responsable")]
         public ActionResult ResponsableHome()
         {
 
@@ -55,6 +55,7 @@ namespace PoleFrance.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Responsable")]
         public ActionResult ListeMesInscriptions()
         {
 
@@ -86,7 +87,7 @@ namespace PoleFrance.Controllers
 
 
 
-
+        [Authorize(Roles = "Admin, Responsable")]
         public ActionResult ListeToutesInscriptions()
         {
 
@@ -109,7 +110,7 @@ namespace PoleFrance.Controllers
             return View(lc);
 
         }
-
+        [Authorize(Roles = "Responsable")]
         public ActionResult ExtractionInscriptions()
         {
 
@@ -214,7 +215,7 @@ namespace PoleFrance.Controllers
             return RedirectToAction("ResponsableHome", "Responsable");
         }
 
-
+        [Authorize(Roles = "Admin, Responsable")]
         public ActionResult ExtractionToutesInscriptions()
         {
 
@@ -308,7 +309,7 @@ namespace PoleFrance.Controllers
             return RedirectToAction("AdminHome", "Gestion");
         }
 
-
+        [Authorize(Roles = "Admin, Responsable")]
         public ActionResult AffichageCandidature(decimal id)
         {
 
@@ -370,7 +371,7 @@ namespace PoleFrance.Controllers
 
         }
 
-
+        [Authorize(Roles = "Admin, Responsable")]
         [HttpPost]        
         [HandleError]
         public ActionResult AffichageCandidature(AffichageCandidature model)

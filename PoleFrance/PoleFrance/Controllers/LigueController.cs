@@ -15,6 +15,7 @@ namespace PoleFrance.Controllers
 
     public class LigueController : Controller
     {
+        [Authorize(Roles = "ResponsableLigue")]
         public ActionResult LigueHome()
         {
             PolesDataContext bd = new PolesDataContext();
@@ -38,6 +39,7 @@ namespace PoleFrance.Controllers
             return View();
         }
 
+        [Authorize(Roles = "ResponsableLigue")]
         public ActionResult LiguesInscriptions()
         {
             PolesDataContext bd = new PolesDataContext();
@@ -59,7 +61,7 @@ namespace PoleFrance.Controllers
             ListeCandidatureLigueViewModel lc = new ListeCandidatureLigueViewModel{ListeDesCandidats = candidature.ToList()};
             return View(lc);
         }
-
+        [Authorize(Roles = "ResponsableLigue")]
         public ActionResult DetailCandidat(decimal id)
         {
             PolesDataContext bd = new PolesDataContext();
@@ -75,6 +77,7 @@ namespace PoleFrance.Controllers
             return View(af);
         }
 
+        [Authorize(Roles = "ResponsableLigue")]
         [HttpPost]
         [HandleError]
         public ActionResult DetailCandidat(AffichageCandidature model)
